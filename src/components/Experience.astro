@@ -1,0 +1,58 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCIE = [
+  {
+    date: "Actualmente...",
+    title: "FronT End Developer",
+    company: "Obi Consulting",
+    description:
+      "Desarrollo de webs , e-commerce para los clientes, buscando  optimizar el tiempo y reducir costos.",
+    // link: "https://twitch.tv/midudev",
+  },
+  {
+    date: "Diciembre 2023",
+    title: "Principal Frontend Engineer",
+    company: "Altimea SAC",
+    description:
+      "Desarrollo de sistema interno de gestion para la UTP.Maquetizacion.Creacion de proyecto base a partir de version anterior.Entrevista a personal front para el area.Uso de Azure, Sonar.Tecnologías: ReactJs,TypeScript,Azure,Sonar,Figma,Jira,Tailwind.",
+  },
+  {
+    date: "Octubre 2023",
+    title: "Full Stack Developer",
+    company: "IPS CONSULTING EIRL",
+    description:
+      "Desarrollo de monitores para cliente SupermercadosPeruanos.Creación y diseño de SPSA.Manejo de base de datos.Creación, diseño  de monitores.Desarrollo de Front,Back y Base de datos.Almacenamiento y despliegue en Google Cloud.Uso de Dockers y Pipelines.Tecnologías: ReactJs,TypeScript, Oracle , MySql , Node.js, MySQL, ,Azure,AWS,GCP.",
+  },
+  {
+    date: "Junio 2023",
+    title: "Front End Developer",
+    company: "BEYOND SAC",
+    description:
+      "Responsable de la plataforma, componentes y utilidades para la creación y desarrollo de aplicaciones web. Mejora de un 30% en la entrega de software. Implantación de medidas de integración continua y despliegue con A/B testing en más de 15 equipos.",
+  },
+  {
+    date: "Marzo 2023",
+    title: "Front End Developer",
+    company: "VALHALLA PERU",
+    description:
+      "Mantenimiento y actualización de aplicaciones web.Creación y modificación de módulos.Actualización y estilización basada en UX/UI.Creación, edición y mantenimiento de plataformas en Shopify y WordPress.Manejo de cargas en AWS.Configuración y aplicación de Google Analytics",
+  },
+  {
+    date: "Marzo 2020",
+    title: "Principal Full Stack Develope",
+    company: "FKSS SAC",
+    description:
+      "Desarrollo del sitio web de la empresa.Configuración, filtrado y mantenimiento de la base de datos.Soporte técnico de Help Desk.Control y mantenimiento de CMR.Experiencia con JavaScript, React, WordPress, HTML y CSS.Experiencia en Python: Desarrollo de scripts para optimizar procesos internos.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
