@@ -21,7 +21,7 @@ const PROJECTS = [
 {
     title: "Web Chambita",
     description:
-      "Projecto desarrollado para una empresa externa. Creado  con Next.js, React,HTML ,CSS y StyledComponent.",
+      "Projecto desarrollado para una empresa externa como Front End. Creado  con Next.js, React,HTML ,CSS y StyledComponent.",
     link: "https://chambita.vercel.app/",
     image: "/projects/chambita.jpg",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
@@ -29,15 +29,22 @@ const PROJECTS = [
   {
     title: "Sistema Silbia UTP",
     description:
-      "Projecto desarrollado para la UTP. Creado con Next.js, React,DS y Azure .",
+      "Projecto desarrollado para la UTP como Front End. Creado con Next.js, React,DS , Azure ,Sonar,AWS  y Docker.",
     link: "https://silbia2-dev.utpxpedition.com/",
     image: "/projects/Silvia.jpg",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
   },
   {
+    title: "ERP Supermercados Peruanos",
+    description:
+      "Projecto desarrollado para el grupo Intercorp como FullStack. Creado con  React,NodeJs,MySql y GCP .",
+    image: "/projects/ERP1.jpg",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
     title: "Agendamiento SANNA",
     description:
-      "Maquetado para Clinicas SANNA. Creado desde cero con Next.js, React y StyledComponent.",
+      "Maquetado para Clinicas SANNA como Front End. Creado desde cero con Next.js, React y StyledComponent.",
     link: "https://web-sanna.vercel.app/",
     image: "/projects/sanna.jpg",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
@@ -45,7 +52,7 @@ const PROJECTS = [
   {
     title: "Rick and Morty",
     description:
-      "Creacion de una wiki de una de mis series favoritas Rick and Morty, incluye filtros  por nombre o estado de los personajes.Creado desde cero con  React , Express y CSS.",
+      "Creacion de una wiki de una de mis series favoritas Rick and Morty, incluye filtros  por nombre o estado de los personajes.Creado desde cero con  React,Redux , Express,Node,PostgreSQL y CSS.",
     link: "https://rick-and-morty-iota-cyan.vercel.app/",
     github: "https://github.com/ysacc/rick-and-morty",
     image: "/projects/rickandmorty.jpg",
@@ -110,7 +117,7 @@ const PROJECTS = [
             </LinkButton>
           )}
           {link && (
-            <LinkButton href={link}>
+            <LinkButton href={link} target="_blank" rel="noopener noreferrer">
               <Link class="size-4" />
               Preview
             </LinkButton>
