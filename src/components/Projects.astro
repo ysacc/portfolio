@@ -2,6 +2,7 @@
 import GitHub from "./icons/GitHub.astro"
 import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
+import ReactJs from "./icons/reactjs.png"
 import Link from "./icons/Link.astro"
 import LinkButton from "./LinkButton.astro"
 
@@ -16,8 +17,21 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+    REACTJS: {
+    name: "React.js",
+    class: "bg-[#003159] text-white",
+    icon: ReactJs,
+  },
 }
 const PROJECTS = [
+  {
+    title: "Interbank Erni",
+    description:
+      "Projecto desarrollado para Interbank como Front End. Creado  con React.js, Angular, Flutter, TailWind,Braze.",
+    link: "https://erni.interfondos.com.pe/",
+    image: "/projects/erni.png",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
 {
     title: "Web Chambita",
     description:
