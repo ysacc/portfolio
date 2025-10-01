@@ -1,70 +1,78 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
-const EXPERIENCIE = [
-    {
-    date: "Actualmente...",
-    title: "FullStack Developer",
-    company: "SafetyMind SAC",
-    description:
-      "Desarrollo web y mobile para IA de control de riesgos para empresas mineras y de aceros.Tecnologías:Javascript ,Python,ReactJs,Ionic,Capacitor,AWS,S3,DynamoDB, ApiGateway,Java,SringBoot,Catalyst",
-  },
-    {
-    date: "Octubre 2024",
-    title: "Front End Developer",
+
+const EXPERIENCE = [
+  {
+    date: "April 2024 – Present",
+    title: "Front-End Developer",
     company: "Entelgy SAC",
     description:
-      "Desarrollo de web de Sistema de inversiones para InterBank .Tecnologías:Javascript , Angular, ReactJs, TypeScript, Flutter, Jira, GTM , Hotjar.",
+      "Web and mobile development for Interbank and BBVA. Implemented analytics with Braze, resolved production issues, and coordinated with marketing and cross-functional teams. Tech: JavaScript, Angular, React.js, TypeScript, Flutter, Jira, GTM, Hotjar, CELLS, GLOMO.",
   },
   {
-    date: "Julio 2024",
-    title: "Front End Developer",
+    date: "May 2024 – December 2024",
+    title: "Full Stack Developer",
+    company: "SafetyMind SAC",
+    description:
+      "Built an AI-driven risk management web and mobile platform for mining and steel companies, including monitoring with notification bots and hazard control. Tech: JavaScript, Python, React.js, Ionic, Capacitor, AWS (S3, DynamoDB, API Gateway), Java, Spring Boot, Catalyst, Vue.js; microservices and JSON endpoints.",
+  },
+  {
+    date: "December 2023 – July 2024",
+    title: "Front-End Developer",
+    company: "CSTI SAC",
+    description:
+      "Developed web solutions for Laureate. Implemented services, fixed production issues, and coordinated with marketing and other teams. Tech: JavaScript, React.js, TypeScript, Jira, HubSpot.",
+  },
+  {
+    date: "January 2024 – June 2024",
+    title: "Front-End Developer",
     company: "Obi Consulting",
     description:
-      "Desarrollo de webs , e-commerce para los clientes, buscando  optimizar el tiempo y reducir costos.Tecnologías:Javascript,Prueba Unitarias , NextJS, ReactJs, TypeScriptSonar, Trello, Tailwind, Figma.",
+      "Delivered corporate websites and e-commerce builds for SMEs, improving delivery speed and reducing costs. Tech: JavaScript, Unit Testing, Vue.js, Next.js, React.js, TypeScript, Sonar, Trello, Tailwind CSS, Figma.",
   },
   {
-    date: "Diciembre 2023",
-    title: "Principal Frontend Engineer",
+    date: "December 2023 – February 2024",
+    title: "Principal Front-End Engineer",
     company: "Altimea SAC",
     description:
-      "Desarrollo de sistema interno de gestion para la UTP.Maquetizacion.Creacion de proyecto base a partir de version anterior.Entrevista a personal front para el area.Uso de Azure, Sonar.Tecnologías: ReactJs,TypeScript,Azure,Sonar,Figma,Jira,Tailwind.",
+      "Developed an internal management system for UTP; created a new base project from a previous version and conducted frontend interviews. Tools/Tech: React.js, TypeScript, Azure, Sonar, Figma, Jira, Tailwind CSS, DS.",
   },
   {
-    date: "Octubre 2023",
+    date: "May 2022 – December 2023",
     title: "Full Stack Developer",
-    company: "IPS CONSULTING EIRL",
+    company: "IPS Consulting EIRL",
     description:
-      "Desarrollo de monitores para cliente SupermercadosPeruanos.Creación y diseño de SPSA.Manejo de base de datos.Creación, diseño  de monitores.Desarrollo de Front,Back y Base de datos.Almacenamiento y despliegue en Google Cloud.Uso de Dockers y Pipelines.Tecnologías: ReactJs,TypeScript, Oracle , MySql , Node.js, MySQL, ,Azure,AWS,GCP.",
+      "Built monitoring dashboards for Supermercados Peruanos (SPSA). Led database design and full-stack development; deployed on Google Cloud with Docker and pipelines. Tech: React.js, TypeScript, Next.js, Node.js, Oracle, MySQL, GCP.",
   },
   {
-    date: "Junio 2023",
-    title: "Front End Developer",
-    company: "BEYOND SAC",
+    date: "February 2022 – February 2023",
+    title: "Front-End Developer",
+    company: "Beyond SAC",
     description:
-      "Responsable de la plataforma, componentes y utilidades para la creación y desarrollo de aplicaciones web. Mejora de un 30% en la entrega de software. Implantación de medidas de integración continua y despliegue con A/B testing en más de 15 equipos.",
+      "Owned platform architecture, reusable components, and shared utilities; improved delivery by ~30% via CI/CD and A/B testing across 15+ teams. Tech: JavaScript, Unit Testing, Next.js, React.js, TypeScript, GitLab, Bitbucket, Figma, REST/JSON services.",
   },
   {
-    date: "Marzo 2023",
-    title: "Front End Developer",
-    company: "VALHALLA PERU",
-    description:
-      "Mantenimiento y actualización de aplicaciones web.Creación y modificación de módulos.Actualización y estilización basada en UX/UI.Creación, edición y mantenimiento de plataformas en Shopify y WordPress.Manejo de cargas en AWS.Configuración y aplicación de Google Analytics",
-  },
-  {
-    date: "Marzo 2020",
+    date: "January 2020 – November 2022",
     title: "Principal Full Stack Developer",
     company: "FKSS SAC",
     description:
-      "Desarrollo del sitio web de la empresa.Configuración, filtrado y mantenimiento de la base de datos.Soporte técnico de Help Desk.Control y mantenimiento de CMR.Experiencia con JavaScript, React, WordPress, HTML y CSS.Experiencia en Python: Desarrollo de scripts para optimizar procesos internos.",
+      "Developed the company website; configured and maintained databases; provided Help Desk support and CMR maintenance. Built internal automation scripts in Python. Tech: JavaScript, React, Node.js, Express, MySQL, WordPress, HTML, CSS, Figma; REST APIs with JSON.",
+  },
+  {
+    date: "January 2011 – November 2015",
+    title: "Full Stack Developer",
+    company: "Grupo Estela SAC",
+    description:
+      "Developed and maintained the corporate website; implemented an integrated system for inventory, sales, and expenses; maintained databases and handled Help Desk/CMR. Tech: JavaScript, React, Node.js, Express, MySQL, Figma.",
   },
 ]
 ---
 
 <ol class="relative mt-16">
   {
-    EXPERIENCIE.map((experiencie) => (
-      <li class="">
-        <ExperienceItem {...experiencie} />
+    EXPERIENCE.map((experience) => (
+      <li>
+        <ExperienceItem {...experience} />
       </li>
     ))
   }

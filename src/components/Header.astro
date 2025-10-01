@@ -1,28 +1,38 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
+import LanguageToggle from "./LanguageToggle.astro"
 
 const navItems = [
   {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "/#experiencia",
+    title: "Experience",
+    titleEs: "Experiencia",
+    label: "experience",
+    url: "/#experience",
   },
   {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "/#proyectos",
+    title: "Projects",
+    titleEs: "Proyectos",
+    label: "projects",
+    url: "/#projects",
   },
   {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
+    title: "About Me",
+    titleEs: "Sobre mí",
+    label: "about-me",
+    url: "/#about-me",
   },
   {
-    title: "Contacto",
-    label: "contacto",
+    title: "Contact",
+    titleEs: "Contacto",
+    label: "contact",
     url: "mailto:samironcal@gmail.com",
   },
 ]
+
+const lang =
+  typeof window !== "undefined"
+    ? localStorage.getItem("lang") || "en"
+    : "en"
 ---
 
 <header
@@ -38,10 +48,11 @@ const navItems = [
           aria-label={link.label}
           href={link.url}
         >
-          {link.title}
+          {lang === "es" ? link.titleEs : link.title}
         </a>
       ))
     }
+
     <ThemeToggle />
   </nav>
 </header>
@@ -51,11 +62,11 @@ const navItems = [
     const sections = document.querySelectorAll("section")
     const navItems = document.querySelectorAll("header nav a")
 
-    const callback = (entries: any[]) => {
+    const callback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
+            if (item.getAttribute("aria-label") === entry.target.id) {
               item.classList.add("text-yellow-500")
             } else {
               item.classList.remove("text-yellow-500")
@@ -75,14 +86,12 @@ const navItems = [
       observer.observe(section)
     })
 
-    // Cleanup function
+    // Reconnect observer if user switches back to tab
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
         observer.disconnect()
       } else {
-        sections.forEach((section) => {
-          observer.observe(section)
-        })
+        sections.forEach((section) => observer.observe(section))
       }
     }
   })
@@ -90,12 +99,12 @@ const navItems = [
 
 <style>
   nav {
-    animation: nav-shadown 1s linear both;
+    animation: nav-shadow 1s linear both;
     animation-timeline: scroll();
     animation-range: 0 100px;
   }
 
-  @keyframes nav-shadown {
+  @keyframes nav-shadow {
     to {
       @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
     }
