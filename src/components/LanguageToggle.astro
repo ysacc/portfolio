@@ -1,17 +1,25 @@
 ---
-const toggleLanguage = () => {
-  if (typeof window !== "undefined") {
-    const currentLang = localStorage.getItem("lang") || "en"
-    const newLang = currentLang === "en" ? "es" : "en"
-    localStorage.setItem("lang", newLang)
-    location.reload()
-  }
-}
+/* no frontmatter needed */
 ---
 
 <button
-  onclick={toggleLanguage}
+  type="button"
+  data-lang-toggle
   class="ml-4 text-sm font-medium text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-gray-700 rounded-full px-3 py-1 hover:bg-yellow-100 dark:hover:bg-gray-700 transition"
+  aria-label="Toggle language"
+  title="Toggle language (EN/ES)"
 >
   🌐 <span class="ml-1">EN / ES</span>
 </button>
+
+<script is:inline>
+  const btn = document.querySelector('button[data-lang-toggle]');
+  const toggleLanguage = () => {
+    const current = localStorage.getItem("lang") || "en";
+    const next = current === "en" ? "es" : "en";
+    localStorage.setItem("lang", next);
+    location.reload();
+  };
+  btn && btn.addEventListener("click", toggleLanguage);
+</script>
+
