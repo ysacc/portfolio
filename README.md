@@ -1,54 +1,63 @@
-# Astro Starter Kit: Basics
+# Ysacc Roncal Portfolio (Next.js Rebuild)
 
-```sh
-npm create astro@latest -- --template basics
-```
+Premium personal portfolio built with Next.js 14, TypeScript, and TailwindCSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Tech Stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Form**: [Formspree](https://formspree.io/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Features
 
-## 🚀 Project Structure
+- 🌙 Light/Dark mode with `localStorage` persistence.
+- 📄 Professional ATS-friendly web resume.
+- 🎨 Minimalist, high-performance UI.
+- 🔍 Project archive with search and technology filters.
+- 📱 Fully responsive design.
+- 🚀 SEO optimized with metadata and OpenGraph support.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Getting Started
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Prerequisites
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- Node.js >= 20.x
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Installation
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
 
-## 🧞 Commands
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-All commands are run from the root of the project, from a terminal:
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-## 👀 Want to learn more?
+## Deployment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Simply connect your repository to Vercel and it will automatically detect Next.js and deploy your application.
+
+## Domain Configuration (ysaccroncal.dev)
+
+- Ensure `www` redirects to the root domain.
+- Verify canonical URLs in `src/app/layout.tsx`.
+
+---
+
+Built with pride by [Ysacc Roncal](https://linkedin.com/in/ysacc-roncal).

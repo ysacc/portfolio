@@ -1,0 +1,86 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AboutMe from "@/components/AboutMe.astro";
+import Briefcase from "@/components/icons/Briefcase.astro";
+import CodeIcon from "@/components/icons/Code.astro";
+import Experience from "@/components/Experience.astro";
+import ProfileCheck from "@/components/icons/ProfileCheck.astro";
+import Projects from "@/components/Projects.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import Hero from "@/components/Hero.astro";
+import Contact from "@/components/Contact.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+    lang: "en" | "es";
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const nav = t("nav");
+const hero = t("hero");
+const experience = t("experience");
+const projects = t("projects");
+const aboutMe = t("aboutMe");
+const contactForm = t("contactForm");
+---
+
+<Layout
+    title={lang === "es"
+        ? "Ysacc Roncal Portfolio – Senior Front-End Developer (React/Next.js)"
+        : "Ysacc Roncal Portfolio – Senior Front-End Developer (React/Next.js)"}
+    description={lang === "es"
+        ? "Desarrollador Senior Front-End especializado en React, Next.js y TypeScript. Creando aplicaciones web escalables y de alta calidad."
+        : "Senior Front-End Developer specialized in React, Next.js and TypeScript. Building scalable, high-quality web applications for enterprise teams."}
+    lang={lang}
+>
+    <main class="px-4">
+        <SectionContainer class="py-16 md:py-36">
+            <Hero {...hero} />
+        </SectionContainer>
+
+        <div class="space-y-24">
+            <SectionContainer id="experience">
+                <h2
+                    class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+                >
+                    <Briefcase class="size-8" />
+                    {nav.experience}
+                </h2>
+                <Experience items={experience} />
+            </SectionContainer>
+
+            <SectionContainer id="projects">
+                <h2
+                    class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+                >
+                    <CodeIcon class="size-7" />
+                    {nav.projects}
+                </h2>
+                <Projects items={projects} />
+            </SectionContainer>
+
+            <SectionContainer id="about-me">
+                <h2
+                    class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+                >
+                    <ProfileCheck class="size-8" />
+                    {nav.aboutMe}
+                </h2>
+                <AboutMe {...aboutMe} />
+            </SectionContainer>
+
+            <SectionContainer id="contact">
+                <h2
+                    class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+                >
+                    <MailIcon class="size-7" />
+                    {nav.contact}
+                </h2>
+                <Contact {...contactForm} />
+            </SectionContainer>
+        </div>
+    </main>
+</Layout>
