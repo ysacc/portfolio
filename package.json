@@ -12,11 +12,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/check": "0.5.6",
-    "@astrojs/tailwind": "5.1.0",
-    "@fontsource-variable/onest": "5.0.2",
-    "astro": "4.4.5",
-    "astro-robots-txt": "1.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.2",
     "i18next": "^23.10.1",
