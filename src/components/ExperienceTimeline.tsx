@@ -2,7 +2,7 @@ import { Experience } from "@/data/resume";
 
 export function ExperienceTimeline({ items }: { items: Experience[] }) {
     return (
-        <div className="relative border-l border-gray-200 dark:border-gray-800 ml-3">
+        <div className="relative border-l border-gray-300 dark:border-gray-800 ml-3">
             {items.map((item, index) => (
                 <ExperienceItem key={index} {...item} />
             ))}
@@ -35,7 +35,7 @@ function ExperienceItem({ company, role, period, description, highlights, tech }
             {tech && (
                 <div className="mt-4 flex flex-wrap gap-2">
                     {tech.map((t) => (
-                        <span key={t} className="rounded-full bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-500 dark:bg-gray-900 dark:text-gray-400 border border-gray-100 dark:border-gray-800">
+                        <span key={t} className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-500 dark:bg-gray-900 dark:text-gray-400 border border-gray-200 dark:border-gray-800">
                             {t}
                         </span>
                     ))}

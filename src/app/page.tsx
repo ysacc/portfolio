@@ -18,28 +18,28 @@ export default function Home() {
             {/* Tech Stack Section */}
             <Section title="Tech Stack" id="stack" className="bg-gray-50/50 dark:bg-gray-950/20">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-gray-950">
+                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
                         <div className="flex size-10 items-center justify-center rounded-lg bg-yellow-100 dark:bg-yellow-900/30">
                             <Code2 className="size-5 text-yellow-600 dark:text-yellow-500" />
                         </div>
                         <h3 className="font-bold text-gray-900 dark:text-gray-100">Front-End</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">React, Next.js, TypeScript, TailwindCSS, Design Systems.</p>
                     </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-gray-950">
+                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
                         <div className="flex size-10 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30">
                             <Cpu className="size-5 text-blue-600 dark:text-blue-500" />
                         </div>
                         <h3 className="font-bold text-gray-900 dark:text-gray-100">Back-End</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">Node.js, Express, Integration with REST & GraphQL APIs.</p>
                     </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-gray-950">
+                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
                         <div className="flex size-10 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/30">
                             <Globe className="size-5 text-green-600 dark:text-green-500" />
                         </div>
                         <h3 className="font-bold text-gray-900 dark:text-gray-100">Cloud & DevOps</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400">AWS, Google Cloud (GCP), CI/CD, GitLab, Docker.</p>
                     </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-gray-950">
+                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
                         <div className="flex size-10 items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/30">
                             <Rocket className="size-5 text-purple-600 dark:text-purple-500" />
                         </div>

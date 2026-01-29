@@ -15,10 +15,19 @@ export const config = {
 };
 
 export function proxy(req: NextRequest) {
-    const host = req.headers.get('host') || '';
+    const xForwardedHost = req.headers.get('x-forwarded-host');
+    const hostHeader = req.headers.get('host');
+    const host = xForwardedHost || hostHeader || '';
+
+    console.log('[Proxy] Request Path:', req.nextUrl.pathname);
+    console.log('[Proxy] Detected Host:', host);
+    console.log('[Proxy] X-Forwarded-Host:', xForwardedHost);
+    console.log('[Proxy] Host Header:', hostHeader);
 
     // Solo protegemos si es el subdominio de colegio o localhost (para pruebas si quieres)
     const isColegio = host.startsWith('colegio.') || host.includes('colegio-');
+
+    console.log('[Proxy] Is Colegio:', isColegio);
 
     if (!isColegio) {
         return NextResponse.next();
@@ -50,3 +59,5 @@ export function proxy(req: NextRequest) {
         },
     });
 }
+
+export default proxy;

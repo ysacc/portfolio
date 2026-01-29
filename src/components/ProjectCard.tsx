@@ -5,8 +5,8 @@ import { Tag } from "./SocialPill";
 
 export function ProjectCard({ slug, title, shortDescription, image, stack }: Project) {
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all hover:shadow-xl dark:border-gray-900 dark:bg-gray-950">
-            <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-900">
+        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
+            <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <img
                     src={image}
                     alt={title}

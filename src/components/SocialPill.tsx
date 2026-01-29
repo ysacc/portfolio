@@ -23,7 +23,7 @@ export function SocialPill({ href, icon: Icon, label }: SocialPillProps) {
 
 export function Tag({ children }: { children: React.ReactNode }) {
     return (
-        <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+        <span className="inline-flex items-center rounded-md bg-gray-100 border border-gray-200 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:border-transparent">
             {children}
         </span>
     );
