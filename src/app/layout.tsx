@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/data/site";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,6 +31,11 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "./",
     },
+    icons: {
+        icon: siteConfig.ogImage,
+        shortcut: siteConfig.ogImage,
+        apple: siteConfig.ogImage,
+    },
 };
 
 export default function RootLayout({
@@ -41,6 +47,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={`${inter.variable} font-sans antialiased selection:bg-yellow-100 selection:text-yellow-900 dark:selection:bg-yellow-900 dark:selection:text-yellow-100`}>
                 <ThemeProvider>
+                    <BackgroundEffects />
                     <div className="relative flex min-h-screen flex-col">
                         <Navbar />
                         <main className="flex-1">{children}</main>

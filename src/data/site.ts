@@ -10,5 +10,5 @@ export const siteConfig = {
         domain: "https://ysaccroncal.dev",
         resume: "/resume.pdf", // Point to local public file or Drive URL
     },
-    ogImage: "https://ysaccroncal.dev/og.png", // placeholder
+    ogImage: "/self.jpg", // placeholder
 };

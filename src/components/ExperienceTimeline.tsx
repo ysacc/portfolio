@@ -1,19 +1,28 @@
+"use client";
+
 import { Experience } from "@/data/resume";
+import { motion } from "framer-motion";
 
 export function ExperienceTimeline({ items }: { items: Experience[] }) {
     return (
         <div className="relative border-l border-gray-300 dark:border-gray-800 ml-3">
             {items.map((item, index) => (
-                <ExperienceItem key={index} {...item} />
+                <ExperienceItem key={index} {...item} index={index} />
             ))}
         </div>
     );
 }
 
-function ExperienceItem({ company, role, period, description, highlights, tech }: Experience) {
+function ExperienceItem({ company, role, period, description, highlights, tech, index }: Experience & { index: number }) {
     return (
-        <div className="mb-10 last:mb-0 ml-6">
-            <div className="absolute -left-[6.5px] mt-1.5 size-3 rounded-full border border-white bg-yellow-500 dark:border-gray-950" />
+        <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="mb-10 last:mb-0 ml-6"
+        >
+            <div className="absolute -left-[6.5px] mt-1.5 size-3 rounded-full border border-white bg-yellow-500 dark:border-gray-950 shadow-sm" />
             <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                 <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{role}</h3>
                 <span className="text-sm font-medium text-yellow-600 dark:text-yellow-500">{period}</span>
@@ -41,6 +50,6 @@ function ExperienceItem({ company, role, period, description, highlights, tech }
                     ))}
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 }

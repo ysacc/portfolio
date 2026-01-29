@@ -1,3 +1,5 @@
+"use client";
+
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
@@ -6,6 +8,7 @@ import { resumeData } from "@/data/resume";
 import { projectsData } from "@/data/projects";
 import { Button } from "@/components/Button";
 import { ArrowRight, Code2, Cpu, Globe, Rocket } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Home() {
     const topProjects = projectsData.slice(0, 4);
@@ -18,34 +21,27 @@ export default function Home() {
             {/* Tech Stack Section */}
             <Section title="Tech Stack" id="stack" className="bg-gray-50/50 dark:bg-gray-950/20">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
-                        <div className="flex size-10 items-center justify-center rounded-lg bg-yellow-100 dark:bg-yellow-900/30">
-                            <Code2 className="size-5 text-yellow-600 dark:text-yellow-500" />
-                        </div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">Front-End</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">React, Next.js, TypeScript, TailwindCSS, Design Systems.</p>
-                    </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
-                        <div className="flex size-10 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                            <Cpu className="size-5 text-blue-600 dark:text-blue-500" />
-                        </div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">Back-End</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Node.js, Express, Integration with REST & GraphQL APIs.</p>
-                    </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
-                        <div className="flex size-10 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/30">
-                            <Globe className="size-5 text-green-600 dark:text-green-500" />
-                        </div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">Cloud & DevOps</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">AWS, Google Cloud (GCP), CI/CD, GitLab, Docker.</p>
-                    </div>
-                    <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none">
-                        <div className="flex size-10 items-center justify-center rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                            <Rocket className="size-5 text-purple-600 dark:text-purple-500" />
-                        </div>
-                        <h3 className="font-bold text-gray-900 dark:text-gray-100">Testing & Quality</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Unit Testing with Jest, Code Reviews, Agile Methodologies.</p>
-                    </div>
+                    {[
+                        { icon: Code2, title: "Front-End", stack: "React, Next.js, TypeScript, TailwindCSS, Design Systems.", color: "yellow" },
+                        { icon: Cpu, title: "Back-End", stack: "Node.js, Express, Integration with REST & GraphQL APIs.", color: "blue" },
+                        { icon: Globe, title: "Cloud & DevOps", stack: "AWS, Google Cloud (GCP), CI/CD, GitLab, Docker.", color: "green" },
+                        { icon: Rocket, title: "Testing & Quality", stack: "Testing with Jest, Code Reviews, Agile.", color: "purple" }
+                    ].map((item, i) => (
+                        <motion.div
+                            key={item.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-gray-800 dark:bg-gray-950 dark:shadow-none"
+                        >
+                            <div className={`flex size-10 items-center justify-center rounded-lg bg-${item.color}-100 dark:bg-${item.color}-900/30`}>
+                                <item.icon className={`size-5 text-${item.color}-600 dark:text-${item.color}-500`} />
+                            </div>
+                            <h3 className="font-bold text-gray-900 dark:text-gray-100">{item.title}</h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">{item.stack}</p>
+                        </motion.div>
+                    ))}
                 </div>
             </Section>
 
@@ -75,17 +71,26 @@ export default function Home() {
 
             {/* About Section */}
             <Section title="About Me" id="about">
-                <div className="max-w-3xl">
-                    <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed italic">
-                        "Software engineering is not just about writing code; it's about solving complex problems and creating tools that empower people."
-                    </p>
-                    <div className="mt-8 space-y-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                        <p>
-                            Hey there! I'm Ysacc, a Senior Front-End Developer with a deep-seated passion for creating high-performance, user-centric web applications. My journey began with a curiosity for how things work on the internet, and over the past 7+ years, it has evolved into a professional career focused on building robust systems for leading enterprises in banking and health industries.
+                <div className="flex flex-col gap-12 lg:flex-row lg:items-start">
+                    <div className="max-w-3xl flex-1">
+                        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed italic">
+                            "Software engineering is not just about writing code; it's about solving complex problems and creating tools that empower people."
                         </p>
-                        <p>
-                            I thrive on challenges that require a mix of technical precision and creative thinking. Whether it's optimizing a complex data dashboard for high efficiency or architecting a reusable component library from scratch, my goal is always the same: delivering excellence that drives business value and enhances the user experience.
-                        </p>
+                        <div className="mt-8 space-y-6 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                            <p>
+                                Hey there! I'm Ysacc, a Senior Front-End Developer with a deep-seated passion for creating high-performance, user-centric web applications. My journey began with a curiosity for how things work on the internet, and over the past 7+ years, it has evolved into a professional career focused on building robust systems for leading enterprises in banking and health industries.
+                            </p>
+                            <p>
+                                I thrive on challenges that require a mix of technical precision and creative thinking. Whether it's optimizing a complex data dashboard for high efficiency or architecting a reusable component library from scratch, my goal is always the same: delivering excellence that drives business value and enhances the user experience.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="relative aspect-square w-full max-w-[300px] shrink-0 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 lg:sticky lg:top-24">
+                        <img
+                            src="/me.jpg"
+                            alt="Ysacc"
+                            className="h-full w-full object-cover grayscale transition-all hover:grayscale-0"
+                        />
                     </div>
                 </div>
             </Section>
