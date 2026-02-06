@@ -1,10 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/data/projects";
 import { ArrowRight } from "lucide-react";
 import { Tag } from "./SocialPill";
 import { motion } from "framer-motion";
+
+const MotionImage = motion(Image);
 
 export function ProjectCard({ slug, title, shortDescription, image, stack }: Project) {
     return (
@@ -16,12 +19,13 @@ export function ProjectCard({ slug, title, shortDescription, image, stack }: Pro
             transition={{ duration: 0.4 }}
             className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:shadow-xl dark:border-gray-800 dark:bg-gray-950 dark:shadow-none"
         >
-            <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-                <motion.img
+            <div className="aspect-video w-full overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
+                <MotionImage
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.5 }}
                     src={image}
                     alt={title}
+                    fill
                     className="h-full w-full object-cover"
                 />
             </div>

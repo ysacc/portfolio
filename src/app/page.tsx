@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
@@ -86,10 +87,12 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="relative aspect-square w-full max-w-[300px] shrink-0 overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 lg:sticky lg:top-24">
-                        <img
+                        <Image
                             src="/me.jpg"
                             alt="Ysacc"
+                            fill
                             className="h-full w-full object-cover grayscale transition-all hover:grayscale-0"
+                            sizes="(max-width: 768px) 100vw, 300px"
                         />
                     </div>
                 </div>
