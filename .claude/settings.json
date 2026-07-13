@@ -4,7 +4,8 @@
       "Bash(rm -rf .next/types)",
       "Bash(npx next *)",
       "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(JSON.stringify\\({...p.dependencies,...p.devDependencies},null,0\\)\\)\")",
-      "Bash(npx pnpm *)"
+      "Bash(npx pnpm *)",
+      "Bash(VERCEL=1 npx next build)"
     ]
   }
 }
