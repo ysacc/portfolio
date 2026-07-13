@@ -1,63 +1,83 @@
-# Ysacc Roncal Portfolio (Next.js Rebuild)
+# Focus | Panel personal de productividad
 
-Premium personal portfolio built with Next.js 14, TypeScript, and TailwindCSS.
+Aplicación web personal de productividad construida con Next.js, TypeScript y Tailwind CSS para organizar calendario, tareas, sesiones de enfoque y resúmenes de la jornada desde un solo lugar.
 
-## Tech Stack
+## Stack
 
-- **Framework**: [Next.js 14+](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Form**: [Formspree](https://formspree.io/)
-- **Deployment**: [Vercel](https://vercel.com/)
+- Next.js App Router
+- TypeScript
+- React
+- Tailwind CSS
+- Framer Motion
+- Vercel
+- Google Calendar API
 
-## Features
+## Características
 
-- 🌙 Light/Dark mode with `localStorage` persistence.
-- 📄 Professional ATS-friendly web resume.
-- 🎨 Minimalist, high-performance UI.
-- 🔍 Project archive with search and technology filters.
-- 📱 Fully responsive design.
-- 🚀 SEO optimized with metadata and OpenGraph support.
+- Reloj y fecha actual en America/Lima
+- Agenda diaria
+- Resumen de eventos y tareas
+- Pomodoro persistente en localStorage
+- Gestión básica de tareas con prioridad y estado
+- Endpoint interno para eventos del calendario
+- Diseño responsive claro/oscuro
 
-## Getting Started
+## Configuración local
 
-### Prerequisites
-
-- Node.js >= 20.x
-
-### Installation
-
-1. Clone the repository:
+1. Instala dependencias:
    ```bash
-   git clone <repository-url>
+   pnpm install
    ```
 
-2. Install dependencies:
+2. Copia las variables de entorno:
    ```bash
-   npm install
+   cp .env.example .env.local
    ```
 
-3. Run the development server:
+3. Completa los valores de Google Calendar y autenticación.
+
+4. Inicia el proyecto:
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
-4. Build for production:
-   ```bash
-   npm run build
-   ```
+## Variables de entorno
 
-## Deployment
+Crea un archivo .env.local con:
 
-Simply connect your repository to Vercel and it will automatically detect Next.js and deploy your application.
+```env
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REFRESH_TOKEN=
+GOOGLE_CALENDAR_ID=primary
+APP_TIMEZONE=America/Lima
+AUTHORIZED_EMAIL=
+```
 
-## Domain Configuration (ysaccroncal.dev)
+## Google Calendar
 
-- Ensure `www` redirects to the root domain.
-- Verify canonical URLs in `src/app/layout.tsx`.
+Para activar la integración con Google Calendar:
+
+1. Crea un proyecto en Google Cloud Console.
+2. Habilita la API de Google Calendar.
+3. Crea credenciales OAuth 2.0.
+4. Genera un refresh token autorizado para la cuenta.
+5. Define las variables de entorno anteriores.
+
+## Despliegue en Vercel
+
+1. Sube el repositorio a GitHub.
+2. Importa el proyecto en Vercel.
+3. Configura las variables de entorno en el panel de Vercel.
+4. Conecta el dominio focus.ysaccroncal.dev.
+5. Añade el registro DNS que Vercel indique.
+
+## Notas
+
+- El endpoint de eventos usa una respuesta de respaldo con datos de ejemplo cuando faltan credenciales o la API falla.
+- La app no expone secretos en el frontend.
+- La autenticación personal se puede reforzar con la variable AUTHORIZED_EMAIL en un futuro.
 
 ---
 
-Built with pride by [Ysacc Roncal](https://linkedin.com/in/ysacc-roncal).
+Hecho con enfoque por Ysacc Roncal.

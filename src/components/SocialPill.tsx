@@ -13,7 +13,7 @@ export function SocialPill({ href, icon: Icon, label }: SocialPillProps) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-all hover:border-yellow-200 hover:bg-yellow-50 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300 dark:hover:border-yellow-900 dark:hover:bg-yellow-950/30"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline/12 bg-surface/60 px-4 py-2 text-sm font-medium text-gray-700 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:bg-accent/5 hover:text-accent-strong dark:text-gray-300 dark:hover:text-accent"
         >
             <Icon className="size-4" />
             <span>{label}</span>
@@ -23,7 +23,7 @@ export function SocialPill({ href, icon: Icon, label }: SocialPillProps) {
 
 export function Tag({ children }: { children: React.ReactNode }) {
     return (
-        <span className="inline-flex items-center rounded-md bg-gray-100 border border-gray-200 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:border-transparent">
+        <span className="inline-flex items-center rounded-md border border-hairline/10 bg-hairline/[0.05] px-2 py-0.5 text-xs font-medium text-gray-600 dark:text-gray-400">
             {children}
         </span>
     );

@@ -14,7 +14,13 @@ const navItems = [
     { name: "Contact", href: "/contact" },
 ];
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
+
+function openCommandPalette() {
+    window.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "k", metaKey: true, ctrlKey: true, bubbles: true })
+    );
+}
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -35,7 +41,7 @@ export function Navbar() {
             className={cn(
                 "fixed top-0 z-50 w-full transition-all duration-300",
                 scrolled || isOpen
-                    ? "bg-white/90 py-4 backdrop-blur-md dark:bg-gray-950/90 shadow-sm"
+                    ? "border-b border-hairline/[0.06] bg-surface/70 py-4 backdrop-blur-xl"
                     : "bg-transparent py-6"
             )}
         >
@@ -45,7 +51,7 @@ export function Navbar() {
                     className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-100"
                     aria-label="Ysacc Roncal - Home"
                 >
-                    YR<span className="text-yellow-500">.</span>
+                    YR<span className="text-gradient">.</span>
                 </Link>
 
                 <div className="flex items-center gap-4 lg:gap-8">
@@ -58,8 +64,8 @@ export function Navbar() {
                                         href={item.href}
                                         aria-current={isActive ? "page" : undefined}
                                         className={cn(
-                                            "text-gray-600 transition-colors hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400",
-                                            isActive && "text-yellow-500 dark:text-yellow-400 font-semibold"
+                                            "text-gray-600 transition-colors hover:text-accent-strong dark:text-gray-400 dark:hover:text-accent",
+                                            isActive && "font-semibold text-accent-strong dark:text-accent"
                                         )}
                                     >
                                         {item.name}
@@ -69,6 +75,14 @@ export function Navbar() {
                         })}
                     </ul>
                     <div className="flex items-center gap-2">
+                        <button
+                            onClick={openCommandPalette}
+                            className="hidden items-center gap-2 rounded-lg border border-hairline/12 bg-surface/60 px-3 py-1.5 text-sm text-muted backdrop-blur transition-colors hover:border-accent/40 hover:text-accent-strong dark:hover:text-accent sm:inline-flex"
+                            aria-label="Abrir buscador de comandos"
+                        >
+                            <Search className="size-4" />
+                            <kbd className="text-xs font-medium">⌘K</kbd>
+                        </button>
                         <ThemeToggle />
                         <button
                             onClick={() => setIsOpen(!isOpen)}

@@ -22,7 +22,7 @@ export function Section({ children, id, title, className }: SectionProps) {
             >
                 {title && (
                     <h2 className="mb-12 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 md:text-4xl">
-                        {title}<span className="text-yellow-500">.</span>
+                        {title}<span className="text-gradient">.</span>
                     </h2>
                 )}
                 {children}

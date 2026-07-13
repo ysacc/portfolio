@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/data/site";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
+import { CommandPalette } from "@/components/CommandPalette";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -95,6 +96,7 @@ export default function RootLayout({
                 </a>
                 <ThemeProvider>
                     <BackgroundEffects />
+                    <CommandPalette />
                     <div className="relative flex min-h-screen flex-col">
                         <Navbar />
                         <main id="main-content" className="flex-1">
