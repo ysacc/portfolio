@@ -17,21 +17,28 @@ Abrir http://localhost:3001. En esta sesión también funciona con las dependenc
 ```powershell
 npm run lint
 npm run typecheck
+npm test
 npm run build
 npm start
 ```
 
-Los tests existentes pertenecen al portfolio: ejecutar `npm test` desde la raíz. Academy no tiene todavía una suite de tests propia.
+Academy tiene cinco tests de integridad de datos, rutas y analítica. Los tres tests existentes del portfolio se ejecutan con `npm test` desde la raíz.
 
 ## Estructura
 
-- `src/app`: inicio, catálogo, cinco páginas de programa, mentorías, instructor, contacto y 404.
+- `src/app`: inicio, catálogo, ruta dinámica de programas, mentorías, instructor, contacto y 404.
 - `src/components/Navbar.tsx`: navegación desktop y móvil.
-- `src/components/Sections.tsx`: Hero, ProgramCard, ProgramGrid, LearningPath, InstructorSection, Methodology, CTASection y Footer reutilizables.
-- `src/components/ContactForm.tsx`: único componente cliente; validación nativa y preparación del mensaje.
-- `src/data/programs.ts`: programas, resultados, temario, metodología y perfiles.
+- `src/components/home`: Hero conservado, catálogo, resultados y tecnologías.
+- `src/components/program`: composición compartida de las landings, temario, proyectos, resultados, FAQ, CTA e interacciones.
+- `src/components/shared`: instructor, CTA general y comparación con aprendizaje autodidacta.
+- `src/components/Sections.tsx`: secciones existentes del Home y exportaciones compatibles.
+- `src/components/ContactForm.tsx`: validación nativa y preparación del mensaje; los otros componentes cliente son StickyProgramCTA y ProgramInteractions.
+- `src/data/programs.ts`: catálogo público y resumen del temario de React derivado de la misma fuente.
+- `src/data/programs/*.ts`: contenido independiente de cada programa, sin páginas duplicadas.
+- `src/data/program-types.ts`: Program, ProgramModule, ProgramProject, FAQItem y rutas canónicas.
+- `src/data/faq.ts`, `projects.ts`, `technologies.ts`, `cohorts.ts`: contenido compartido y cohortes pendientes.
 - `src/data/site.ts`: identidad, contacto y modalidad configurable.
-- `src/app/globals.css`: diseño oscuro, responsive y movimiento reducido.
+- `src/app/globals.css`: identidad clara y ámbar existente; `programs.css` extiende los componentes nuevos.
 - `src/app/opengraph-image.tsx`, `sitemap.ts`, `robots.ts`: SEO.
 - `public/instructor.jpg`: copia de la foto real del portfolio para mantener independencia.
 
@@ -66,13 +73,24 @@ También puede instalarse esta carpeta como un repositorio independiente y ejecu
 
 ## Revisión manual
 
-Revisar a 375, 768, 1024, 1440 y 1920 px: menú, hero, tarjetas, temario y formulario. Navegar con Tab, comprobar foco visible, abrir semanas con Enter y verificar la selección de programa en contacto. Las fechas y modalidad definitiva deben acordarse antes de abrir inscripciones.
+Revisar a 375, 390, 430, 768, 1024, 1280, 1440 y 1920 px: menú, hero, tarjetas, temario y formulario. Navegar con Tab, comprobar foco visible, abrir semanas con Enter y verificar la selección de programa en contacto. Las fechas y modalidad definitiva deben acordarse antes de abrir inscripciones.
 
-## Validación realizada
+## Agregar un programa
 
-- Lint y TypeScript de ambas aplicaciones: sin errores.
-- Build de Academy y del portfolio: exitosos.
-- Tests existentes del portfolio: 3 de 3 aprobados.
-- Inicio comprobado visualmente a 1440 y 375 px; sin desbordamiento horizontal en los cinco anchos solicitados.
-- Menú móvil abierto correctamente; rutas de programas, mentorías, instructor, contacto, sitemap, robots e imagen OpenGraph responden HTTP 200.
-- No se ha publicado el proyecto ni enviado mensajes desde el formulario.
+Crear un archivo tipado en `src/data/programs/` y añadirlo al catálogo de `src/data/programs.ts`. El catálogo genera la landing, tarjetas, contacto, metadata y sitemap. Definir al menos un proyecto ilustrativo y validar los slugs de `nextSteps` con `npm test`. No crear otro archivo page.tsx.
+
+La mentoría utiliza `/mentorias` como única landing; `/programas/mentoria` redirige permanentemente (308). Todas las tarjetas, siguientes rutas, metadata y sitemap usan `programPath`.
+
+## Analítica opcional
+
+`src/lib/analytics.ts` ofrece `setAnalyticsAdapter` y `track`. Sin proveedor no almacena ni transmite datos; emite un CustomEvent local `academy:analytics`. Conectar un adaptador desde un componente cliente cuando se elija la plataforma. Los errores del proveedor no deben interrumpir las acciones.
+
+Eventos: `program_view`, `program_cta_click`, `curriculum_expand`, `project_view`, `whatsapp_click` y `contact_submit`. El último representa la preparación del mensaje (`action: handoff`), nunca confirma un envío. Solo se incluyen identificadores de programa, módulo, proyecto, ubicación y canal; no nombres, correos ni mensajes.
+
+## Cohortes y políticas
+
+`cohorts.ts` empieza vacío. Admite fechas, horarios, cupos, precios, moneda y estado sin inventarlos. La UI puede anunciar cohortes y horarios confirmados; precios y cupos no se muestran todavía. Modalidad, grabaciones, recuperación, certificados y pagos tienen respuestas neutrales editables en los datos.
+
+Los mockups son HTML/CSS ilustrativos y están identificados como demostraciones. No representan alumnos ni proyectos existentes.
+
+Ver [el informe de esta iteración](ITERATION.md) para diagnóstico, alcance, validación y pendientes.

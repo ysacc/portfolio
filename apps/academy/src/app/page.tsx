@@ -1,3 +1,6 @@
+import { OutcomesSection } from "@/components/home/OutcomesSection";
+import { TechnologySection } from "@/components/home/TechnologySection";
+import { LearningComparison } from "@/components/shared/LearningComparison";
 import {
   Hero,
   StackStrip,
@@ -16,9 +19,12 @@ export default function Home() {
       <Hero />
       <StackStrip />
       <Differential />
+      <OutcomesSection />
       <ProgramsSection />
+      <TechnologySection />
       <LearningPath />
       <Methodology />
+      <LearningComparison />
       <InstructorSection />
       <Audience />
       <CTASection />

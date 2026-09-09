@@ -1,0 +1,217 @@
+import type { Program } from "../program-types";
+import { sharedMethodology } from "./methodology";
+import { reactProjects } from "../projects";
+const program: Omit<Program, "modality"> = {
+  slug: "frontend-react",
+  number: "02",
+  title: "Frontend Developer con React",
+  shortTitle: "Frontend con React",
+  headline: "Construye interfaces. Aprende a trabajar en equipo.",
+  kind: "course",
+  level: "Inicial → Junior",
+  levelFrom: "Inicial",
+  levelTo: "Bases para un rol Junior",
+  duration: "8 semanas",
+  description:
+    "De los fundamentos a una aplicación real. Aprende a construir interfaces que llegan a producción.",
+  longDescription:
+    "Aprende JavaScript, TypeScript, React, APIs y Git construyendo aplicaciones reales con un flujo de trabajo profesional. Cada semana conecta un concepto con un entregable, revisión y una decisión técnica que puedes explicar.",
+  outcome:
+    "Una aplicación frontend real desplegada, documentada y publicable en GitHub y en tu CV.",
+  technologies: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "REST APIs",
+    "Git",
+    "GitHub",
+    "Vercel",
+  ],
+  prerequisites: [
+    "Manejo básico de una computadora, archivos y navegador.",
+    "Conviene reconocer HTML, CSS y conceptos básicos de programación; empezamos con un repaso.",
+    "Si nunca programaste, recomendamos la ruta Desde cero antes de este programa.",
+    "Disponibilidad para practicar entre sesiones; carga horaria por confirmar.",
+  ],
+  audience: [
+    "Personas con bases iniciales que quieren construir con React.",
+    "Juniors que necesitan pasar de ejercicios a un proyecto completo.",
+    "Autodidactas que buscan orden, revisión y experiencia con Git.",
+  ],
+  outcomes: [
+    "Construir interfaces responsive con componentes reutilizables.",
+    "Gestionar estado, hooks, formularios y validaciones.",
+    "Integrar APIs REST contemplando carga, errores y resultados vacíos.",
+    "Tipar props y respuestas de APIs con TypeScript.",
+    "Separar UI, hooks y servicios con responsabilidades claras.",
+    "Trabajar con ramas, Pull Requests, code review y testing básico.",
+    "Publicar, documentar y explicar una aplicación.",
+  ],
+  curriculum: [
+    {
+      period: "Semana 1",
+      title: "Fundamentos web",
+      description: "Construye la base visual y semántica de una interfaz.",
+      topics: [
+        "HTML semántico",
+        "CSS",
+        "Flexbox",
+        "Grid",
+        "Responsive",
+        "Accesibilidad básica",
+      ],
+      deliverable: "Landing responsive.",
+    },
+    {
+      period: "Semana 2",
+      title: "JavaScript moderno",
+      description: "Transforma datos y conecta tu primera aplicación.",
+      topics: [
+        "Variables y funciones",
+        "Arrays y objetos",
+        "Destructuring",
+        "Módulos",
+        "Asincronía",
+        "fetch",
+      ],
+      deliverable: "Aplicación JavaScript consumiendo datos.",
+    },
+    {
+      period: "Semana 3",
+      title: "Git y GitHub profesional",
+      description: "Practica un flujo simulado de equipo.",
+      topics: [
+        "Repositorios",
+        "Commits",
+        "Branches",
+        "Pull Requests",
+        "Merge",
+        "Conflictos",
+        "Flujo colaborativo",
+      ],
+      deliverable:
+        "Pull Request con descripción, revisión y resolución de conflictos.",
+    },
+    {
+      period: "Semana 4",
+      title: "React: componentes y estado",
+      description: "Convierte la interfaz en piezas que colaboran.",
+      topics: [
+        "Componentes",
+        "Props",
+        "State",
+        "Eventos",
+        "Composición",
+        "Renderizado condicional",
+      ],
+      deliverable: "Dashboard React con componentes reutilizables.",
+    },
+    {
+      period: "Semana 5",
+      title: "React práctico",
+      description: "Resuelve interacciones y evita duplicar lógica.",
+      topics: [
+        "Hooks",
+        "useEffect",
+        "Formularios",
+        "Validaciones",
+        "Custom hooks",
+        "Reutilización",
+      ],
+      deliverable: "Formulario validado y lógica compartida en un custom hook.",
+    },
+    {
+      period: "Semana 6",
+      title: "APIs REST",
+      description: "Conecta datos reales con estados de carga y error.",
+      topics: [
+        "HTTP",
+        "fetch e integración",
+        "Loading",
+        "Errors",
+        "Autenticación conceptual",
+        "Separación services/UI",
+      ],
+      deliverable: "App con API, feedback de carga y recuperación de errores.",
+    },
+    {
+      period: "Semana 7",
+      title: "TypeScript y arquitectura",
+      description: "Haz explícitos los contratos y las responsabilidades.",
+      topics: [
+        "Tipos e interfaces",
+        "Typing de props",
+        "Typing de APIs",
+        "Separación de responsabilidades",
+        "Components, hooks y services",
+        "Clean code",
+      ],
+      deliverable: "Proyecto tipado y organizado por responsabilidades.",
+    },
+    {
+      period: "Semana 8",
+      title: "Proyecto profesional",
+      description: "Integra, verifica y explica el producto que construiste.",
+      topics: [
+        "Integración",
+        "Debugging",
+        "Testing básico",
+        "Build y deploy",
+        "Documentación y GitHub",
+        "Preparación de explicación técnica",
+      ],
+      deliverable: "Proyecto publicado, README y simulación de entrevista.",
+    },
+  ],
+  portfolioResults: [
+    "Repositorio organizado por responsabilidades",
+    "README con instalación, uso y decisiones técnicas",
+    "Historial Git y Pull Requests que muestran la evolución",
+    "Enlace al proyecto desplegado",
+    "Código que puedes explicar e incluir en tu CV o portfolio",
+  ],
+  repositoryName: "frontend-final-project",
+  nextSteps: ["full-stack", "entrevistas", "mentoria"],
+  careerPreparation: [
+    "Explicar decisiones técnicas y sus alternativas",
+    "Presentar un proyecto y recorrer su GitHub",
+    "Practicar debugging y ejercicios técnicos",
+    "Responder preguntas de React y APIs",
+    "Simular una entrevista y convertir el feedback en acciones",
+  ],
+  featured: true,
+  seoTitle: "Curso de React y Frontend Developer",
+  seoDescription:
+    "Aprende JavaScript, TypeScript, React, APIs y Git construyendo proyectos reales con mentoría y flujo de trabajo profesional.",
+  workflow: [
+    "Ticket",
+    "Branch",
+    "Código",
+    "Pull Request",
+    "Code Review",
+    "Testing",
+    "Deploy",
+  ],
+  faq: [
+    {
+      question: "¿Necesito experiencia?",
+      answer:
+        "Manejo básico de una computadora, archivos y navegador. Conviene reconocer HTML, CSS y conceptos básicos de programación; empezamos con un repaso. Si nunca programaste, recomendamos la ruta Desde cero antes de este programa. Disponibilidad para practicar entre sesiones; carga horaria por confirmar.",
+    },
+    {
+      question: "¿Voy a construir proyectos?",
+      answer:
+        "Sí. El plan incluye los entregables y ejemplos de proyectos descritos en esta página. El alcance final se acuerda según los objetivos técnicos.",
+    },
+    {
+      question: "¿Me ayudan a preparar entrevistas?",
+      answer:
+        "Explicar decisiones técnicas y sus alternativas Presentar un proyecto y recorrer su GitHub Practicar debugging y ejercicios técnicos Responder preguntas de React y APIs Simular una entrevista y convertir el feedback en acciones",
+    },
+  ],
+  methodology: sharedMethodology,
+  projects: reactProjects,
+};
+export default program;

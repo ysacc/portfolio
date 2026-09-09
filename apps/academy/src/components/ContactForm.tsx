@@ -1,4 +1,5 @@
 "use client";
+import { track } from "@/lib/analytics";
 import { useState } from "react";
 import type { FormEvent } from "react";
 export function ContactForm({
@@ -20,6 +21,14 @@ export function ContactForm({
       programs.find((p) => p.slug === data.get("programa"))?.title ||
       "Orientación para elegir un programa";
     const message = `Hola Ysacc, soy ${data.get("nombre")}.\nMi correo: ${data.get("email")}\nMe interesa: ${program}\n\n${data.get("mensaje")}`;
+    const slug = programs.find((p) => p.slug === data.get("programa"))?.slug;
+    track("contact_submit", {
+      program: slug,
+      channel: whatsapp ? "whatsapp" : "email",
+      action: "handoff",
+    });
+    if (whatsapp)
+      track("whatsapp_click", { program: slug, placement: "contact-form" });
     window.location.href = whatsapp
       ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`
       : `mailto:${email}?subject=${encodeURIComponent("Academy · " + program)}&body=${encodeURIComponent(message)}`;

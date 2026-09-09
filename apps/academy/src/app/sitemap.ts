@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
-import { programs } from "@/data/programs";
+import { programs, programPath } from "@/data/programs";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/programas",
-    "/mentorias",
     "/sobre-mi",
     "/contacto",
-    ...programs.map((p) => "/programas/" + p.slug),
+    ...programs.map(programPath),
   ].map((path) => ({
     url: site.url + path,
     changeFrequency: "monthly",
