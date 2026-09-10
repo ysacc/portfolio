@@ -5,15 +5,16 @@ export function InstructorSection() {
     <section className="section container instructor" id="instructor">
       <div className="portrait">
         <Image
-          src="/instructor.jpg"
+          src="/instructor.webp"
           alt="Ysacc Roncal, instructor de la academia"
-          width={600}
-          height={700}
+          width={1122}
+          height={1402}
           sizes="(max-width: 768px) 100vw, 40vw"
         />
         <div>
           <strong>Ysacc Roncal</strong>
-          <span>DEVELOPER. TECH LEAD. TU MENTOR.</span>
+          <span>SENIOR DEVELOPER · TECH LEAD · INSTRUCTOR</span>
+          <small>+7 años desarrollando software</small>
         </div>
       </div>
       <div>
