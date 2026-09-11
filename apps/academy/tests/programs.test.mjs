@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
@@ -38,6 +38,17 @@ test("all program landings have unique routes, complete modules and valid next s
   assert.equal(new Set(programs.map((p) => p.slug)).size, programs.length);
   assert.equal(new Set(programs.map(programPath)).size, programs.length);
   for (const p of programs) {
+    assert.ok(p.brochureUrl, p.slug + " missing brochureUrl");
+    assert.ok(
+      p.brochureUrl.startsWith("/brochures/"),
+      p.slug + " brochureUrl should live under /brochures",
+    );
+    const brochurePath = resolve(
+      root,
+      "../public",
+      p.brochureUrl.replace(/^\/+/, ""),
+    );
+    assert.ok(existsSync(brochurePath), p.slug + " brochure file is missing: " + p.brochureUrl);
     for (const key of [
       "audience",
       "prerequisites",
@@ -66,6 +77,17 @@ test("all program landings have unique routes, complete modules and valid next s
     );
   }
 });
+test("Campus and guide data are present and unique", () => {
+  const campusPage = resolve(root, "app/campus/page.tsx");
+  const guideFile = resolve(root, "data/campus/guides.ts");
+  assert.ok(existsSync(campusPage), "Campus page is missing");
+  assert.ok(existsSync(guideFile), "Campus guide data is missing");
+  const campus = load("data/campus/guides");
+  assert.ok(Array.isArray(campus.guides));
+  assert.equal(new Set(campus.guides.map((guide) => guide.slug)).size, campus.guides.length);
+  assert.ok(campus.guides.some((guide) => guide.slug === "instalar-vscode"));
+});
+
 test("React home summary and landing share the same twelve-week structure", () => {
   const react = programs.find((p) => p.slug === "frontend-react");
   assert.equal(react.duration, "12 semanas · 3 meses");

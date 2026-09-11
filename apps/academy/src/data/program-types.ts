@@ -51,6 +51,7 @@ export type Program = {
   workflow: string[];
   careerPreparation: string[];
   options?: { title: string; description: string }[];
+  brochureUrl?: string;
   seoTitle: string;
   seoDescription: string;
   featured?: boolean;

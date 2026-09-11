@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight, Check, Clock3, Users, Layers } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  Clock3,
+  Download,
+  Layers,
+  Users,
+} from "lucide-react";
 import type { Program } from "@/data/programs";
 import { ProjectPreview } from "./ProjectShowcase";
 export function ProgramHero({ program: p }: { program: Program }) {
@@ -23,6 +30,19 @@ export function ProgramHero({ program: p }: { program: Program }) {
             >
               Quiero información <ArrowUpRight size={17} />
             </Link>
+            {p.brochureUrl && (
+              <a
+                className="text-link"
+                href={p.brochureUrl}
+                download
+                target="_blank"
+                rel="noreferrer"
+                data-program-cta="brochure"
+                data-location="hero"
+              >
+                Descargar brochure <Download size={16} />
+              </a>
+            )}
             <a className="text-link" href="#plan-de-estudios">
               Ver plan de estudios ↓
             </a>

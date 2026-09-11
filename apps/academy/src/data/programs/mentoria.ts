@@ -80,6 +80,7 @@ const program: Omit<Program, "modality"> = {
     "Plan de acción técnico y profesional",
   ],
   repositoryName: "mi-proyecto-en-revision",
+  brochureUrl: "/brochures/brochure-mentorias.pdf",
   nextSteps: ["entrevistas", "full-stack"],
   workflow: [
     "Diagnóstico",

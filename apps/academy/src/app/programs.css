@@ -134,6 +134,221 @@
 .program-page {
   padding-bottom: 110px;
 }
+.campus-page,
+.campus-guide-page {
+  padding-bottom: 80px;
+}
+.campus-shortcut-inner,
+.campus-guide-header,
+.campus-guide-meta,
+.campus-guide-section,
+.campus-summary,
+.guide-actions {
+  display: flex;
+}
+.campus-shortcut-inner {
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px 32px;
+  background: #fffdf8;
+}
+.campus-shortcut-inner h2 {
+  margin-bottom: 12px;
+}
+.campus-checklist,
+.guide-grid,
+.challenge-grid,
+.resource-list,
+.ai-grid {
+  display: grid;
+}
+.campus-checklist {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.check-item,
+.guide-card,
+.challenge-card,
+.resource-card,
+.campus-panel,
+.ai-box {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+}
+.check-item span {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff7e6;
+  color: var(--accent);
+  font: 11px monospace;
+  align-items: center;
+  justify-content: center;
+}
+.check-item p {
+  margin: 0;
+  flex: 1;
+}
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.campus-panel {
+  padding: 28px;
+}
+.plain-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.plain-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.plain-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.inline-note {
+  display: inline-block;
+  margin-top: 16px;
+  font: 12px/1.7 monospace;
+  color: var(--accent);
+}
+.guide-grid,
+.challenge-grid,
+.resource-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.guide-card,
+.challenge-card,
+.resource-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.guide-tag,
+.challenge-level,
+.resource-card span {
+  font: 10px monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.guide-card p,
+.challenge-card p,
+.resource-card p {
+  margin: 0;
+}
+.guide-card small,
+.resource-card small {
+  color: var(--muted);
+  font-size: 11px;
+}
+.ai-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.ai-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 16px;
+  background: #fffaf0;
+}
+.ai-box span {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font: 10px monospace;
+}
+.resource-group {
+  margin-top: 18px;
+}
+.resource-group strong {
+  display: block;
+  margin-bottom: 10px;
+}
+.campus-summary {
+  gap: 12px;
+  align-items: center;
+  margin: 22px 0 26px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+.campus-summary svg {
+  color: var(--accent);
+}
+.campus-guide-header {
+  flex-direction: column;
+  gap: 16px;
+}
+.campus-guide-meta {
+  gap: 12px;
+  margin: 28px 0;
+}
+.campus-guide-meta span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font: 11px monospace;
+  color: var(--muted);
+}
+.campus-guide-section {
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.guide-steps {
+  margin: 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 18px;
+}
+.guide-steps li {
+  color: var(--muted);
+}
+.guide-steps strong {
+  color: var(--text);
+}
+.code-block {
+  margin: 12px 0 0;
+  background: #111827;
+  color: #f8fafc;
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font: 12px/1.7 monospace;
+}
 .program-page section[id] {
   scroll-margin-top: 145px;
 }

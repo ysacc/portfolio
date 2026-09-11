@@ -301,6 +301,7 @@ const program: Omit<Program, "modality"> = {
     "Explicación técnica clara para entrevistas y portfolio",
   ],
   repositoryName: "frontend-capstone-project",
+  brochureUrl: "/brochures/brochure-frontend-react.pdf",
   nextSteps: ["full-stack", "entrevistas", "mentoria"],
   careerPreparation: [
     "Explicar decisiones técnicas y sus alternativas",

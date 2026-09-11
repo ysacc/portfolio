@@ -4,7 +4,8 @@ export type AcademyEvent =
   | "curriculum_expand"
   | "project_view"
   | "whatsapp_click"
-  | "contact_submit";
+  | "contact_submit"
+  | "brochure_download";
 export type EventProperties = {
   program?: string;
   placement?: string;
@@ -12,6 +13,7 @@ export type EventProperties = {
   project?: string;
   channel?: "email" | "whatsapp";
   action?: "handoff";
+  location?: string;
 };
 type AnalyticsAdapter = (
   event: AcademyEvent,

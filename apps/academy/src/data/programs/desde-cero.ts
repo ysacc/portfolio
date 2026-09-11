@@ -94,6 +94,7 @@ const program: Omit<Program, "modality"> = {
     "Base práctica para comenzar Frontend React",
   ],
   repositoryName: "mi-primera-web",
+  brochureUrl: "/brochures/brochure-desde-cero.pdf",
   nextSteps: ["frontend-react"],
   careerPreparation: [
     "Explicar la estructura de tu primera web.",

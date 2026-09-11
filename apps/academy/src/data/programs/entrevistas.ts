@@ -91,6 +91,7 @@ const program: Omit<Program, "modality"> = {
     "Plan de mejora a partir del feedback",
   ],
   repositoryName: "technical-interview-practice",
+  brochureUrl: "/brochures/brochure-entrevistas.pdf",
   nextSteps: ["mentoria", "frontend-react"],
   workflow: [
     "Diagnóstico",

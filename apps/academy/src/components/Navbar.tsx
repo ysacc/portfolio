@@ -14,6 +14,7 @@ export function Brand() {
 }
 const links = [
   ["Programas", "/programas"],
+  ["Campus", "/campus"],
   ["Metodología", "/#metodologia"],
   ["Tu instructor", "/sobre-mi"],
   ["Mentorías", "/mentorias"],

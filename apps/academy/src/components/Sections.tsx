@@ -104,6 +104,26 @@ export function LearningPath() {
     </section>
   );
 }
+export function CampusShortcutSection() {
+  return (
+    <section className="section container campus-shortcut">
+      <p className="eyebrow">ACADEMY EN CONTINUIDAD</p>
+      <div className="campus-shortcut-inner">
+        <div>
+          <h2>Academy no termina cuando acaba la clase.</h2>
+          <p>
+            Clases, Campus, Discord, proyectos y code review se complementan para
+            que tu proceso siga moviéndose con claridad.
+          </p>
+        </div>
+        <Link className="button" href="/campus">
+          Explorar Campus <ArrowUpRight size={17} />
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 export function Methodology() {
   return (
     <section className="methodology section" id="metodologia">

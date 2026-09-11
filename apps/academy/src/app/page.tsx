@@ -7,6 +7,7 @@ import {
   Differential,
   ProgramsSection,
   LearningPath,
+  CampusShortcutSection,
   Methodology,
   InstructorSection,
   Audience,
@@ -23,6 +24,7 @@ export default function Home() {
       <ProgramsSection />
       <TechnologySection />
       <LearningPath />
+      <CampusShortcutSection />
       <Methodology />
       <LearningComparison />
       <InstructorSection />

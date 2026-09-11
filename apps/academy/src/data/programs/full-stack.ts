@@ -338,6 +338,7 @@ const program: Omit<Program, "modality"> = {
     "Deploy funcional y narrativa del proceso de desarrollo",
   ],
   repositoryName: "full-stack-workspace",
+  brochureUrl: "/brochures/brochure-full-stack.pdf",
   nextSteps: ["mentoria", "entrevistas"],
   workflow: [
     "Frontend",

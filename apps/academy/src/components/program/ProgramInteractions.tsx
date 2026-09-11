@@ -11,6 +11,15 @@ export function ProgramInteractions({ slug }: { slug: string }) {
       if (!(target instanceof Element)) return;
       const link = target.closest<HTMLElement>("[data-program-cta]");
       if (!link) return;
+
+      if (link.dataset.programCta === "brochure") {
+        track("brochure_download", {
+          program: slug,
+          location: link.dataset.location ?? "unknown",
+        });
+        return;
+      }
+
       track("program_cta_click", {
         program: slug,
         placement: link.dataset.programCta,
