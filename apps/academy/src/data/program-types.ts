@@ -25,6 +25,14 @@ export type Program = {
   levelFrom: string;
   levelTo: string;
   duration: string;
+  durationWeeks?: number;
+  durationMonths?: number;
+  phases?: string[];
+  professionalSkills?: string[];
+  aiSkills?: string[];
+  scrumPractices?: string[];
+  capstone?: boolean;
+  teamProject?: boolean;
   modality: string;
   description: string;
   longDescription: string;

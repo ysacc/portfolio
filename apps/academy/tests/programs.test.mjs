@@ -66,15 +66,27 @@ test("all program landings have unique routes, complete modules and valid next s
     );
   }
 });
-test("React home summary and landing share the same eight modules", () => {
+test("React home summary and landing share the same twelve-week structure", () => {
   const react = programs.find((p) => p.slug === "frontend-react");
-  assert.equal(react.duration, "8 semanas");
-  assert.equal(react.curriculum.length, 8);
+  assert.equal(react.duration, "12 semanas · 3 meses");
+  assert.equal(react.curriculum.length, 12);
+  assert.equal(react.capstone, true);
+  assert.ok(react.aiSkills.length > 0);
+  assert.ok(react.scrumPractices.length > 0);
   assert.deepEqual(
     weeks,
     react.curriculum.map((m) => [m.title, m.description]),
   );
-  assert.ok(react.curriculum[7].topics.includes("Testing básico"));
+  assert.ok(react.curriculum[11].topics.includes("Deploy"));
+});
+
+test("Full Stack reflects a 16-week end-to-end structure", () => {
+  const fullStack = programs.find((p) => p.slug === "full-stack");
+  assert.equal(fullStack.duration, "16 semanas · 4 meses");
+  assert.equal(fullStack.curriculum.length, 16);
+  assert.equal(fullStack.teamProject, true);
+  assert.ok(fullStack.aiSkills.length > 0);
+  assert.ok(fullStack.scrumPractices.length > 0);
 });
 test("mentoring has one canonical URL in metadata and sitemap", () => {
   const mentor = programs.find((p) => p.slug === "mentoria");

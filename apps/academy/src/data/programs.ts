@@ -13,6 +13,10 @@ export type {
   FAQItem,
 } from "./program-types";
 export { programPath } from "./program-types";
+const uniqueFaq = (faqEntries: Program["faq"]) => [
+  ...new Map(faqEntries.map((item) => [item.question, item])).values(),
+];
+
 export const programs: Program[] = [
   desdeCero,
   frontendReact,
@@ -22,7 +26,7 @@ export const programs: Program[] = [
 ].map((p) => ({
   ...p,
   modality: site.modality,
-  faq: [...p.faq, ...generalFAQ],
+  faq: uniqueFaq([...p.faq, ...generalFAQ]),
 }));
 export const weeks = programs
   .find((p) => p.slug === "frontend-react")!

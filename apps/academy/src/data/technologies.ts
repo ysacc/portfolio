@@ -22,16 +22,18 @@ export const technologyGroups = [
   },
 ] as const;
 export const learningResults = [
+  "Participar en ceremonias Scrum",
+  "Trabajar con Pull Requests",
+  "Recibir Code Review",
+  "Gestionar tareas y priorizar trabajo",
+  "Usar IA profesionalmente",
+  "Construir proyectos reales",
+  "Presentar decisiones técnicas",
   "Construir aplicaciones web modernas",
   "Consumir APIs REST",
-  "Trabajar con Git y GitHub",
-  "Crear ramas y Pull Requests",
-  "Recibir Code Review",
-  "Organizar proyectos profesionalmente",
-  "Hacer debugging",
   "Desplegar aplicaciones",
   "Documentar proyectos",
-  "Presentar tu código en una entrevista",
+  "Prepararte para entrevistas y demos técnicas",
 ];
 export const learningComparison = {
   selfDirected: [

@@ -65,20 +65,20 @@ export function LearningPath() {
       <div className="path-layout">
         <div className="path-intro">
           <p className="eyebrow">EN PROFUNDIDAD / REACT</p>
-          <span className="badge">8 SEMANAS · {site.modality}</span>
+          <span className="badge">12 SEMANAS · 3 MESES · {site.modality}</span>
           <h2>
             De los fundamentos
-            <br />a tu primer deploy.
+            <br />a construir y defender un proyecto profesional.
           </h2>
           <p>
-            Frontend Developer con React. Una ruta progresiva en la que cada
-            semana construyes sobre lo aprendido.
+            Frontend Developer con React. Dos meses de formación + un mes de
+            proyecto integrador con mentoría y feedback real.
           </p>
           <div className="outcome">
             <Check size={22} />
             <p>
-              Termina con un proyecto real desplegado y publicable en GitHub y
-              en tu CV.
+              Termina con un proyecto real desplegado, documentado y listo para
+              explicar en una entrevista.
             </p>
           </div>
           <Link className="button" href="/contacto?programa=frontend-react">

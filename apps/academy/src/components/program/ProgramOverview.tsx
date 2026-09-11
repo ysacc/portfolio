@@ -56,6 +56,76 @@ export function TechStack({ technologies }: { technologies: string[] }) {
     </section>
   );
 }
+
+export function ProfessionalSkills({ program: p }: { program: Program }) {
+  const professionalSkills = p.professionalSkills ?? [];
+  const aiSkills = p.aiSkills ?? [];
+  const scrumPractices = p.scrumPractices ?? [];
+
+  if (
+    !professionalSkills.length &&
+    !aiSkills.length &&
+    !scrumPractices.length
+  ) {
+    return null;
+  }
+
+  return (
+    <section className="container section professional-skills">
+      <div className="section-heading">
+        <p className="eyebrow">03 / HABILIDADES PROFESIONALES</p>
+        <div>
+          <h2>Las habilidades que necesitas para trabajar en equipo.</h2>
+          <p>
+            Además de tecnologías, aprenderás a colaborar, revisar código y
+            comunicar decisiones como parte de un producto real.
+          </p>
+        </div>
+      </div>
+      <div className="skills-grid">
+        <article className="skills-panel">
+          <h3>Habilidades profesionales</h3>
+          <ul>
+            {professionalSkills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
+          </ul>
+          {scrumPractices.length > 0 && (
+            <div className="scrum-badges">
+              {scrumPractices.map((practice) => (
+                <span key={practice}>{practice}</span>
+              ))}
+            </div>
+          )}
+        </article>
+        <article className="skills-panel ai-panel">
+          <h3>Workflow con IA</h3>
+          <div className="ai-flow" aria-label="Flujo de trabajo con IA">
+            {[
+              "Pregunta",
+              "Propuesta IA",
+              "Revisión humana",
+              "Testing",
+              "Código aprobado",
+            ].map((step, index) => (
+              <div key={step} className="ai-step">
+                <span>{index + 1}</span>
+                <strong>{step}</strong>
+              </div>
+            ))}
+          </div>
+          <p className="ai-note">No copiar. Revisar, entender y mejorar.</p>
+          <ul>
+            {aiSkills.map((skill) => (
+              <li key={skill}>{skill}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 export function CareerPreparation({ items }: { items: string[] }) {
   return (
     <section className="container section career-section">

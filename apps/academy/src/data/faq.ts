@@ -40,4 +40,9 @@ export const generalFAQ: FAQItem[] = [
     answer:
       "La academia ofrece preparación técnica y acompañamiento, pero no garantiza contratación. Los procesos de selección dependen de cada empresa y de tu experiencia.",
   },
+  {
+    question: "¿Puedo usar inteligencia artificial durante el curso?",
+    answer:
+      "Sí. Aprenderás a utilizar IA como herramienta profesional. Todo código asistido deberá ser entendido, revisado y explicable para que puedas modificarlo, defenderlo y mejorarlo.",
+  },
 ];

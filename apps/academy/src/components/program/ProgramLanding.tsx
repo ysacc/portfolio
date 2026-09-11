@@ -6,6 +6,7 @@ import {
   ProgramOverview,
   TechStack,
   CareerPreparation,
+  ProfessionalSkills,
 } from "./ProgramOverview";
 import { ProjectShowcase } from "./ProjectShowcase";
 import { CurriculumTimeline } from "./CurriculumTimeline";
@@ -56,6 +57,7 @@ export function ProgramLanding({ program: p }: { program: Program }) {
       </nav>
       <ProgramOverview program={p} />
       <TechStack technologies={p.technologies} />
+      <ProfessionalSkills program={p} />
       <ProjectShowcase projects={p.projects} />
       <CurriculumTimeline modules={p.curriculum} />
       <ProfessionalWorkflow steps={p.workflow} methodology={p.methodology} />
