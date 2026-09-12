@@ -6,7 +6,7 @@ export const site = {
   modality: process.env.ACADEMY_MODALITY || "Remoto en vivo",
   linkedin: "https://www.linkedin.com/in/ysacc-roncal",
   github: "https://github.com/ysacc",
-  discordUrl: process.env.ACADEMY_DISCORD_URL || "",
+  discordUrl: process.env.ACADEMY_DISCORD_URL || "https://discord.gg/tzWaMAzYh",
 };
 export const description =
   "Aprende React, TypeScript, Next.js, Node.js y desarrollo web con proyectos reales, mentoría y buenas prácticas profesionales.";
