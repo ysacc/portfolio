@@ -42,8 +42,8 @@ export default async function GuidePage({
       <section className="campus-guide-section">
         <h2>Objetivo</h2>
         <p>
-          Te ayudamos a dejar tu entorno listo para seguir las clases, practicar y
-          construir con buena base técnica.
+          Te ayudamos a dejar tu entorno listo para seguir las clases, practicar
+          y construir con buena base técnica.
         </p>
       </section>
 
@@ -65,6 +65,16 @@ export default async function GuidePage({
                 {String(index + 1).padStart(2, "0")} · {step.title}
               </strong>
               <p>{step.description}</p>
+              {step.link && (
+                <a
+                  className="text-link"
+                  href={step.link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {step.link.label} <ArrowUpRight size={14} />
+                </a>
+              )}
               {step.command && (
                 <pre className="code-block">
                   <code>{step.command}</code>

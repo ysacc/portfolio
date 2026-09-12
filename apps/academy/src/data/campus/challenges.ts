@@ -13,39 +13,47 @@ export const challenges: Challenge[] = [
   {
     id: "landing-responsive",
     title: "Landing responsive",
-    description: "Diseña una página simple con estructura semántica y adaptación móvil.",
+    description:
+      "Diseña una página simple con estructura semántica y adaptación móvil.",
     difficulty: "inicial",
     technologies: ["HTML", "CSS", "Responsive"],
     programSlugs: ["desde-cero", "frontend-react"],
     externalPlatform: "Frontend Mentor",
-    externalUrl: "https://www.frontendmentor.io/",
+    externalUrl:
+      "https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H",
   },
   {
     id: "todo-app",
     title: "Todo app con estado",
-    description: "Crea una lista de tareas con filtros y estados de interacción.",
+    description:
+      "Crea una lista de tareas con filtros y estados de interacción.",
     difficulty: "intermedio",
     technologies: ["JavaScript", "React"],
     programSlugs: ["frontend-react"],
     externalPlatform: "freeCodeCamp",
-    externalUrl: "https://www.freecodecamp.org/",
+    externalUrl: "https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW",
   },
   {
     id: "api-dashboard",
     title: "Dashboard con API",
-    description: "Consume datos reales o mockeados y organiza estados de carga, error y éxito.",
+    description:
+      "Consume datos reales o mockeados y organiza estados de carga, error y éxito.",
     difficulty: "intermedio",
     technologies: ["React", "TypeScript", "API"],
     programSlugs: ["frontend-react", "full-stack"],
     externalPlatform: "HackerRank",
-    externalUrl: "https://www.hackerrank.com/",
+    externalUrl:
+      "https://www.hackerrank.com/domains/tutorials/10-days-of-javascript",
   },
   {
     id: "git-practice",
     title: "Flujo de Git y PR",
-    description: "Practica ramas, commits, resolución de conflicto y pull requests en un caso simple.",
+    description:
+      "Practica ramas, commits, resolución de conflicto y pull requests en un caso simple.",
     difficulty: "inicial",
     technologies: ["Git", "GitHub"],
     programSlugs: ["desde-cero", "frontend-react", "full-stack"],
+    externalPlatform: "GitHub Skills",
+    externalUrl: "https://github.com/skills/introduction-to-github",
   },
 ];

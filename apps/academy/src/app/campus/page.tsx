@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Check, Download, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Download,
+  Sparkles,
+} from "lucide-react";
 import { guides } from "@/data/campus/guides";
 import { challenges } from "@/data/campus/challenges";
 import { campusResources } from "@/data/campus/resources";
@@ -25,10 +31,27 @@ const firstSteps = [
 ];
 
 const resourceGroups = [
-  { title: "Primeros pasos", items: ["Preparar PC", "Instalar herramientas", "Crear cuenta", "Organizar tu flujo"] },
-  { title: "GitHub", items: ["Perfil profesional", "README", "Repositorios", "Commits y PR"] },
-  { title: "LinkedIn", items: ["Foto", "Headline", "Acerca de", "Proyectos y GitHub"] },
-  { title: "IA", items: ["Contexto", "Explicación", "Debugging", "Validación"] },
+  {
+    title: "Primeros pasos",
+    items: [
+      "Preparar PC",
+      "Instalar herramientas",
+      "Crear cuenta",
+      "Organizar tu flujo",
+    ],
+  },
+  {
+    title: "GitHub",
+    items: ["Perfil profesional", "README", "Repositorios", "Commits y PR"],
+  },
+  {
+    title: "LinkedIn",
+    items: ["Foto", "Headline", "Acerca de", "Proyectos y GitHub"],
+  },
+  {
+    title: "IA",
+    items: ["Contexto", "Explicación", "Debugging", "Validación"],
+  },
 ];
 
 export default function CampusPage() {
@@ -38,7 +61,8 @@ export default function CampusPage() {
         <p className="eyebrow">CAMPUS ACADEMY</p>
         <h1>Prepara tu entorno. Practica. Construye. Mejora.</h1>
         <p className="section-copy">
-          Guías, herramientas, tareas y recursos para acompañarte antes y durante el programa.
+          Guías, herramientas, tareas y recursos para acompañarte antes y
+          durante el programa.
         </p>
         <div className="actions">
           <Link className="button" href="#primeros-pasos">
@@ -73,7 +97,8 @@ export default function CampusPage() {
           <p className="eyebrow">02 / PREPARA TU COMPUTADORA</p>
           <h2>Configuración mínima para las clases</h2>
           <p>
-            Windows inicialmente. Mantén tu entorno limpio para que puedas concentrarte en aprender y practicar.
+            Windows inicialmente. Mantén tu entorno limpio para que puedas
+            concentrarte en aprender y practicar.
           </p>
           <ul className="plain-list">
             <li>Windows actualizado.</li>
@@ -86,18 +111,37 @@ export default function CampusPage() {
             <li>Postman.</li>
             <li>Terminal PowerShell o Windows Terminal.</li>
           </ul>
-          <p className="inline-note">Full Stack: Docker Desktop y PostgreSQL opcional/local cuando se requiera.</p>
+          <p className="inline-note">
+            Full Stack: Docker Desktop y PostgreSQL opcional/local cuando se
+            requiera.
+          </p>
         </div>
         <div className="campus-panel">
           <p className="eyebrow">03 / HERRAMIENTAS</p>
           <h2>Tu entorno de trabajo</h2>
           <ul className="plain-list">
-            <li>Editor principal: VS Code.</li>
-            <li>Control de versiones: Git + GitHub.</li>
-            <li>Entorno JavaScript: Node.js + npm.</li>
-            <li>Testing y consumo de APIs: Postman.</li>
+            <li>
+              Editor principal:{" "}
+              <Link href="/campus/guias/instalar-vscode">VS Code</Link>.
+            </li>
+            <li>
+              Control de versiones:{" "}
+              <Link href="/campus/guias/instalar-git">Git</Link> + GitHub.
+            </li>
+            <li>
+              Entorno JavaScript:{" "}
+              <Link href="/campus/guias/instalar-node">Node.js</Link> + npm.
+            </li>
+            <li>
+              Testing y consumo de APIs:{" "}
+              <Link href="/campus/guias/instalar-postman">Postman</Link>.
+            </li>
             <li>Terminal: PowerShell / Windows Terminal.</li>
-            <li>Contenedores: Docker para Full Stack.</li>
+            <li>
+              Contenedores:{" "}
+              <Link href="/campus/guias/instalar-docker">Docker</Link> para Full
+              Stack.
+            </li>
           </ul>
         </div>
       </section>
@@ -111,12 +155,20 @@ export default function CampusPage() {
         </div>
         <div className="guide-grid">
           {guides.map((guide) => (
-            <Link href={`/campus/guias/${guide.slug}`} key={guide.slug} className="guide-card">
+            <Link
+              href={`/campus/guias/${guide.slug}`}
+              key={guide.slug}
+              className="guide-card"
+            >
               <span className="guide-tag">{guide.category}</span>
               <h3>{guide.title}</h3>
               <p>{guide.description}</p>
-              <small>{guide.level} · {guide.estimatedMinutes ?? 15} min</small>
-              <span className="card-link">Ver guía <ArrowUpRight size={16} /></span>
+              <small>
+                {guide.level} · {guide.estimatedMinutes ?? 15} min
+              </small>
+              <span className="card-link">
+                Ver guía <ArrowUpRight size={16} />
+              </span>
             </Link>
           ))}
         </div>
@@ -126,7 +178,10 @@ export default function CampusPage() {
         <div className="campus-panel">
           <p className="eyebrow">05 / GITHUB</p>
           <h2>Tu GitHub también es parte del aprendizaje.</h2>
-          <p>Crear cuenta, usar nombre profesional, foto, bio, repositorios, README, commits y proyectos pineados.</p>
+          <p>
+            Crear cuenta, usar nombre profesional, foto, bio, repositorios,
+            README, commits y proyectos pineados.
+          </p>
           <ul className="plain-list">
             <li>Cuenta activa con nombre profesional.</li>
             <li>Foto y bio con tu foco de estudio.</li>
@@ -139,7 +194,10 @@ export default function CampusPage() {
         <div className="campus-panel">
           <p className="eyebrow">06 / LINKEDIN</p>
           <h2>Empieza a construir tu presencia profesional desde el día 1.</h2>
-          <p>La presencia profesional empieza con claridad, no con inventar experiencia laboral.</p>
+          <p>
+            La presencia profesional empieza con claridad, no con inventar
+            experiencia laboral.
+          </p>
           <ul className="plain-list">
             <li>Foto y headline.</li>
             <li>Ubicación y about.</li>
@@ -147,14 +205,20 @@ export default function CampusPage() {
             <li>GitHub y portfolio.</li>
             <li>Proyectos identificados como académicos.</li>
           </ul>
-          <p className="inline-note">Los proyectos académicos deben identificarse como proyectos, no como experiencia laboral.</p>
+          <p className="inline-note">
+            Los proyectos académicos deben identificarse como proyectos, no como
+            experiencia laboral.
+          </p>
         </div>
       </section>
 
       <section className="container section campus-panel ai-panel">
         <p className="eyebrow">07 / IA COMO COPILOTO</p>
         <h2>IA como copiloto.</h2>
-        <p>Usa la IA para investigar, pedir explicación, debugging, tests y comparación de soluciones.</p>
+        <p>
+          Usa la IA para investigar, pedir explicación, debugging, tests y
+          comparación de soluciones.
+        </p>
         <div className="ai-grid">
           {[
             "Cómo preguntar",
@@ -170,7 +234,9 @@ export default function CampusPage() {
             </div>
           ))}
         </div>
-        <p className="inline-note">Regla: No entregues código que no puedas explicar.</p>
+        <p className="inline-note">
+          Regla: No entregues código que no puedas explicar.
+        </p>
         <ul className="plain-list">
           <li>No compartir tokens ni passwords.</li>
           <li>No subir código privado sin autorización.</li>
@@ -198,7 +264,12 @@ export default function CampusPage() {
                 ))}
               </div>
               {challenge.externalUrl ? (
-                <a className="text-link" href={challenge.externalUrl} target="_blank" rel="noreferrer">
+                <a
+                  className="text-link"
+                  href={challenge.externalUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Abrir reto <ArrowUpRight size={16} />
                 </a>
               ) : (
@@ -213,7 +284,10 @@ export default function CampusPage() {
         <div className="campus-panel">
           <p className="eyebrow">09 / COMUNIDAD</p>
           <h2>Tu comunidad continúa fuera de clase.</h2>
-          <p>Cada cohorte contará con canales específicos para dudas, recursos, trabajo en equipo y code pairing.</p>
+          <p>
+            Cada cohorte contará con canales específicos para dudas, recursos,
+            trabajo en equipo y code pairing.
+          </p>
           <ul className="plain-list small-list">
             <li>#anuncios</li>
             <li>#cohorte-a</li>
@@ -227,11 +301,18 @@ export default function CampusPage() {
             <li>#proyectos</li>
           </ul>
           {site.discordUrl ? (
-            <a className="button small" href={site.discordUrl} target="_blank" rel="noreferrer">
+            <a
+              className="button small"
+              href={site.discordUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               Ir a Discord <ArrowUpRight size={15} />
             </a>
           ) : (
-            <p className="inline-note">El invite de Discord se configurará cuando el canal esté listo.</p>
+            <p className="inline-note">
+              El invite de Discord se configurará cuando el canal esté listo.
+            </p>
           )}
         </div>
         <div className="campus-panel">
@@ -255,11 +336,19 @@ export default function CampusPage() {
         <h2>Prácticas externas</h2>
         <div className="resource-list">
           {campusResources.map((resource) => (
-            <a key={resource.title} href={resource.url} target="_blank" rel="noreferrer" className="resource-card">
+            <a
+              key={resource.title}
+              href={resource.url}
+              target="_blank"
+              rel="noreferrer"
+              className="resource-card"
+            >
               <span>{resource.type}</span>
               <strong>{resource.title}</strong>
               <p>{resource.description}</p>
-              <small>Abrir recurso <ArrowUpRight size={14} /></small>
+              <small>
+                Abrir recurso <ArrowUpRight size={14} />
+              </small>
             </a>
           ))}
         </div>

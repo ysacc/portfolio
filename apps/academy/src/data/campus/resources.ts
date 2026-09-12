@@ -16,21 +16,24 @@ export const campusResources: CampusResource[] = [
   },
   {
     title: "React Docs",
-    description: "Documentación oficial para aprender React con ejemplos y conceptos clave.",
+    description:
+      "Documentación oficial para aprender React con ejemplos y conceptos clave.",
     type: "documentation",
     url: "https://react.dev/",
     programSlugs: ["frontend-react", "full-stack"],
   },
   {
     title: "Next.js Docs",
-    description: "Referencia para rutas, renderizado y arquitectura de aplicaciones web.",
+    description:
+      "Referencia para rutas, renderizado y arquitectura de aplicaciones web.",
     type: "documentation",
     url: "https://nextjs.org/docs",
     programSlugs: ["full-stack"],
   },
   {
     title: "GitHub Skills",
-    description: "Recursos prácticos para trabajar con ramas, PR y flujo de colaboración.",
+    description:
+      "Recursos prácticos para trabajar con ramas, PR y flujo de colaboración.",
     type: "practice",
     url: "https://skills.github.com/",
     programSlugs: ["desde-cero", "frontend-react", "full-stack"],
