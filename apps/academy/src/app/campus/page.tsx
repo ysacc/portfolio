@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileDisclosure } from "@/components/MobileDisclosure";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -81,6 +82,7 @@ export default function CampusPage() {
             <h2>Llega a clase listo para construir.</h2>
           </div>
         </div>
+        <MobileDisclosure title="Ver primeros pasos">
         <div className="campus-checklist">
           {firstSteps.map((step, index) => (
             <div key={step} className="check-item">
@@ -90,6 +92,7 @@ export default function CampusPage() {
             </div>
           ))}
         </div>
+        </MobileDisclosure>
       </section>
 
       <section className="container section campus-grid">
@@ -155,9 +158,9 @@ export default function CampusPage() {
         </div>
         <div className="guide-grid">
           {guides.map((guide) => (
+            <MobileDisclosure key={guide.slug} title={guide.title}>
             <Link
               href={`/campus/guias/${guide.slug}`}
-              key={guide.slug}
               className="guide-card"
             >
               <span className="guide-tag">{guide.category}</span>
@@ -170,6 +173,7 @@ export default function CampusPage() {
                 Ver guía <ArrowUpRight size={16} />
               </span>
             </Link>
+            </MobileDisclosure>
           ))}
         </div>
       </section>
@@ -219,6 +223,7 @@ export default function CampusPage() {
           Usa la IA para investigar, pedir explicación, debugging, tests y
           comparación de soluciones.
         </p>
+        <MobileDisclosure title="Ver formas de trabajar con IA">
         <div className="ai-grid">
           {[
             "Cómo preguntar",
@@ -234,6 +239,7 @@ export default function CampusPage() {
             </div>
           ))}
         </div>
+        </MobileDisclosure>
         <p className="inline-note">
           Regla: No entregues código que no puedas explicar.
         </p>
@@ -254,7 +260,8 @@ export default function CampusPage() {
         </div>
         <div className="challenge-grid">
           {challenges.map((challenge) => (
-            <article key={challenge.id} className="challenge-card">
+            <MobileDisclosure key={challenge.id} title={challenge.title}>
+            <article className="challenge-card">
               <span className="challenge-level">{challenge.difficulty}</span>
               <h3>{challenge.title}</h3>
               <p>{challenge.description}</p>
@@ -276,6 +283,7 @@ export default function CampusPage() {
                 <span className="inline-note">Tarea interna del programa</span>
               )}
             </article>
+            </MobileDisclosure>
           ))}
         </div>
       </section>
@@ -336,8 +344,8 @@ export default function CampusPage() {
         <h2>Prácticas externas</h2>
         <div className="resource-list">
           {campusResources.map((resource) => (
+            <MobileDisclosure key={resource.title} title={resource.title}>
             <a
-              key={resource.title}
               href={resource.url}
               target="_blank"
               rel="noreferrer"
@@ -350,6 +358,7 @@ export default function CampusPage() {
                 Abrir recurso <ArrowUpRight size={14} />
               </small>
             </a>
+            </MobileDisclosure>
           ))}
         </div>
       </section>

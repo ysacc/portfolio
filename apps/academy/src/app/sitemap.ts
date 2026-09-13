@@ -5,7 +5,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/programas",
-    "/campus",
     "/sobre-mi",
     "/contacto",
     ...programs.map(programPath),

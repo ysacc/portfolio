@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileDisclosure } from "@/components/MobileDisclosure";
 import { Code2, ArrowUpRight } from "lucide-react";
 import { programs, programPath, type Program } from "@/data/programs";
 export function ProgramCard({ program }: { program: Program }) {
@@ -33,7 +34,9 @@ export function ProgramGrid() {
   return (
     <div className="program-grid">
       {programs.map((program) => (
-        <ProgramCard key={program.slug} program={program} />
+        <MobileDisclosure key={program.slug} title={program.title}>
+          <ProgramCard program={program} />
+        </MobileDisclosure>
       ))}
     </div>
   );

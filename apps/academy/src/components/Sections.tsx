@@ -116,9 +116,6 @@ export function CampusShortcutSection() {
             para que tu proceso siga moviéndose con claridad.
           </p>
         </div>
-        <Link className="button" href="/campus">
-          Explorar Campus <ArrowUpRight size={17} />
-        </Link>
       </div>
     </section>
   );

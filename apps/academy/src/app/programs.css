@@ -1,4 +1,129 @@
 /* Extends the existing white / amber identity without changing its tokens. */
+.mobile-disclosure,
+.mobile-disclosure-content {
+  display: contents;
+}
+.mobile-disclosure-toggle {
+  display: none;
+}
+@media (min-width: 801px) {
+  .section {
+    padding-block: 60px;
+  }
+  .section-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .section-heading .eyebrow {
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+  .section-heading p:not(.eyebrow) {
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+  .program-grid > .mobile-disclosure {
+    display: flex;
+    min-width: 0;
+    grid-column: span 2;
+  }
+  .program-grid > .mobile-disclosure:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+  .program-grid .program-card {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+  }
+  .program-grid .card-top {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .program-grid .program-card h3 {
+    min-height: 0;
+    max-width: none;
+    margin-bottom: 12px;
+  }
+  .program-grid .program-card > p {
+    margin-bottom: 14px;
+  }
+  .program-grid .tags {
+    margin-bottom: 18px;
+  }
+  .campus-page .section {
+    padding-block: 36px;
+  }
+  .campus-page .campus-hero {
+    padding-top: 60px;
+  }
+  .campus-page .campus-panel {
+    padding: 28px;
+  }
+  .campus-grid {
+    align-items: start;
+  }
+  .campus-panel > h2 {
+    font-size: clamp(26px, 2.3vw, 34px);
+    margin-bottom: 16px;
+  }
+  .campus-panel > .eyebrow {
+    margin-bottom: 16px;
+  }
+  .campus-shortcut-inner > div {
+    max-width: 760px;
+  }
+  .campus-shortcut-inner p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .program-grid > .mobile-disclosure,
+  .campus-page .mobile-disclosure {
+    display: block;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .mobile-disclosure-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    min-height: 60px;
+    padding: 18px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+  .mobile-disclosure-toggle span { overflow-wrap: anywhere; }
+  .mobile-disclosure-toggle svg { flex-shrink: 0; color: var(--accent); }
+  .mobile-disclosure-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+  .mobile-disclosure[data-open="true"] > .mobile-disclosure-toggle svg { transform: rotate(180deg); }
+  .mobile-disclosure > .mobile-disclosure-content { display: none; }
+  .mobile-disclosure[data-open="true"] > .mobile-disclosure-content { display: block; border-top: 1px solid var(--line); }
+  .mobile-disclosure-content > :is(.program-card, .guide-card, .challenge-card, .resource-card) {
+    border: 0;
+    border-radius: 0;
+    padding: 18px;
+    transform: none;
+  }
+  .program-grid,
+  .campus-page :is(.guide-grid, .challenge-grid, .resource-list, .campus-grid, .campus-checklist, .ai-grid) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .campus-page .campus-panel { min-width: 0; padding: 20px; }
+}
+
 .hero-authority {
   display: flex;
   flex-wrap: wrap;
