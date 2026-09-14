@@ -6,6 +6,9 @@ import "./globals.css";
 import "./programs.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  verification: {
+    google: "efK1JoNJYPo35xUC9qZgacCsnk0Mh41Ui89pubhAfZw",
+  },
   title: {
     default: "Cursos de Desarrollo Web y React Online en Perú | Ysacc Roncal Academy",
     template: "%s | Ysacc Roncal Academy",
