@@ -44,6 +44,13 @@ export default async function GuidePage({
         <span>{guide.estimatedMinutes ?? 15} min</span>
       </div>
 
+      {guide.article ? guide.article.map((section) => (
+        <section className="campus-guide-section" key={section.title}>
+          <h2>{section.title}</h2>
+          <p>{section.description}</p>
+          {section.command && <pre className="code-block"><code>{section.command}</code></pre>}
+        </section>
+      )) : <>
       <section className="campus-guide-section">
         <h2>Objetivo</h2>
         <p>
@@ -107,6 +114,16 @@ export default async function GuidePage({
           <li>Dejar la configuración sin documentar.</li>
         </ul>
       </section>
+
+      </>}
+      {guide.relatedSlugs && <section className="campus-guide-section">
+        <h2>Guías relacionadas</h2>
+        <ul className="plain-list">{guide.relatedSlugs.map((slug) => {
+          const related = publicGuideBySlug(slug);
+          return related ? <li key={slug}><Link href={`/guias/${slug}`}>{related.title}</Link></li> : null;
+        })}</ul>
+      </section>}
+      {guide.secondaryProgramSlug && <p>Si necesitas empezar por los fundamentos, conoce <Link href={`/programas/${guide.secondaryProgramSlug}`}>{programs.find((p) => p.slug === guide.secondaryProgramSlug)!.title}</Link>.</p>}
 
       {guide.resources && guide.resources.length > 0 && (
         <section className="campus-guide-section">

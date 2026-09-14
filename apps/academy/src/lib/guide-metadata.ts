@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { Guide } from "@/data/guides";
 import { site } from "@/data/site";
 export function guideMetadata(guide: Guide): Metadata {
-  const title = `Cómo ${guide.title.charAt(0).toLowerCase()}${guide.title.slice(1)}`;
+  const title = guide.seoTitle ?? `Cómo ${guide.title.charAt(0).toLowerCase()}${guide.title.slice(1)}`;
   const url = `/guias/${guide.slug}`;
   return { title, description: guide.description, alternates: { canonical: url },
     robots: { index: true, follow: true },

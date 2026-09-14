@@ -1,5 +1,44 @@
 # Separación de guías públicas y Campus
 
+## Ampliación editorial: seis guías Frontend
+
+Estado actual tras esta ampliación: **15 guías públicas, 25 URLs de sitemap y 47 páginas generadas**. Los apartados posteriores describen la migración original de nueve guías.
+
+| Slug bajo `/guias/` | Categoría | CTA principal |
+| --- | --- | --- |
+| `como-funciona-un-pull-request` | GitHub | Frontend Developer con React |
+| `git-y-github-para-principiantes` | GitHub | Frontend Developer con React |
+| `que-debe-saber-un-frontend-junior` | Frontend | Frontend Developer con React |
+| `javascript-o-react-que-aprender-primero` | Frontend | Frontend Developer con React |
+| `como-consumir-api-rest-react` | Frontend | Frontend Developer con React |
+| `portfolio-desarrollador-frontend` | Empleabilidad | Frontend Developer con React |
+
+Se conserva la categoría existente `GitHub`. Se incorporan `Frontend` y `Empleabilidad` porque los artículos no corresponden a instalación o herramientas; el modelo admite categorías de texto. La guía JavaScript/React añade un enlace contextual a Desde cero. Los nombres de programas se resuelven desde sus datos.
+
+Enlaces relacionados:
+
+- Pull Request → configurar Git, primer repositorio, primer PR y crear GitHub.
+- Git/GitHub → instalar Git, crear GitHub, configurar Git, primer repositorio y primer PR.
+- Frontend Junior → Git/GitHub, JavaScript/React, APIs y portfolio.
+- JavaScript/React → instalar Node, Frontend Junior y APIs.
+- APIs → instalar Postman, JavaScript/React y Frontend Junior.
+- Portfolio → crear GitHub, primer repositorio, primer PR y Frontend Junior.
+
+Archivos modificados: `src/data/campus/guides.ts`, `src/app/guias/[slug]/page.tsx`, `src/lib/guide-metadata.ts`, `tests/programs.test.mjs` y este reporte. El catálogo único incorpora campos opcionales `seoTitle`, `article`, `relatedSlugs` y `secondaryProgramSlug`. Los artículos usan sus propias secciones en lugar de los bloques genéricos de instalación; las nueve guías anteriores conservan su renderizado.
+
+Metadata: H1 y títulos solicitados, description específica, canonical, Open Graph y Twitter. El template global añade la marca una sola vez. Se mantienen TechArticle y BreadcrumbList sin fechas, ratings ni autorías inventadas. Sitemap y rutas se generan automáticamente. El CTA conserva `guide_view` y `guide_program_cta_click`; su efecto depende de slug/programa y no se repite por un rerender con los mismos valores.
+
+Validación de la ampliación:
+
+- `npm test`: **13 tests aprobados**, incluidos render de las seis guías, enlaces, metadata, catálogo completo y ejecución del servicio fetch con éxito, error HTTP, contrato inválido y respuesta vacía.
+- `npm run typecheck` y `npm run lint`: aprobados.
+- `npm run build`: aprobado; **47 páginas generadas**. El mecanismo legacy existente también genera automáticamente seis redirects adicionales; no se modificaron rutas ni contenido del Campus privado.
+- HTML del build: seis nuevos artículos con canonical, robots indexables, CTA y ambos schemas; marca no duplicada; 15 páginas de guías y sitemap de 25 URLs sin Campus.
+- Programas, precios, duración, brochures, mentorías, entrevistas y auth: sin modificaciones.
+- Warning existente: múltiples lockfiles al inferir la raíz del workspace. Sin dependencias nuevas. Sin revisión visual en navegador ni despliegue en esta ampliación.
+
+El ejemplo de API declara expresamente su contrato hipotético `/api/productos`; no crea un backend. Referencias técnicas enlazadas en los artículos: [GitHub PR](https://docs.github.com/en/pull-requests/get-started/about-pull-requests), [MDN Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) y [React useEffect](https://react.dev/reference/react/useEffect).
+
 ## Rutas y contenido
 
 - `/guias`: hub público agrupado por las categorías existentes, con enlaces a programas e instructor.

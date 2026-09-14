@@ -36,13 +36,65 @@ function load(file) {
 }
 const { programs, programPath, weeks } = load("data/programs");
 
+test("published API service example handles success, HTTP errors and invalid JSON contracts", async () => {
+  const guide = load("data/guides").publicGuideBySlug("como-consumir-api-rest-react");
+  const source = guide.article.find((section) => section.command?.startsWith("export async function")).command;
+  const module = { exports: {} };
+  const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
+  new Function("exports", compiled)(module.exports);
+  const originalFetch = global.fetch;
+  const signal = new AbortController().signal;
+  try {
+    global.fetch = async (url, options) => {
+      assert.equal(url, "/api/productos");
+      assert.equal(options.signal, signal);
+      return { ok: true, json: async () => [{ id: 1, nombre: "Libro" }] };
+    };
+    assert.deepEqual(await module.exports.obtenerProductos(signal), [{ id: 1, nombre: "Libro" }]);
+    global.fetch = async () => ({ ok: false, status: 500 });
+    await assert.rejects(module.exports.obtenerProductos(signal), /HTTP 500/);
+    global.fetch = async () => ({ ok: true, json: async () => [{ id: 1 }] });
+    await assert.rejects(module.exports.obtenerProductos(signal), /Respuesta inesperada/);
+    global.fetch = async () => ({ ok: true, json: async () => [] });
+    assert.deepEqual(await module.exports.obtenerProductos(signal), []);
+  } finally { global.fetch = originalFetch; }
+});
+
+test("six editorial guides render related links, exact SEO titles and React CTAs", async () => {
+  const { publicGuides, publicGuideBySlug } = load("data/guides");
+  const { renderToStaticMarkup } = nativeRequire("react-dom/server");
+  const newSlugs = ["como-funciona-un-pull-request", "git-y-github-para-principiantes", "que-debe-saber-un-frontend-junior", "javascript-o-react-que-aprender-primero", "como-consumir-api-rest-react", "portfolio-desarrollador-frontend"];
+  const oldSlugs = ["instalar-vscode", "instalar-git", "instalar-node", "crear-github", "configurar-git", "primer-repositorio", "primer-pull-request", "instalar-postman", "instalar-docker"];
+  assert.deepEqual(publicGuides.map((g) => g.slug).sort(), [...newSlugs, ...oldSlugs].sort());
+  for (const slug of newSlugs) {
+    const guide = publicGuideBySlug(slug);
+    assert.equal(guide.visibility, "public");
+    assert.equal(guide.programSlug, "frontend-react");
+    assert.ok(guide.article.length >= 7);
+    assert.ok(guide.seoTitle);
+    const metadata = load("lib/guide-metadata").guideMetadata(guide);
+    assert.equal(metadata.title, guide.seoTitle);
+    assert.equal(metadata.openGraph.title, guide.seoTitle);
+    assert.equal(metadata.twitter.title, guide.seoTitle);
+    const html = renderToStaticMarkup(await load("app/guias/[slug]/page.tsx").default({ params: Promise.resolve({ slug }) }));
+    assert.ok(html.includes('href="/programas/frontend-react"'));
+    assert.ok(!html.includes("Te ayudamos a dejar tu entorno listo"));
+    for (const related of guide.relatedSlugs) {
+      assert.notEqual(related, slug);
+      assert.ok(publicGuideBySlug(related), related);
+      assert.ok(html.includes(`href="/guias/${related}"`));
+    }
+    if (guide.secondaryProgramSlug) assert.ok(html.includes('href="/programas/desde-cero"'));
+  }
+});
+
 test("public guides generate routes, metadata and schemas without exposing campus guides", async () => {
   const { publicGuides, publicGuideBySlug } = load("data/guides");
   const page = load("app/guias/[slug]/page.tsx");
   const legacy = load("app/campus/guias/[slug]/page.tsx");
-  assert.equal(publicGuides.length, 9);
-  assert.equal(page.generateStaticParams().length, 9);
-  assert.equal(legacy.generateStaticParams().length, 9);
+  assert.equal(publicGuides.length, 15);
+  assert.equal(page.generateStaticParams().length, 15);
+  assert.equal(legacy.generateStaticParams().length, 15);
   assert.ok(load("app/guias/page.tsx").default);
   for (const guide of publicGuides) {
     assert.equal(guide.visibility, "public");
@@ -68,6 +120,7 @@ test("public guides generate routes, metadata and schemas without exposing campu
 test("sitemap indexes all public guides and excludes campus; robots allows noindex discovery", () => {
   const urls = load("app/sitemap").default().map((entry) => new URL(entry.url).pathname);
   assert.ok(urls.includes("/guias"));
+  assert.equal(urls.length, 25);
   for (const guide of load("data/guides").publicGuides) assert.ok(urls.includes(`/guias/${guide.slug}`));
   assert.ok(!urls.some((url) => url.startsWith("/campus")));
   assert.equal(new Set(urls).size, urls.length);
