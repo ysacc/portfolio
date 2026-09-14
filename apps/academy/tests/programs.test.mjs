@@ -127,7 +127,17 @@ test("sitemap indexes all public guides and excludes campus; robots allows noind
   assert.deepEqual(load("app/campus/layout.tsx").metadata.robots, { index: false, follow: false });
   assert.equal(load("app/robots").default().rules.allow, "/");
   const campus = load("app/campus/page.tsx").default();
-  assert.equal(campus.type.name, "CampusUnavailable");
+  assert.equal(campus.type.name, "CampusContent");
+  const { renderToStaticMarkup } = nativeRequire("react-dom/server");
+  const html = renderToStaticMarkup(campus);
+  assert.ok(html.includes('href="/guias/instalar-git"'));
+  assert.ok(!html.includes('href="/campus/guias/'));
+  for (const section of ["primeros-pasos", "campus-checklist", "guide-grid", "challenge-grid", "ai-grid", "campus-summary", "resource-list"]) {
+    assert.ok(html.includes(section), section);
+  }
+  const navbar = renderToStaticMarkup(load("components/Navbar.tsx").Navbar());
+  assert.ok(!navbar.includes('href="/campus"'));
+  assert.equal((navbar.match(/href="\/guias"/g) || []).length, 2);
 });
 
 test("guide analytics uses the existing adapter and preserves guide/program payloads", () => {

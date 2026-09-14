@@ -15,7 +15,6 @@ export function Brand() {
 const links = [
   ["Programas", "/programas"],
   ["Guías", "/guias"],
-  ["Campus", "/campus"],
   ["Sobre mí", "/sobre-mi"],
   ["Contacto", "/contacto"],
 ];

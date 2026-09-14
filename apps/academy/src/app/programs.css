@@ -1692,3 +1692,88 @@ body:has(.sticky-program-cta:not([hidden])) .footer {
     transform: none;
   }
 }
+/* Shared public guides and direct-access Campus: contain intrinsic widths. */
+:is(.guides-page, .campus-guide-page, .campus-page) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+:is(.guide-grid, .challenge-grid, .resource-list, .campus-grid, .ai-grid, .guide-steps) > *,
+.campus-guide-section,
+.campus-guide-section > *,
+.campus-guide-header,
+.campus-page .mobile-disclosure-content {
+  min-width: 0;
+  max-width: 100%;
+}
+.campus-guide-page .code-block {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.campus-guide-page nav[aria-label="Breadcrumb"] {
+  line-height: 1.7;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+.campus-guide-meta { flex-wrap: wrap; }
+:is(.guides-page, .campus-guide-page, .campus-page) .button {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+:is(.guides-page, .campus-guide-page) .plain-list a {
+  display: inline-block;
+  padding-block: 8px;
+}
+@media (min-width: 801px) and (max-width: 1100px) {
+  :is(.guides-page, .campus-page) :is(.guide-grid, .challenge-grid, .resource-list) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 800px) {
+  :is(.guides-page, .campus-page) :is(.guide-grid, .challenge-grid, .resource-list, .campus-grid, .campus-checklist) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  :is(.guides-page, .campus-guide-page, .campus-page) h1 {
+    font-size: clamp(34px, 8vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+  }
+  :is(.guides-page, .campus-guide-page, .campus-page) h2 {
+    font-size: clamp(28px, 6vw, 34px);
+    line-height: 1.2;
+  }
+  :is(.guides-page, .campus-guide-page, .campus-page) h3 {
+    font-size: clamp(21px, 5vw, 25px);
+  }
+  .guides-page .campus-guide-section { margin-top: 36px; padding-top: 28px; }
+  .campus-guide-page .resource-list { grid-template-columns: minmax(0, 1fr); }
+  .campus-page .section-heading { grid-template-columns: minmax(0, 1fr); }
+  .campus-page .ai-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :is(.guides-page, .campus-guide-page, .campus-page) .actions { gap: 16px; }
+  :is(.guides-page, .campus-guide-page, .campus-page) .button {
+    min-height: 48px;
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .mobile-nav nav a { display: flex; align-items: center; min-height: 44px; }
+  .mobile-nav nav { gap: 8px; max-height: calc(100dvh - 75px); overflow-y: auto; }
+  .mobile-nav summary { min-height: 44px; display: flex; align-items: center; }
+}
+@media (max-width: 480px) {
+  .nav { gap: 10px; }
+  :is(.guides-page, .campus-guide-page, .campus-page) .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .campus-guide-section > .button { width: 100%; }
+  .campus-page .campus-summary { gap: 10px; }
+}
+@media (max-width: 360px) {
+  .campus-page .ai-grid { grid-template-columns: minmax(0, 1fr); }
+}

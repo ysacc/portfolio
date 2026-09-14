@@ -1,5 +1,32 @@
 # Separación de guías públicas y Campus
 
+## Estado actual: Campus recuperado y responsive ajustado
+
+Esta actualización sustituye la decisión anterior de mostrar `CampusUnavailable`: `/campus` vuelve a renderizar directamente el componente existente `CampusContent`, sin duplicarlo ni modificar su contenido. Se recuperan primeros pasos, preparación, herramientas, manuales, GitHub, LinkedIn, IA, retos, comunidad, recursos y estándares. Es accesible sin autenticación por URL directa; conserva el layout con `noindex, nofollow` y no aparece en el sitemap. No es un área autenticada.
+
+Las guías del Campus siguen enlazando a `/guias/...`. No se cambiaron los artículos, metadata, schemas, analytics ni redirects legacy. Permanecen 15 guías y 25 URLs en sitemap.
+
+Se retiró Campus del array compartido de Navbar, tanto desktop como móvil. La búsqueda en el código no encontró otros enlaces públicos a `/campus` en footer, home, CTA o programas. La home conserva una mención textual en `CampusShortcutSection` (“Clases, Campus, Discord…”), sin enlace: describe la metodología y no es navegación. Se conserva también el contenido de brochures sin cambios.
+
+Cambios responsive en `src/app/programs.css`:
+
+- Se corrigieron las tres columnas que persistían en el hub móvil: una columna hasta 800 px, dos entre 801 y 1100 px y tres en desktop amplio.
+- Campus conserva una columna móvil en sus grids, con espacios de 20 px. IA usa dos columnas hasta 800 px y una hasta 360 px.
+- Títulos de guías y Campus: H1 de 34–42 px, H2 de 28–34 px y H3 de 21–25 px en móvil.
+- Hijos de grid y secciones con `min-width: 0`; código limitado al contenedor y scroll horizontal dentro del snippet. Breadcrumbs, URLs y listas pueden ajustar líneas.
+- Recursos de artículos en una columna móvil; acciones en columna hasta 480 px, botones con texto ajustable y altura mínima de 48 px.
+- Menú móvil con enlaces de al menos 44 px, separación y scroll vertical para pantallas bajas; menor gap del navbar hasta 480 px.
+- `.container` ya tenía márgenes laterales de 20 px hasta 800 px, 32 px hasta 1100 px y 48 px en desktop. Se conservaron.
+- `MobileDisclosure` conserva su funcionamiento en Campus; las guías públicas no usan acordeones.
+
+Archivos modificados: `src/app/campus/page.tsx`, `src/components/Navbar.tsx`, `src/app/guias/page.tsx` (solo clase de estilo), `src/app/programs.css`, `tests/programs.test.mjs` y este reporte.
+
+Validación: 13 tests aprobados, typecheck y lint aprobados. Los tests comprueban CampusContent, secciones recuperadas, enlaces `/guias`, ausencia de Campus en ambos menús, noindex, sitemap y regresiones existentes. Build: 47 páginas generadas. Advertencia existente de múltiples lockfiles.
+
+QA visual real no disponible: la consulta de herramientas devolvió cero navegadores conectados y no se encontró `agent-browser`. No se verificaron visualmente los viewports 320×568, 375×667, 390×844, 430×932, 768×1024, 1024 px y 1440×900. Los ajustes se revisaron por CSS y HTML; queda pendiente confirmar visualmente overflow, menú y disclosures abiertos en esos tamaños. Sin despliegue en esta actualización.
+
+Los apartados siguientes se conservan como historial de las decisiones y validaciones anteriores.
+
 ## Ampliación editorial: seis guías Frontend
 
 Estado actual tras esta ampliación: **15 guías públicas, 25 URLs de sitemap y 47 páginas generadas**. Los apartados posteriores describen la migración original de nueve guías.

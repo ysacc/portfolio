@@ -1,4 +1,5 @@
-import { CampusUnavailable } from "@/components/campus/CampusUnavailable";
-// TODO(auth): validate a server session and cohort enrollment before loading CampusContent.
-// No private data is imported, fetched or serialized while access is unavailable.
-export default function CampusPage() { return <CampusUnavailable />; }
+import CampusContent from "@/components/campus/CampusContent";
+
+// Accessible by direct URL, with noindex/nofollow inherited from the layout.
+// This is not an authenticated area; do not add confidential student data here.
+export default function CampusPage() { return <CampusContent />; }
