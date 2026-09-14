@@ -1,4 +1,6 @@
 export type AcademyEvent =
+  | "guide_view"
+  | "guide_program_cta_click"
   | "program_view"
   | "program_cta_click"
   | "curriculum_expand"
@@ -7,6 +9,7 @@ export type AcademyEvent =
   | "contact_submit"
   | "brochure_download";
 export type EventProperties = {
+  guide?: string;
   program?: string;
   placement?: string;
   module?: string;

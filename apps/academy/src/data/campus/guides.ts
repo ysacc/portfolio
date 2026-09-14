@@ -11,6 +11,8 @@ export type ResourceLink = {
 };
 
 export type CampusGuide = {
+  visibility: "public" | "campus";
+  programSlug: "desde-cero" | "frontend-react" | "full-stack";
   slug: string;
   title: string;
   description: string;
@@ -24,6 +26,8 @@ export type CampusGuide = {
 export const guides: CampusGuide[] = [
   {
     slug: "instalar-vscode",
+    visibility: "public",
+    programSlug: "desde-cero",
     title: "Instalar VS Code",
     description:
       "Configura tu editor principal para trabajar con archivos, terminal y extensiones.",
@@ -61,6 +65,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "instalar-git",
+    visibility: "public",
+    programSlug: "frontend-react",
     title: "Instalar Git",
     description:
       "Prepárate para versionar tu código y trabajar con ramas y pull requests.",
@@ -98,6 +104,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "instalar-node",
+    visibility: "public",
+    programSlug: "full-stack",
     title: "Instalar Node.js",
     description:
       "Necesario para ejecutar JavaScript, instalar paquetes y trabajar en proyectos reales.",
@@ -134,6 +142,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "crear-github",
+    visibility: "public",
+    programSlug: "frontend-react",
     title: "Configurar GitHub",
     description:
       "Crea tu presencia profesional y comparte tus proyectos con claridad.",
@@ -167,6 +177,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "configurar-git",
+    visibility: "public",
+    programSlug: "frontend-react",
     title: "Configurar Git",
     description:
       "Deja tu entorno listo para colaborar con ramas, commits y pull requests.",
@@ -195,6 +207,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "primer-repositorio",
+    visibility: "public",
+    programSlug: "frontend-react",
     title: "Primer repositorio",
     description:
       "Crea tu primera estructura de proyecto y deja un historial limpio.",
@@ -223,6 +237,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "primer-pull-request",
+    visibility: "public",
+    programSlug: "frontend-react",
     title: "Crear Pull Request",
     description:
       "Aprende a revisar, comparar e integrar cambios con una propuesta clara.",
@@ -249,6 +265,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "instalar-postman",
+    visibility: "public",
+    programSlug: "full-stack",
     title: "Instalar Postman",
     description:
       "Usa una herramienta para probar APIs, entender endpoints y validar flujos reales.",
@@ -282,6 +300,8 @@ export const guides: CampusGuide[] = [
   },
   {
     slug: "instalar-docker",
+    visibility: "public",
+    programSlug: "full-stack",
     title: "Instalar Docker",
     description:
       "Necesario en Full Stack para ejecutar servicios locales y reproducir entornos reales.",

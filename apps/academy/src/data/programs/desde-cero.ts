@@ -113,7 +113,7 @@ const program: Omit<Program, "modality"> = {
     "Mostrar el repositorio y describir una interacción.",
     "Reconocer errores sencillos con las herramientas del navegador.",
   ],
-  seoTitle: "Programación desde cero | HTML, CSS y JavaScript",
+  seoTitle: "Curso de Programación Desde Cero Online",
   workflow: [
     "Ticket",
     "Branch",

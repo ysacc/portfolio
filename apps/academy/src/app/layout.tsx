@@ -7,7 +7,7 @@ import "./programs.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Ysacc Roncal Academy | Aprende Desarrollo Web Profesional",
+    default: "Cursos de Desarrollo Web y React Online en Perú | Ysacc Roncal Academy",
     template: "%s | Ysacc Roncal Academy",
   },
   description,

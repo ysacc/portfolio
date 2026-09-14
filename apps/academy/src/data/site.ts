@@ -8,5 +8,4 @@ export const site = {
   github: "https://github.com/ysacc",
   discordUrl: process.env.ACADEMY_DISCORD_URL || "https://discord.gg/tzWaMAzYh",
 };
-export const description =
-  "Aprende React, TypeScript, Next.js, Node.js y desarrollo web con proyectos reales, mentoría y buenas prácticas profesionales.";
+export const description = "Aprende desarrollo web con clases en vivo, proyectos reales, Git, Code Review, React, TypeScript y Full Stack. Formación práctica online desde Perú.";

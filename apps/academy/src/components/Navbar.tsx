@@ -14,9 +14,10 @@ export function Brand() {
 }
 const links = [
   ["Programas", "/programas"],
-  ["Metodología", "/#metodologia"],
-  ["Tu instructor", "/sobre-mi"],
-  ["Mentorías", "/mentorias"],
+  ["Guías", "/guias"],
+  ["Campus", "/campus"],
+  ["Sobre mí", "/sobre-mi"],
+  ["Contacto", "/contacto"],
 ];
 export function Navbar() {
   return (

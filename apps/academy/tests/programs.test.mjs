@@ -10,7 +10,7 @@ const nativeRequire = createRequire(import.meta.url);
 const cache = new Map();
 // Load the actual TypeScript data without a test framework or generated fixtures.
 function load(file) {
-  const path = resolve(root, file.endsWith(".ts") ? file : file + ".ts");
+  const path = resolve(root, /\.tsx?$/.test(file) ? file : file + (existsSync(resolve(root, file + ".ts")) ? ".ts" : ".tsx"));
   if (cache.has(path)) return cache.get(path).exports;
   const module = { exports: {} };
   cache.set(path, module);
@@ -18,6 +18,7 @@ function load(file) {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
       target: ts.ScriptTarget.ES2020,
+      jsx: ts.JsxEmit.ReactJSX,
     },
   }).outputText;
   const require = (name) =>
@@ -34,6 +35,60 @@ function load(file) {
   return module.exports;
 }
 const { programs, programPath, weeks } = load("data/programs");
+
+test("public guides generate routes, metadata and schemas without exposing campus guides", async () => {
+  const { publicGuides, publicGuideBySlug } = load("data/guides");
+  const page = load("app/guias/[slug]/page.tsx");
+  const legacy = load("app/campus/guias/[slug]/page.tsx");
+  assert.equal(publicGuides.length, 9);
+  assert.equal(page.generateStaticParams().length, 9);
+  assert.equal(legacy.generateStaticParams().length, 9);
+  assert.ok(load("app/guias/page.tsx").default);
+  for (const guide of publicGuides) {
+    assert.equal(guide.visibility, "public");
+    assert.ok(programs.some((p) => p.slug === guide.programSlug));
+    const metadata = await page.generateMetadata({ params: Promise.resolve({ slug: guide.slug }) });
+    assert.equal(metadata.alternates.canonical, `/guias/${guide.slug}`);
+    assert.equal(metadata.robots.index, true);
+    assert.equal(metadata.description, guide.description);
+    const schema = load("lib/guide-metadata").guideSchema(guide);
+    assert.equal(schema["@graph"][0]["@type"], "TechArticle");
+    assert.equal(schema["@graph"][1].itemListElement.length, 3);
+    await assert.rejects(legacy.default({ params: Promise.resolve({ slug: guide.slug }) }),
+      (error) => error.digest === `NEXT_REDIRECT;replace;/guias/${guide.slug};308;`);
+  }
+  assert.equal(publicGuideBySlug("toString"), undefined);
+  await assert.rejects(page.default({ params: Promise.resolve({ slug: "missing" }) }), /404/);
+  const catalog = load("data/campus/guides").guides;
+  catalog.push({ slug: "private-test", visibility: "campus" });
+  try { assert.equal(publicGuideBySlug("private-test"), undefined); }
+  finally { catalog.pop(); }
+});
+
+test("sitemap indexes all public guides and excludes campus; robots allows noindex discovery", () => {
+  const urls = load("app/sitemap").default().map((entry) => new URL(entry.url).pathname);
+  assert.ok(urls.includes("/guias"));
+  for (const guide of load("data/guides").publicGuides) assert.ok(urls.includes(`/guias/${guide.slug}`));
+  assert.ok(!urls.some((url) => url.startsWith("/campus")));
+  assert.equal(new Set(urls).size, urls.length);
+  assert.deepEqual(load("app/campus/layout.tsx").metadata.robots, { index: false, follow: false });
+  assert.equal(load("app/robots").default().rules.allow, "/");
+  const campus = load("app/campus/page.tsx").default();
+  assert.equal(campus.type.name, "CampusUnavailable");
+});
+
+test("guide analytics uses the existing adapter and preserves guide/program payloads", () => {
+  const emitted = [];
+  global.window = { dispatchEvent: (event) => emitted.push(event.detail) };
+  const analytics = load("lib/analytics");
+  try {
+    for (const event of ["guide_view", "guide_program_cta_click"]) {
+      analytics.track(event, { guide: "instalar-git", program: "frontend-react" });
+    }
+    assert.equal(emitted.length, 2);
+    assert.deepEqual(emitted[1].properties, { guide: "instalar-git", program: "frontend-react" });
+  } finally { delete global.window; }
+});
 test("all program landings have unique routes, complete modules and valid next steps", () => {
   assert.equal(new Set(programs.map((p) => p.slug)).size, programs.length);
   assert.equal(new Set(programs.map(programPath)).size, programs.length);

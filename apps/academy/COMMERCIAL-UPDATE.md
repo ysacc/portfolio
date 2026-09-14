@@ -1,5 +1,7 @@
 # Modelo comercial de Academy
 
+Actualización posterior: la separación entre guías públicas y Campus está documentada en [SEO-UPDATE.md](SEO-UPDATE.md). El modelo comercial y los brochures se conservan.
+
 La fuente de verdad está en `src/data/programs/{desde-cero,frontend-react,full-stack}.ts`.
 `src/data/program-commerce.ts` calcula horas en vivo, total de cuotas y formato de precios para la UI y JSON-LD. Metadata, cards y sticky CTA consumen los datos de programas.
 

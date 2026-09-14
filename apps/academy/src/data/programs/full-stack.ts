@@ -377,7 +377,7 @@ const program: Omit<Program, "modality"> = {
     "Participar en Scrum y documentación técnica con criterios claros.",
     "Presentar decisiones de implementación y trabajo en equipo.",
   ],
-  seoTitle: "Programa Full Stack JavaScript | Ysacc Roncal Academy",
+  seoTitle: "Curso Full Stack JavaScript Online",
   seoDescription:
     "Aprende React, Next.js, Node.js, NestJS, PostgreSQL, APIs, Scrum e IA y participa en proyectos individuales y grupales.",
   faq: [

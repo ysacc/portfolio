@@ -327,7 +327,7 @@ const program: Omit<Program, "modality"> = {
     "Simular una entrevista con mayor confianza y criterio",
   ],
   featured: true,
-  seoTitle: "Curso Frontend con React de 12 semanas | Ysacc Roncal Academy",
+  seoTitle: "Curso Frontend con React Online en Perú",
   seoDescription:
     "Aprende JavaScript, TypeScript, React, Git, APIs, Scrum e IA aplicada y desarrolla un proyecto integrador con mentoría.",
   workflow: [
