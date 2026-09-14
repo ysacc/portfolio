@@ -25,6 +25,18 @@ export type Program = {
   levelFrom: string;
   levelTo: string;
   duration: string;
+  pricing?: {
+    founders: number;
+    regular: number;
+    installments: { count: number; amount: number };
+    premium?: number;
+    reservation: number;
+  };
+  schedule?: {
+    classesPerWeek: number;
+    hoursPerClass: number;
+    cohorts?: { name: string; days: string }[];
+  };
   durationWeeks?: number;
   durationMonths?: number;
   phases?: string[];

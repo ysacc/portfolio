@@ -1347,3 +1347,11 @@ em {
     animation: none !important;
   }
 }
+
+/* Commercial details reuse the existing typography and palette. */
+.program-pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.program-price { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 1.25rem; min-width: 0; }
+.program-price dt { font-weight: 600; }
+.program-price dd { margin: .75rem 0 0; }
+.program-price strong { display: block; font-size: 1.75rem; }
+.program-price span { display: block; margin-top: .5rem; }

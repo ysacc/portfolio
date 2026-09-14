@@ -7,8 +7,24 @@ const program: Omit<Program, "modality"> = {
   number: "02",
   title: "Frontend Developer con React",
   shortTitle: "Frontend con React",
-  headline: "Aprende desarrollo web como se trabaja en proyectos reales.",
+  headline: "Aprende durante dos meses. Demu?stralo durante el tercero.",
   kind: "course",
+  pricing: {
+    founders: 499,
+    regular: 649,
+    installments: { count: 3, amount: 230 },
+    premium: 899,
+    reservation: 50,
+  },
+  schedule: {
+    classesPerWeek: 2,
+    hoursPerClass: 2,
+    cohorts: [
+      { name: "Cohorte A", days: "lunes y miércoles" },
+      { name: "Cohorte B", days: "martes y jueves" },
+    ],
+  },
+
   level: "Inicial → Junior",
   levelFrom: "Inicial",
   levelTo: "Bases para un rol Junior",

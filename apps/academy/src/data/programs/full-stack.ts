@@ -8,6 +8,22 @@ const program: Omit<Program, "modality"> = {
   headline:
     "Aprende a construir todo el sistema. Después aprende a construirlo con otros.",
   kind: "course",
+  pricing: {
+    founders: 799,
+    regular: 999,
+    installments: { count: 4, amount: 270 },
+    premium: 1290,
+    reservation: 100,
+  },
+  schedule: {
+    classesPerWeek: 2,
+    hoursPerClass: 2,
+    cohorts: [
+      { name: "Cohorte A", days: "lunes y miércoles" },
+      { name: "Cohorte B", days: "martes y jueves" },
+    ],
+  },
+
   level: "Intermedio",
   levelFrom: "Frontend con bases sólidas",
   levelTo: "Desarrollo end-to-end",

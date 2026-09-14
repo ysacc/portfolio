@@ -19,6 +19,8 @@ import { StickyProgramCTA } from "./StickyProgramCTA";
 import { ProgramInteractions } from "./ProgramInteractions";
 import { LearningComparison } from "@/components/shared/LearningComparison";
 import { InstructorSection } from "@/components/shared/InstructorSection";
+import { ProgramPricing } from "./ProgramPricing";
+import { liveHours, paymentPlans } from "@/data/program-commerce";
 export function ProgramLanding({ program: p }: { program: Program }) {
   const schema =
     p.kind === "course"
@@ -32,6 +34,16 @@ export function ProgramLanding({ program: p }: { program: Program }) {
           provider: { "@type": "Organization", name: site.name, url: site.url },
           coursePrerequisites: p.prerequisites.join(" "),
           teaches: p.outcomes,
+          ...(liveHours(p) ? { timeRequired: `PT${liveHours(p)}H` } : {}),
+          ...(p.durationWeeks ? { hasCourseInstance: {
+            "@type": "CourseInstance", courseMode: p.modality,
+            duration: `P${p.durationWeeks}W`,
+          } } : {}),
+          ...(p.pricing ? { offers: paymentPlans(p).map((plan) => ({
+            "@type": "Offer", name: plan.name, price: plan.price,
+            priceCurrency: "PEN", description: plan.detail,
+            url: site.url + programPath(p) + "#precios",
+          })) } : {}),
         }
       : null;
   return (
@@ -53,6 +65,7 @@ export function ProgramLanding({ program: p }: { program: Program }) {
           <a href="#como-aprenderas">Metodología</a>
           <a href="#resultado">Resultado</a>
           <a href="#preguntas">Preguntas</a>
+          {p.pricing && <a href="#precios">Precios</a>}
         </div>
       </nav>
       <ProgramOverview program={p} />
@@ -71,6 +84,7 @@ export function ProgramLanding({ program: p }: { program: Program }) {
       <InstructorSection />
       <ProgramNextSteps slugs={p.nextSteps} />
       <ProgramFAQ items={p.faq} />
+      <ProgramPricing program={p} />
       <ProgramCTA program={p} />
       <StickyProgramCTA
         slug={p.slug}

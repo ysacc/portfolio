@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import type { Program } from "@/data/programs";
 import { ProjectPreview } from "./ProjectShowcase";
+import { liveHours } from "@/data/program-commerce";
 export function ProgramHero({ program: p }: { program: Program }) {
   return (
     <section className="container program-hero" id="program-hero">
@@ -76,8 +77,8 @@ export function ProgramHero({ program: p }: { program: Program }) {
         })}
         <div>
           <Check size={19} />
-          <dt>Aprendizaje</dt>
-          <dd>Práctica + feedback</dd>
+          <dt>{p.schedule ? "Clases en vivo" : "Aprendizaje"}</dt>
+          <dd>{p.schedule ? `${liveHours(p)} h en vivo · ${p.schedule.classesPerWeek} clases/semana · ${p.schedule.hoursPerClass} h/clase` : "Práctica + feedback"}</dd>
         </div>
       </dl>
     </section>

@@ -6,10 +6,22 @@ const program: Omit<Program, "modality"> = {
   title: "Programación desde cero",
   headline: "Tu entrada al desarrollo web.",
   kind: "course",
+  pricing: {
+    founders: 249,
+    regular: 349,
+    installments: { count: 2, amount: 190 },
+    reservation: 50,
+  },
+  schedule: {
+    classesPerWeek: 2,
+    hoursPerClass: 2,
+  },
+
   level: "Sin experiencia → Fundamentos",
   levelFrom: "Sin experiencia",
   levelTo: "Fundamentos web",
-  duration: "Duración por confirmar",
+  duration: "8 semanas",
+  durationWeeks: 8,
   description:
     "Tu primera línea de código es el inicio. Construye bases sólidas y aprende a resolver problemas.",
   longDescription:

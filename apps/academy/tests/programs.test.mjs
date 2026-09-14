@@ -156,3 +156,25 @@ test("analytics remains optional and adapter failures do not interrupt the user"
     analytics.setAnalyticsAdapter(undefined);
   }
 });
+
+
+test("commercial plans match the approved prices and teaching hours", () => {
+  const { liveHours, paymentPlans } = load("data/program-commerce");
+  for (const [slug, weeks, hours, prices, reservation] of [
+    ["desde-cero", 8, 32, [249, 349, 380], 50],
+    ["frontend-react", 12, 48, [499, 649, 690, 899], 50],
+    ["full-stack", 16, 64, [799, 999, 1080, 1290], 100],
+  ]) {
+    const p = programs.find((p) => p.slug === slug);
+    assert.equal(p.durationWeeks, weeks);
+    assert.equal(liveHours(p), hours);
+    assert.deepEqual(paymentPlans(p).map((plan) => plan.price), prices);
+    assert.equal(p.pricing.reservation, reservation);
+    assert.ok(load("lib/program-metadata").programMetadata(p).description.includes(`${hours} h en vivo`));
+    if (slug !== "desde-cero") assert.equal(p.schedule.cohorts.length, 2);
+  }
+  for (const p of programs.filter((p) => p.kind !== "course")) {
+    assert.equal(p.pricing, undefined);
+    assert.equal(p.schedule, undefined);
+  }
+});

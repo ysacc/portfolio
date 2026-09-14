@@ -8,7 +8,7 @@ export const generalFAQ: FAQItem[] = [
   {
     question: "¿Las sesiones son en vivo?",
     answer:
-      "La propuesta combina sesiones en vivo, práctica y revisión. La modalidad y los horarios definitivos se confirmarán antes de la inscripción.",
+      "La propuesta combina sesiones en vivo, práctica y revisión. La modalidad es remota en vivo. Los horarios definitivos se confirmarán antes de la inscripción.",
   },
   {
     question: "¿Qué pasa si falto?",
