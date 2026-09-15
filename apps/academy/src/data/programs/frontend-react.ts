@@ -7,7 +7,7 @@ const program: Omit<Program, "modality"> = {
   number: "02",
   title: "Frontend Developer con React",
   shortTitle: "Frontend con React",
-  headline: "Aprende durante dos meses. Demu?stralo durante el tercero.",
+  headline: "Aprende durante dos meses. Demuéstralo durante el tercero.",
   kind: "course",
   pricing: {
     founders: 499,
