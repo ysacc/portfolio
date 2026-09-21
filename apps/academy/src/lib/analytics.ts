@@ -1,4 +1,13 @@
 export type AcademyEvent =
+  | "home_primary_cta_click"
+  | "home_program_click"
+  | "frontend_landing_view"
+  | "frontend_landing_cta_click"
+  | "frontend_landing_price_cta_click"
+  | "pathfinder_start"
+  | "pathfinder_answer"
+  | "pathfinder_result"
+  | "pathfinder_program_click"
   | "guide_view"
   | "guide_program_cta_click"
   | "program_view"
@@ -9,6 +18,8 @@ export type AcademyEvent =
   | "contact_submit"
   | "brochure_download";
 export type EventProperties = {
+  question?: string;
+  answer?: "yes" | "no" | "frontend" | "full-stack";
   guide?: string;
   program?: string;
   placement?: string;

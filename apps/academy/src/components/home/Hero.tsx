@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/shared/TrackedLink";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -12,28 +13,33 @@ export function Hero() {
     <section className="container hero">
       <div>
         <p className="eyebrow">
-          <span className="status-dot" /> APRENDE. CONSTRUYE. DESPLIEGA.
+          <span className="status-dot" /> FORMACIÓN PRÁCTICA EN DESARROLLO WEB
         </p>
         <h1>
-          Aprende desarrollo web como se trabaja en <em>proyectos reales.</em>
+          Aprende desarrollo web como se trabaja en{" "}
+          <em>proyectos profesionales.</em>
         </h1>
         <p className="hero-copy">
-          React, TypeScript, Next.js y Node.js. Del primer commit a producción,
-          con el acompañamiento de un desarrollador Senior con más de 7 años de
-          experiencia.
+          Clases en vivo, Git, Code Review, React, TypeScript, APIs y proyectos
+          integradores con acompañamiento técnico.
         </p>
         <div className="actions">
-          <Link className="button" href="/programas">
-            Explorar programas <ArrowUpRight size={18} />
-          </Link>
-          <Link className="text-link" href="/#metodologia">
-            Ver cómo aprenderás <ArrowRight size={17} />
+          <TrackedLink
+            className="button"
+            href="/frontend-react"
+            event="home_primary_cta_click"
+            properties={{ program: "frontend-react", placement: "hero" }}
+          >
+            Ver programa Frontend <ArrowUpRight size={18} />
+          </TrackedLink>
+          <Link className="text-link" href="/programas">
+            Ver todos los programas <ArrowRight size={17} />
           </Link>
         </div>
         <div className="hero-authority">
           <span>+7 años desarrollando software</span>
-          <span>Technical Lead / Arquitecto Frontend</span>
-          <span>Proyectos empresariales</span>
+          <span>Senior Developer · Technical Lead</span>
+          <span>React · Next.js · TypeScript · APIs · Git</span>
           <span>Mentoría directa</span>
         </div>
         <div className="hero-note">
@@ -110,7 +116,7 @@ export function Hero() {
         <div className="review">
           <GitPullRequest size={20} />
           <div>
-            <strong>feat: mi primer proyecto real</strong>
+            <strong>feat: mi primer proyecto integrador</strong>
             <small>Pull request · feedback que te hace crecer</small>
           </div>
           <span className="merged">Merged</span>

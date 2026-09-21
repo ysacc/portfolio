@@ -6,6 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/programas",
+    "/frontend-react",
+    "/empieza",
     "/guias",
     ...publicGuides.map((guide) => `/guias/${guide.slug}`),
     "/sobre-mi",

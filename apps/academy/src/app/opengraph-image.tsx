@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-export const alt = "Ysacc Roncal Academy · Desarrollo web con proyectos reales";
+export const alt = "Ysacc Roncal Academy · Desarrollo web con proyectos integradores";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export default function Image() {
@@ -20,7 +20,7 @@ export default function Image() {
         YSACC RONCAL / ACADEMY
       </div>
       <div style={{ fontSize: 70, fontWeight: 700, lineHeight: 1.1 }}>
-        Aprende desarrollo web con proyectos reales.
+        Aprende desarrollo web con proyectos integradores.
       </div>
       <div style={{ fontSize: 25, color: "#b3b5ad" }}>
         De aprender código a trabajar como desarrollador.

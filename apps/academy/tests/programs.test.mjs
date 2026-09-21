@@ -36,6 +36,98 @@ function load(file) {
 }
 const { programs, programPath, weeks } = load("data/programs");
 
+test("pathfinder covers every complete answer combination and requires all answers", () => {
+  const { getRecommendedProgram } = load("lib/pathfinder");
+  assert.equal(getRecommendedProgram({}), null);
+  for (let mask = 0; mask < 32; mask++) {
+    for (const goal of ["frontend", "full-stack"]) {
+      const answers = Object.fromEntries(["programming", "htmlCss", "javascript", "apis", "react"].map((id, i) => [id, mask & (1 << i) ? "yes" : "no"]));
+      answers.goal = goal;
+      const expected = (mask & 7) !== 7 ? "desde-cero" : mask === 31 && goal === "full-stack" ? "full-stack" : "frontend-react";
+      assert.equal(getRecommendedProgram(answers).slug, expected, JSON.stringify(answers));
+      assert.ok(getRecommendedProgram(answers).reason);
+      for (const id of Object.keys(answers)) {
+        const incomplete = { ...answers };
+        delete incomplete[id];
+        assert.equal(getRecommendedProgram(incomplete), null);
+      }
+    }
+  }
+});
+
+test("commercial pages render shared data, independent canonicals and different SEO intent", () => {
+  const { renderToStaticMarkup } = nativeRequire("react-dom/server");
+  const landing = load("app/frontend-react/page.tsx");
+  const starts = load("app/empieza/page.tsx");
+  const program = programs.find((p) => p.slug === "frontend-react");
+  const academic = load("lib/program-metadata").programMetadata(program);
+  assert.equal(landing.metadata.alternates.canonical, "/frontend-react");
+  assert.equal(academic.alternates.canonical, "/programas/frontend-react");
+  assert.equal(starts.metadata.alternates.canonical, "/empieza");
+  assert.notEqual(landing.metadata.title, academic.title);
+  assert.notEqual(landing.metadata.description, academic.description);
+  for (const page of [landing, starts]) {
+    assert.equal(page.metadata.robots.index, true);
+    assert.equal(page.metadata.openGraph.siteName, load("data/site").site.name);
+    assert.equal(page.metadata.twitter.card, "summary_large_image");
+    assert.ok(renderToStaticMarkup(page.default()).includes("<h1>"));
+  }
+  let html = renderToStaticMarkup(landing.default());
+  assert.ok(html.includes(program.duration));
+  assert.ok(html.includes("48 horas en vivo"));
+  assert.ok(html.includes('href="/programas/frontend-react"'));
+  assert.ok(!html.includes("application/ld+json"), "Course schema belongs to academic page only");
+  const original = { pricing: program.pricing, duration: program.duration, technologies: program.technologies, modality: program.modality, durationWeeks: program.durationWeeks };
+  try {
+    program.pricing = { founders: 123, regular: 234, installments: { count: 2, amount: 150 }, premium: 456, reservation: 12 };
+    program.duration = "Duración de prueba";
+    program.durationWeeks = 10;
+    program.modality = "Modalidad de prueba";
+    program.technologies = ["Stack de prueba"];
+    html = renderToStaticMarkup(landing.default());
+    for (const text of ["S/ 123", "S/ 234", "S/ 300", "S/ 456", "S/ 12", "Duración de prueba", "40 horas en vivo", "Modalidad de prueba", "Stack de prueba"]) assert.ok(html.includes(text), text);
+    assert.ok(!html.includes("S/ 499"));
+  } finally { Object.assign(program, original); }
+});
+
+test("contact helper uses configured WhatsApp or program-specific contact fallback", () => {
+  const { programContact } = load("lib/contact");
+  const p = programs.find((p) => p.slug === "frontend-react");
+  assert.deepEqual(programContact(p, ""), { href: "/contacto?programa=frontend-react", channel: "email" });
+  const contact = programContact(p, "51999999999");
+  assert.equal(new URL(contact.href).hostname, "wa.me");
+  assert.ok(new URL(contact.href).searchParams.get("text").includes(p.title));
+});
+
+test("brand assets and conversion entry points exist without exposing Campus", () => {
+  assert.ok(readFileSync(resolve(root, "app/icon.svg"), "utf8").includes('viewBox="0 0 32 32"'));
+  assert.equal(readFileSync(resolve(root, "app/apple-icon.png")).subarray(1, 4).toString(), "PNG");
+  const { renderToStaticMarkup } = nativeRequire("react-dom/server");
+  const hero = renderToStaticMarkup(load("components/home/Hero.tsx").Hero());
+  assert.ok(hero.includes('href="/frontend-react"'));
+  assert.ok(hero.includes("Ver todos los programas"));
+  assert.ok(!hero.includes("proyectos reales"));
+  const footer = renderToStaticMarkup(load("components/Sections.tsx").Footer());
+  for (const path of ["/programas", "/guias", "/empieza", "/sobre-mi", "/contacto"]) assert.ok(footer.includes(`href="${path}"`));
+  assert.ok(!footer.includes('href="/campus"'));
+  const sitemap = load("app/sitemap").default().map((entry) => new URL(entry.url).pathname);
+  assert.ok(sitemap.includes("/frontend-react"));
+  assert.ok(sitemap.includes("/empieza"));
+});
+
+test("commercial analytics reaches the adapter with no personal information", () => {
+  const emitted = [];
+  global.window = { dispatchEvent: () => {} };
+  const analytics = load("lib/analytics");
+  const events = ["home_primary_cta_click", "home_program_click", "frontend_landing_view", "frontend_landing_cta_click", "frontend_landing_price_cta_click", "pathfinder_start", "pathfinder_answer", "pathfinder_result", "pathfinder_program_click"];
+  analytics.setAnalyticsAdapter((event, properties) => emitted.push({ event, properties }));
+  try {
+    for (const event of events) analytics.track(event, { program: "frontend-react" });
+    assert.deepEqual(emitted.map((entry) => entry.event), events);
+    for (const entry of emitted) assert.deepEqual(Object.keys(entry.properties), ["program"]);
+  } finally { delete global.window; analytics.setAnalyticsAdapter(undefined); }
+});
+
 test("published API service example handles success, HTTP errors and invalid JSON contracts", async () => {
   const guide = load("data/guides").publicGuideBySlug("como-consumir-api-rest-react");
   const source = guide.article.find((section) => section.command?.startsWith("export async function")).command;
@@ -120,7 +212,7 @@ test("public guides generate routes, metadata and schemas without exposing campu
 test("sitemap indexes all public guides and excludes campus; robots allows noindex discovery", () => {
   const urls = load("app/sitemap").default().map((entry) => new URL(entry.url).pathname);
   assert.ok(urls.includes("/guias"));
-  assert.equal(urls.length, 25);
+  assert.equal(urls.length, 27);
   for (const guide of load("data/guides").publicGuides) assert.ok(urls.includes(`/guias/${guide.slug}`));
   assert.ok(!urls.some((url) => url.startsWith("/campus")));
   assert.equal(new Set(urls).size, urls.length);

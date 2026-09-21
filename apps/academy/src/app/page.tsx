@@ -19,9 +19,9 @@ export default function Home() {
     <>
       <Hero />
       <StackStrip />
+      <ProgramsSection />
       <Differential />
       <OutcomesSection />
-      <ProgramsSection />
       <TechnologySection />
       <LearningPath />
       <CampusShortcutSection />

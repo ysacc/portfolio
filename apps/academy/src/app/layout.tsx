@@ -4,24 +4,32 @@ import { Footer } from "@/components/Sections";
 import { site, description } from "@/data/site";
 import "./globals.css";
 import "./programs.css";
+import "./commerce.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   verification: {
     google: "efK1JoNJYPo35xUC9qZgacCsnk0Mh41Ui89pubhAfZw",
   },
   title: {
-    default: "Cursos de Desarrollo Web y React Online en Perú | Ysacc Roncal Academy",
+    default:
+      "Cursos de Desarrollo Web y React Online en Perú | Ysacc Roncal Academy",
     template: "%s | Ysacc Roncal Academy",
   },
   description,
   openGraph: {
     title: site.name,
     description,
+    url: site.url,
     siteName: site.name,
     locale: "es_PE",
     type: "website",
   },
-  twitter: { card: "summary_large_image", title: site.name, description },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description,
+    images: ["/opengraph-image"],
+  },
 };
 export default function RootLayout({
   children,

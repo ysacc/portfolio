@@ -27,7 +27,7 @@ export const learningResults = [
   "Recibir Code Review",
   "Gestionar tareas y priorizar trabajo",
   "Usar IA profesionalmente",
-  "Construir proyectos reales",
+  "Construir proyectos integradores",
   "Presentar decisiones técnicas",
   "Construir aplicaciones web modernas",
   "Consumir APIs REST",

@@ -1,10 +1,19 @@
 import Link from "next/link";
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 export function Brand() {
   return (
     <Link className="brand" href="/" aria-label="Ysacc Roncal Academy, inicio">
       <span className="brand-icon">
-        <Code2 size={23} />
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="7" fill="#101110" />
+          <path
+            d="m5 8 5 7 5-7M10 15v9M19 24V8h4a4 4 0 0 1 0 8h-4m4 0 5 8"
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="3"
+            strokeLinejoin="round"
+          />
+        </svg>
       </span>
       <span>
         ysacc roncal<span className="brand-sub">ACADEMY</span>
@@ -31,7 +40,7 @@ export function Navbar() {
           ))}
         </nav>
         <Link className="button small nav-cta" href="/contacto">
-          Hablemos <ArrowUpRight size={16} />
+          Solicitar información <ArrowUpRight size={16} />
         </Link>
         <details className="mobile-nav">
           <summary>Menú</summary>
@@ -41,7 +50,7 @@ export function Navbar() {
                 {label}
               </Link>
             ))}
-            <Link href="/contacto">Hablemos ↗</Link>
+            <Link href="/contacto">Solicitar información ↗</Link>
           </nav>
         </details>
       </div>

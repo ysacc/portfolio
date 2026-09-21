@@ -77,11 +77,11 @@ export function LearningPath() {
           <div className="outcome">
             <Check size={22} />
             <p>
-              Termina con un proyecto real desplegado, documentado y listo para
+              Termina con un proyecto integrador desplegado, documentado y listo para
               explicar en una entrevista.
             </p>
           </div>
-          <Link className="button" href="/contacto?programa=frontend-react">
+          <Link className="button" href="/frontend-react">
             Me interesa este programa <ArrowUpRight size={17} />
           </Link>
         </div>
@@ -188,6 +188,13 @@ export function Footer() {
         <Brand />
         <p>De aprender código a trabajar como desarrollador.</p>
       </div>
+      <nav className="footer-links" aria-label="Academy">
+        <Link href="/programas">Programas</Link>
+        <Link href="/guias">Guías</Link>
+        <Link href="/empieza">Empieza</Link>
+        <Link href="/sobre-mi">Sobre mí</Link>
+        <Link href="/contacto">Contacto</Link>
+      </nav>
       <div className="footer-links">
         <a href="https://www.ysaccroncal.dev/">ysaccroncal.dev ↗</a>
         <a href="https://brdigitalsystem.online/">BR Digital System ↗</a>
