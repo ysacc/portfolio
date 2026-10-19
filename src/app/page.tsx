@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Hero />
       <Section title="Frontend como especialidad. Visión integral del producto." className="py-12 md:py-16">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {expertise.map((item, index) => (
             <Link key={item.id} href="/especialidades" className={`expertise-summary group flex flex-col rounded-2xl border p-6 transition-colors hover:border-accent/60 ${index === 0 ? "border-accent/40 bg-accent/5" : "border-hairline/15 bg-surface"}`}>
               <p className="eyebrow">{index === 0 ? "Especialidad principal" : "Capacidad complementaria"}</p>

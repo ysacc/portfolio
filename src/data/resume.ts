@@ -7,10 +7,18 @@ export const resumeData = {
       "role": "Full Stack Developer",
       "period": "09/03/2026 - 16/09/2026",
       "engagement": "Consultoría paralela",
-      "description": "Desarrollo y mantenimiento de aplicaciones web frontend y backend.",
+      "description": "Desarrollo de aplicaciones web empresariales con React y Next.js, arquitectura de microfrontends, integración de microservicios con Node.js y NestJS, y funcionalidades en tiempo real mediante WebSockets y Cloud Firestore.",
       "highlights": [
-        "Implementación y optimización de funcionalidades e integración de servicios y APIs.",
-        "Gestión de bases de datos, resolución de incidencias técnicas y mejoras de rendimiento."
+        "Desarrollo de interfaces y componentes reutilizables con React y Next.js; implementación y mantenimiento de microfrontends.",
+        "Desarrollo e integración de microservicios y APIs con Node.js y NestJS.",
+        "Sincronización en tiempo real mediante WebSockets y listeners onSnapshot de Firestore.",
+        "Integración de Firebase, Google Cloud Platform y Telegram API.",
+        "Mantenimiento, optimización y resolución de incidencias; colaboración y control de versiones con Bitbucket."
+      ],
+      "tech": [
+        "React", "Next.js", "Node.js", "NestJS", "Google Cloud Platform (GCP)",
+        "Firebase", "Cloud Firestore", "WebSockets", "onSnapshot", "Telegram API",
+        "Microservicios", "Microfrontends", "Bitbucket"
       ],
       "location": "Panamá"
     },
@@ -214,45 +222,21 @@ export const resumeData = {
   ],
   "skills": {
     "Frontend": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Angular",
-      "React Native",
-      "Vue",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS"
+      "React", "Next.js", "TypeScript", "JavaScript", "Angular", "Tailwind CSS",
+      "SPA", "Microfrontends", "Componentes reutilizables", "Design Systems",
+      "React Native", "Vue", "HTML5", "CSS3", "Figma", "Diseño adaptable"
     ],
-    "Arquitectura de interfaces": [
-      "SPA",
-      "Microfrontends",
-      "Componentes reutilizables",
-      "Design Systems",
-      "Figma",
-      "Diseño adaptable"
+    "Full Stack": [
+      "Node.js", "NestJS", "Express", "Python", "FastAPI", "APIs REST",
+      "Microservicios", "WebSockets", "Bases de datos", "CI/CD"
     ],
-    "Full Stack y cloud": [
-      "Node.js",
-      "Express",
-      "Python",
-      "FastAPI",
-      "APIs REST",
-      "AWS Lambda",
-      "API Gateway",
-      "S3",
-      "CloudFront",
-      "DynamoDB",
-      "CI/CD"
+    "Cloud y servicios": [
+      "AWS", "Google Cloud Platform (GCP)", "Firebase", "Cloud Firestore",
+      "DynamoDB", "S3", "Lambda", "API Gateway", "CloudFront"
     ],
     "IA aplicada": [
-      "AWS Bedrock (integración)",
-      "OpenAI API",
-      "Claude API",
-      "LLM",
-      "Automatización de prompts",
-      "Web scraping"
+      "AWS Bedrock (integración)", "OpenAI API", "Claude API", "LLM",
+      "Automatización mediante prompts", "Web scraping"
     ]
   },
   "education": [
