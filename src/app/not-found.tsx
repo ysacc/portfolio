@@ -1,16 +1,15 @@
 import Link from 'next/link';
-import { Button } from '@/components/Button';
 
 export default function NotFound() {
     return (
         <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
-            <h2 className="text-4xl font-bold">404 - Page Not Found</h2>
+            <h1 className="text-4xl font-bold">404 - Página no encontrada</h1>
             <p className="text-gray-600 dark:text-gray-400 font-medium">
-                The page you are looking for does not exist or has been moved.
+                La página que buscas no existe o cambió de ubicación.
             </p>
-            <Button as="a" href="/" variant="primary">
-                Return Home
-            </Button>
+            <Link href="/" className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-accent-fg hover:bg-accent-strong">
+                Volver al inicio
+            </Link>
         </div>
     );
 }

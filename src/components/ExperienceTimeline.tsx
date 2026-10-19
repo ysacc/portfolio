@@ -1,55 +1,23 @@
-"use client";
+import type { Experience } from "@/data/resume";
 
-import { Experience } from "@/data/resume";
-import { motion } from "framer-motion";
-
-export function ExperienceTimeline({ items }: { items: Experience[] }) {
-    return (
-        <div className="relative border-l border-gray-300 dark:border-gray-800 ml-3">
-            {items.map((item, index) => (
-                <ExperienceItem key={index} {...item} index={index} />
-            ))}
-        </div>
-    );
-}
-
-function ExperienceItem({ company, role, period, description, highlights, tech, index }: Experience & { index: number }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="mb-10 last:mb-0 ml-6"
-        >
-            <div className="absolute -left-[6.5px] mt-1.5 size-3 rounded-full border border-white bg-yellow-500 dark:border-gray-950 shadow-sm" />
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">{role}</h3>
-                <span className="text-sm font-medium text-yellow-600 dark:text-yellow-500">{period}</span>
+export function ExperienceTimeline({ items }: { items: readonly Experience[] }) {
+  return (
+    <ol className="space-y-10">
+      {items.map(item => (
+        <li key={`${item.company}-${item.period}`} className="border-t border-hairline/15 pt-6">
+          <article>
+            <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
+              <h2 className="text-xl font-semibold">{item.role}</h2>
+              <p className="shrink-0 text-sm font-medium text-accent-strong dark:text-accent">{item.period}</p>
             </div>
-            <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400">{company}</h4>
-            <p className="mt-3 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                {description}
-            </p>
-            {highlights && (
-                <ul className="mt-4 space-y-2">
-                    {highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-                            <span className="mt-1.5 size-1.5 rounded-full bg-yellow-500 shrink-0" />
-                            {h}
-                        </li>
-                    ))}
-                </ul>
-            )}
-            {tech && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {tech.map((t) => (
-                        <span key={t} className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-500 dark:bg-gray-900 dark:text-gray-400 border border-gray-200 dark:border-gray-800">
-                            {t}
-                        </span>
-                    ))}
-                </div>
-            )}
-        </motion.div>
-    );
+            <h3 className="mt-2 font-medium">{item.company}</h3>
+            {(item.engagement || item.location) && <p className="mt-2 text-xs leading-relaxed text-muted">{[item.engagement, item.location && `Empresa en ${item.location}`].filter(Boolean).join(" · ")}</p>}
+            <p className="mt-4 max-w-3xl leading-relaxed text-muted">{item.description}</p>
+            {item.highlights && <ul className="mt-4 max-w-3xl list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">{item.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul>}
+            {item.tech && <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Tecnologías en ${item.company}`}>{item.tech.map(tech => <li key={tech} className="rounded-lg border border-hairline/15 px-3 py-1.5 text-xs text-muted">{tech}</li>)}</ul>}
+          </article>
+        </li>
+      ))}
+    </ol>
+  );
 }

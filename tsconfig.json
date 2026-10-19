@@ -34,10 +34,16 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    ".next-qa/types/**/*.ts",
+    ".next-qa/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "apps"
+    "apps",
+    ".qa-tools",
+    "qa-artifacts",
+    "playwright-report",
+    "test-results"
   ]
 }

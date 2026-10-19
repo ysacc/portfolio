@@ -1,123 +1,284 @@
-export interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  highlights?: string[];
-  tech?: string[];
-}
-
+export interface Experience { company: string; role: string; period: string; location?: string; engagement?: string; description: string; highlights?: string[]; tech?: string[]; }
 export const resumeData = {
-  summary:
-    "Senior Full Stack Developer with over 7 years of experience building modern, scalable, and user-centric web applications. Specialized in React.js, Next.js, and TypeScript for the front-end, and Node.js/AWS for the back-end. Strong focus on componentization, design systems, performance, and maintainability. Extensive experience in high-demand enterprise and banking platforms (BBVA, Interbank, SANNA), leading seamless integration between front-end and back-end (REST APIs, cloud services). My Full Stack expertise enables me to deliver robust solutions across the entire development lifecycle.",
-  experience: [
+  "summary": "Desarrollador Frontend Senior con más de siete años de experiencia en software empresarial. Especializado en React, Next.js, TypeScript, arquitectura SPA y microfrontends, con experiencia en liderazgo técnico. Complemento el desarrollo frontend con Node.js, Python, FastAPI, AWS e integración de servicios LLM para banca, salud, educación y retail.",
+  "experience": [
     {
-      company: "Entelgy",
-      role: "Senior Front-End Developer",
-      period: "04/2024 – 12/2025",
-      description:
-        "Front-End interface development for investment and customer management banking platforms (BBVA, Interbank).",
-      highlights: [
-        "Reusable component construction with React and TypeScript, following scalability and Clean Code principles.",
-        "Performance improvements, production incident resolution, and visual support for marketing campaigns.",
-        "Integration with analytics and tracking tools (GTM, Braze, Hotjar).",
-        "Worked under Scrum and Kanban agile methodologies in multi-team environments.",
+      "company": "OXIACORE PROJECT CORP.",
+      "role": "Full Stack Developer",
+      "period": "09/03/2026 - 16/09/2026",
+      "engagement": "Consultoría paralela",
+      "description": "Desarrollo y mantenimiento de aplicaciones web frontend y backend.",
+      "highlights": [
+        "Implementación y optimización de funcionalidades e integración de servicios y APIs.",
+        "Gestión de bases de datos, resolución de incidencias técnicas y mejoras de rendimiento."
       ],
-      tech: ["React", "TypeScript", "GTM", "Braze", "Hotjar", "Scrum"],
+      "location": "Panamá"
     },
     {
-      company: "SafetyMind",
-      role: "Senior Front-End / Full Stack Developer",
-      period: "05/2024 – 12/2024",
-      description:
-        "Web and mobile interface development for a real-time risk monitoring and control platform.",
-      highlights: [
-        "Implementation of dashboards, notification flows, and data visualization.",
-        "Integration with Node.js backend services and REST APIs deployed on AWS.",
+      "company": "Amaris Consulting / Principal",
+      "role": "Desarrollador Full Stack Senior",
+      "period": "12/2025 - 07/2026",
+      "description": "Desarrollo desde cero del frontend de un asistente comercial con IA para Principal.",
+      "highlights": [
+        "Arquitectura de interfaces, componentes reutilizables y formularios dinámicos con React, Next.js y TypeScript.",
+        "Integración de una solución de IA existente en AWS Bedrock; coordinación con backend para adaptar servicios e interfaces.",
+        "Implementación de diseños Figma e integración de APIs REST; resolución de incidencias de estilos, CSP, rutas y despliegues."
       ],
-      tech: ["Node.js", "AWS", "APIs REST", "React Native"],
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "AWS Bedrock (integración)",
+        "AWS Lambda",
+        "CloudFront",
+        "REST",
+        "Figma",
+        "Jira"
+      ]
     },
     {
-      company: "CSTI Corp",
-      role: "Front-End Developer",
-      period: "12/2023 – 07/2024",
-      description:
-        "Internal web application development for Laureate Education / UTP.",
-      highlights: [
-        "Optimization of reusable components and improvement of code maintainability.",
-        "Worked with React, TypeScript, Azure DevOps, and Jira.",
+      "company": "Inclusión Empresarial E.I.R.L.",
+      "role": "Consultoría independiente: investigación científica con IA",
+      "period": "07/2025 - 01/2026",
+      "engagement": "Fuera del horario laboral y durante fines de semana",
+      "description": "Desarrollo de una plataforma de búsqueda multilingüe de literatura científica para tesis y publicaciones académicas.",
+      "highlights": [
+        "Búsqueda en Google Académico y extracción de información mediante scraping en Python.",
+        "Procesamiento asistido por LLM con OpenAI API y automatización mediante múltiples prompts.",
+        "Construcción de servicios API con FastAPI para organizar las consultas y el procesamiento."
       ],
-      tech: ["React", "TypeScript", "Azure DevOps", "Jira"],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "OpenAI API",
+        "LLM",
+        "Scraping académico"
+      ]
     },
     {
-      company: "Altimea",
-      role: "Front-End Developer",
-      period: "12/2023 – 02/2024",
-      description:
-        "Development of the internal academic management system for the Universidad Tecnológica del Perú.",
-      highlights: [
-        "Creation of the Front-End base project and mentoring for junior developers.",
-        "Used React, TypeScript, TailwindCSS, SonarQube, and Azure.",
+      "company": "Entelgy SAC",
+      "role": "Líder técnico / Arquitecto Frontend",
+      "period": "04/2024 - 12/2025",
+      "description": "Diseño de arquitecturas SPA y microfrontends para soluciones bancarias de Interbank y BBVA.",
+      "highlights": [
+        "Desarrollo de interfaces e integración de APIs corporativas.",
+        "Liderazgo de un equipo Scrum, definición de estándares y apoyo a decisiones de arquitectura y calidad."
       ],
-      tech: ["React", "TypeScript", "TailwindCSS", "SonarQube", "Azure"],
+      "tech": [
+        "Angular",
+        "React",
+        "TypeScript",
+        "AWS",
+        "REST",
+        "CI/CD"
+      ]
     },
     {
-      company: "Beyond",
-      role: "Front-End Developer",
-      period: "02/2022 – 02/2023",
-      description:
-        "Web platform development and maintenance for Pacífico / SANNA.",
-      highlights: [
-        "Creation of reusable components and improvement of delivery speed by approximately 30%.",
-        "Implementation of continuous integration (CI/CD) and worked with React, Next.js and TypeScript.",
+      "company": "SafetyMind SAC",
+      "role": "Desarrollador Frontend Senior / Full Stack",
+      "period": "05/2024 - 12/2024",
+      "engagement": "Contrato por proyecto / tiempo parcial",
+      "description": "Desarrollo de aplicaciones web y móviles para monitoreo de riesgos.",
+      "highlights": [
+        "Dashboards, notificaciones y visualización de datos; integración de servicios Node.js sobre AWS."
       ],
-      tech: ["React", "Next.js", "TypeScript", "CI/CD"],
+      "tech": [
+        "React",
+        "JavaScript",
+        "Ionic",
+        "Capacitor",
+        "Node.js",
+        "Python",
+        "AWS S3",
+        "DynamoDB",
+        "API Gateway",
+        "Java",
+        "Spring Boot"
+      ]
     },
     {
-      company: "IPS Consulting",
-      role: "Full Stack Developer",
-      period: "05/2022 – 12/2023",
-      description:
-        "Involved in the Front-End development of a corporate ERP for Supermercados Peruanos.",
-      highlights: [
-        "Integration of web interfaces with backend services and REST APIs.",
-        "Collaboration on automated deployments and CI/CD flows.",
+      "company": "CSTI SAC",
+      "role": "Desarrollador Frontend Senior / Full Stack",
+      "period": "12/2023 - 07/2024",
+      "engagement": "Empleo principal",
+      "description": "Desarrollo de aplicaciones internas para Laureate Education / UTP.",
+      "highlights": [
+        "Mejora de la reutilización de componentes y la mantenibilidad con React y TypeScript."
       ],
-      tech: ["React", "Node.js", "APIs REST", "CI/CD"],
+      "tech": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Python",
+        "HubSpot",
+        "Jira"
+      ]
     },
+    {
+      "company": "OBI Consulting",
+      "role": "Desarrollador Frontend Senior",
+      "period": "01/2024 - 06/2024",
+      "engagement": "Contrato por proyecto / tiempo parcial",
+      "description": "Desarrollo de interfaces para una solución de gestión académica.",
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Pruebas unitarias",
+        "Sonar",
+        "Figma"
+      ]
+    },
+    {
+      "company": "Altimea SAC",
+      "role": "Desarrollador Frontend Senior",
+      "period": "12/2023 - 02/2024",
+      "engagement": "Consultoría adicional / freelance",
+      "description": "Construcción de la base frontend de un sistema de gestión académica para UTP.",
+      "highlights": [
+        "Capacitación y acompañamiento a desarrolladores junior."
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Azure",
+        "Sonar",
+        "Figma"
+      ]
+    },
+    {
+      "company": "IPS Consulting EIRL",
+      "role": "Arquitecto de soluciones / Líder técnico Full Stack",
+      "period": "05/2022 - 12/2023",
+      "engagement": "Empleo principal",
+      "description": "Diseño de soluciones web para Supermercados Peruanos.",
+      "highlights": [
+        "Desarrollo de aplicaciones React/Next.js e integración de microservicios Node.js y APIs REST.",
+        "Participación en automatización de despliegues y pipelines CI/CD para producción."
+      ],
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "REST",
+        "Oracle",
+        "MySQL",
+        "GCP",
+        "CI/CD"
+      ]
+    },
+    {
+      "company": "Beyond SAC",
+      "role": "Desarrollador Frontend Senior",
+      "period": "02/2022 - 02/2023",
+      "engagement": "Consultoría adicional / freelance",
+      "description": "Desarrollo de plataformas para Pacífico / SANNA.",
+      "highlights": [
+        "Construcción de componentes reutilizables con React, Next.js y TypeScript."
+      ],
+      "tech": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "GitLab",
+        "Bitbucket",
+        "Figma"
+      ]
+    },
+    {
+      "company": "FKSS SAC",
+      "role": "Desarrollador Full Stack",
+      "period": "01/2020 - 11/2022",
+      "engagement": "Empleo principal",
+      "description": "Desarrollo y mantenimiento del sitio web, funcionalidades conectadas a MySQL y CRM.",
+      "highlights": [
+        "Automatización de procesos internos mediante scripts Python."
+      ],
+      "tech": [
+        "React",
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "MySQL",
+        "WordPress",
+        "HTML",
+        "CSS",
+        "Python"
+      ]
+    }
   ],
-  skills: {
-    frontend: [
-      "React.js",
+  "skills": {
+    "Frontend": [
+      "React",
       "Next.js",
       "TypeScript",
-      "Vue.js",
-      "TailwindCSS",
-      "Design Systems",
+      "JavaScript",
+      "Angular",
+      "React Native",
+      "Vue",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS"
     ],
-    state: ["Context API", "Redux", "Zustand"],
-    quality: ["Performance", "Accessibility", "Clean Code", "Testing (Jest)"],
-    backend: ["Node.js", "REST APIs"],
-    cloud: ["AWS", "GitLab CI/CD"],
-    methodologies: ["Scrum", "Kanban"],
+    "Arquitectura de interfaces": [
+      "SPA",
+      "Microfrontends",
+      "Componentes reutilizables",
+      "Design Systems",
+      "Figma",
+      "Diseño adaptable"
+    ],
+    "Full Stack y cloud": [
+      "Node.js",
+      "Express",
+      "Python",
+      "FastAPI",
+      "APIs REST",
+      "AWS Lambda",
+      "API Gateway",
+      "S3",
+      "CloudFront",
+      "DynamoDB",
+      "CI/CD"
+    ],
+    "IA aplicada": [
+      "AWS Bedrock (integración)",
+      "OpenAI API",
+      "Claude API",
+      "LLM",
+      "Automatización de prompts",
+      "Web scraping"
+    ]
   },
-  education: [
+  "education": [
     {
-      degree: "Computer Science / Information Technology",
-      institution: "Relevant Institution",
-      period: "2011 - 2015",
+      "degree": "Computación e Informática, formación técnica",
+      "institution": "Instituto InterAmericano",
+      "period": "2017 - 2019"
     },
+    {
+      "degree": "Estudios de Ingeniería de Sistemas",
+      "institution": "Universidad Peruana de Ciencias Aplicadas (UPC)",
+      "period": "2012 - 2015"
+    }
   ],
-  certifications: [
-    "React Basic",
-    "JS Intermediate",
-    "Python Basic",
-    "Intro Cybersecurity",
-    "Front End Dev Libraries",
-  ],
-  languages: [
-    { name: "Spanish", level: "Native" },
-    { name: "English", level: "B1 / Professional" },
-    { name: "German", level: "A1" },
-  ],
-};
+  "languages": [
+    {
+      "name": "Español",
+      "level": "Nativo"
+    },
+    {
+      "name": "Inglés",
+      "level": "B1 / Intermedio"
+    },
+    {
+      "name": "Alemán",
+      "level": "A1 / Básico"
+    }
+  ]
+} satisfies {summary: string; experience: Experience[]; skills: Record<string,string[]>; education: {degree: string; institution: string; period: string}[]; languages: {name: string; level: string}[]};

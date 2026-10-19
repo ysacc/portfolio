@@ -1,0 +1,45 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { navigation } from '../../src/data/navigation.ts';
+import { projectsData } from '../../src/data/projects.ts';
+
+const origin = process.env.QA_ORIGIN ?? 'http://localhost:3100';
+const domain = 'https://www.ysaccroncal.dev';
+const paths = [...navigation.map(item => item.href), ...projectsData.map(project => `/proyectos/${project.slug}`)];
+const results = [];
+const internal = new Set();
+const titles = new Set();
+for (const path of paths) {
+  const response = await fetch(origin + path);
+  assert.equal(response.status, 200, path);
+  const html = await response.text();
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)?.[0];
+  assert(main, path);
+  assert.match(html, /<html[^>]+lang="es"/);
+  assert.equal((main.match(/<h1\b/g) || []).length, 1, path);
+  const canonical = html.match(/<link rel="canonical" href="([^\"]+)"/)?.[1];
+  assert.equal(new URL(canonical).href, new URL(domain + path).href);
+  const og = html.match(/<meta property="og:url" content="([^\"]+)"/)?.[1];
+  assert.equal(new URL(og).href, new URL(domain + path).href);
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  assert(title && !titles.has(title), path);
+  titles.add(title);
+  assert.match(html, /<meta name="description" content="[^\"]+"/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image"/);
+  const jsonLd = JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/)?.[1]);
+  assert.equal(jsonLd['@type'], 'Person');
+  assert.equal(jsonLd.name, 'Ysacc Roncal');
+  assert.equal(jsonLd.url, domain);
+  for (const [, href] of main.matchAll(/href="([^"<>]+)"/g)) if (href.startsWith('/') && !href.startsWith('/_next/')) internal.add(href.replaceAll('&amp;', '&'));
+  results.push({ path, status: response.status, title, canonical, openGraph: og, jsonLd: true });
+}
+for (const href of internal) assert.equal((await fetch(origin + href, { redirect: 'manual' })).status, 200, href);
+const sitemap = await (await fetch(origin + '/sitemap.xml')).text();
+for (const path of paths) assert(sitemap.includes(`<loc>${domain}${path}</loc>`), path);
+for (const old of ['/projects', '/resume', '/contact']) assert(!sitemap.includes(`<loc>${domain}${old}</loc>`));
+const robots = await (await fetch(origin + '/robots.txt')).text();
+assert(robots.includes(`${domain}/sitemap.xml`));
+const pdf = await fetch(origin + '/resume.pdf');
+assert.deepEqual(Buffer.from(await pdf.arrayBuffer()), fs.readFileSync('public/resume.pdf'));
+fs.writeFileSync('qa-artifacts/technical.json', JSON.stringify({ pages: results, internalLinks: [...internal], sitemap: true, robots: true, resumeIdentical: true }, null, 2));
+console.log('20 páginas: H1, títulos, descripción, canonical, Open Graph, Twitter, JSON-LD, enlaces, sitemap, robots y CV correctos.');

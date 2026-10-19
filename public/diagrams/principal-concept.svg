@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="506" viewBox="0 0 900 506" role="img" aria-labelledby="title desc">
+  <title id="title">Flujo conceptual del asistente de Principal</title>
+  <desc id="desc">Interfaz de agentes conectada mediante servicios API a una solución existente en AWS Bedrock. No contiene datos de clientes.</desc>
+  <rect width="900" height="506" fill="#0b1528"/>
+  <text x="36" y="73" fill="#67e8f9" font-family="sans-serif" font-size="26" letter-spacing="3">FLUJO CONCEPTUAL</text>
+  <g fill="none" stroke="#67e8f9" stroke-width="3"><path d="M284 260h42M574 260h42"/></g>
+  <g fill="#67e8f9"><path d="m318 252 8 8-8 8zm290 0 8 8-8 8z"/></g>
+  <g fill="#112239" stroke="#3c748a" stroke-width="2"><rect x="36" y="160" width="248" height="200" rx="18"/><rect x="326" y="160" width="248" height="200" rx="18"/><rect x="616" y="160" width="248" height="200" rx="18"/></g>
+  <g fill="#67e8f9" font-family="monospace" font-size="24"><text x="60" y="203">01</text><text x="350" y="203">02</text><text x="640" y="203">03</text></g>
+  <g fill="#f1f5f9" font-family="sans-serif" font-size="32" text-anchor="middle"><text x="160" y="264">Interfaz<tspan x="160" dy="44">de agentes</tspan></text><text x="450" y="264">Servicios<tspan x="450" dy="44">API</tspan></text><text x="740" y="264">AWS<tspan x="740" dy="44">Bedrock</tspan></text></g>
+  <text x="450" y="452" fill="#b4c2d4" font-family="sans-serif" font-size="23" text-anchor="middle">Integración de una solución de IA existente</text>
+</svg>

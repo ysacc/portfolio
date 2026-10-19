@@ -1,4 +1,5 @@
 export interface Project {
+    sector?: string;
     slug: string;
     title: string;
     shortDescription: string;
@@ -14,146 +15,307 @@ export interface Project {
 }
 
 export const projectsData: Project[] = [
-    {
-        slug: "interbank-erni",
-        title: "Interbank Erni",
-        shortDescription: "Investment management platform for Interbank clients.",
-        description: "Detailed platform for managing investment funds, focused on user experience and real-time data visualization. Built with React.js, Angular, Flutter, Tailwind, and Braze.",
-        image: "/projects/erni.png",
-        stack: ["React", "Angular", "Flutter", "TailwindCSS", "Braze", "TypeScript", "GTM", "Hotjar"],
-        links: {
-            live: "https://erni.interfondos.com.pe/",
-        },
-        highlights: ["Implemented real-time analytics", "Optimized onboarding flow"],
-        role: "Front-End Engineer",
+  {
+    "slug": "principal-ai-assistant",
+    "title": "Asistente inteligente para Principal",
+    "sector": "Servicios financieros · Amaris Consulting",
+    "shortDescription": "Una interfaz empresarial que ayuda a agentes a revisar información de clientes y conocer servicios potencialmente adecuados.",
+    "description": "Desarrollé desde cero el frontend de un asistente comercial e integré una solución de IA existente basada en AWS Bedrock. Coordiné con backend los ajustes de servicios e interfaces. El caso muestra un diagrama conceptual propio, sin datos ni capturas del cliente; la propiedad intelectual pertenece a sus titulares.",
+    "image": "/diagrams/principal-concept.svg",
+    "stack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "AWS Bedrock"
+    ],
+    "links": {},
+    "role": "Desarrollo frontend e integración de IA",
+    "highlights": [
+      "Arquitectura de la interfaz, componentes reutilizables y flujos de interacción.",
+      "Adaptación a requisitos empresariales y coordinación de ajustes con backend.",
+      "Integración del servicio existente; no desarrollé ni entrené el modelo LLM."
+    ]
+  },
+  {
+    "slug": "scientific-research-ai",
+    "title": "Plataforma de investigación científica con IA",
+    "sector": "Investigación académica · Inclusión Empresarial",
+    "shortDescription": "Automatización de la búsqueda multilingüe de literatura científica para tesis y publicaciones.",
+    "description": "Consultoría independiente para Inclusión Empresarial E.I.R.L., de julio de 2025 a enero de 2026, fuera del horario laboral y durante fines de semana. Desarrollé búsquedas en Google Académico, extracción mediante scraping y procesamiento asistido por LLM con múltiples prompts. Se muestra únicamente una ilustración conceptual sin datos privados.",
+    "image": "/diagrams/research-concept.svg",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "OpenAI API"
+    ],
+    "links": {},
+    "role": "Desarrollo Full Stack · Consultoría independiente",
+    "highlights": [
+      "Construcción de servicios backend con Python y FastAPI.",
+      "Integración de OpenAI API para procesamiento asistido por LLM.",
+      "Automatización de búsquedas académicas multilingües y extracción de información."
+    ]
+  },
+  {
+    "slug": "interbank-erni",
+    "title": "Interbank Erni",
+    "shortDescription": "Plataforma de gestión de inversiones para clientes de Interbank.",
+    "description": "Desarrollo de interfaces para una plataforma de fondos de inversión, con foco en la experiencia de usuario y la integración de servicios empresariales. Parte de mi experiencia bancaria incluye arquitectura SPA y microfrontends para Interbank y BBVA.",
+    "image": "/projects/erni.png",
+    "stack": [
+      "React",
+      "Angular",
+      "Flutter",
+      "TailwindCSS",
+      "Braze",
+      "TypeScript",
+      "GTM",
+      "Hotjar"
+    ],
+    "links": {
+      "live": "https://erni.interfondos.com.pe/"
     },
-    {
-        slug: "chambita",
-        title: "Chambita Website",
-        shortDescription: "Corporate website for employment services.",
-        description: "Recruitment platform with advanced filtering and application tracking. Built with Next.js, React, HTML, CSS, and Styled Components.",
-        image: "/projects/chambita.jpg",
-        stack: ["Next.js", "React", "TypeScript", "Styled Components", "TailwindCSS", "Node.js"],
-        links: {
-            live: "https://chambita-jet.vercel.app/",
-        },
-        highlights: ["SEO Optimization", "Mobile-first responsive design"],
-        role: "Front-End Engineer",
+    "highlights": [
+      "Desarrollo de interfaces e integración de APIs corporativas.",
+      "Construcción de componentes reutilizables y colaboración con equipos bancarios."
+    ],
+    "role": "Ingeniería frontend",
+    "sector": "Banca e inversiones"
+  },
+  {
+    "slug": "chambita",
+    "title": "Chambita",
+    "shortDescription": "Sitio web de servicios de empleo.",
+    "description": "Plataforma de contratación con filtros y seguimiento de postulaciones, desarrollada con Next.js, React y Styled Components.",
+    "image": "/projects/chambita.jpg",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Styled Components",
+      "TailwindCSS",
+      "Node.js"
+    ],
+    "links": {
+      "live": "https://chambita-jet.vercel.app/"
     },
-    {
-        slug: "silbia-utp",
-        title: "Silbia UTP System",
-        shortDescription: "Internal syllabus management for UTP University.",
-        description: "Admin platform for managing academic content and internal workflows for UTP. Built with Next.js, React, DS, Azure, Sonar, AWS, and Docker.",
-        image: "/projects/Silvia.jpg",
-        stack: ["Next.js", "React", "TypeScript", "Azure DevOps", "AWS", "Docker", "SonarQube"],
-        links: {
-            live: "https://silbia2-dev.utpxpedition.com/",
-        },
-        highlights: ["Micro-services integration", "Improved admin efficiency by 40%"],
-        role: "Front-End Engineer",
+    "highlights": [
+      "Optimización SEO.",
+      "Diseño adaptable con prioridad en dispositivos móviles."
+    ],
+    "role": "Desarrollo frontend",
+    "sector": "Empleo"
+  },
+  {
+    "slug": "silbia-utp",
+    "title": "Sistema Silbia UTP",
+    "shortDescription": "Gestión interna de sílabos y contenido académico para UTP.",
+    "description": "Plataforma administrativa para organizar contenido académico y procesos internos de UTP, desarrollada con Next.js, React e integración de servicios empresariales.",
+    "image": "/projects/Silvia.jpg",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Azure DevOps",
+      "AWS",
+      "Docker",
+      "SonarQube"
+    ],
+    "links": {},
+    "highlights": [
+      "Integración de microservicios.",
+      "Interfaces reutilizables para gestión académica."
+    ],
+    "role": "Desarrollo frontend",
+    "sector": "Educación"
+  },
+  {
+    "slug": "erp-spsa",
+    "title": "ERP de Supermercados Peruanos",
+    "shortDescription": "Sistema de gestión empresarial para Supermercados Peruanos.",
+    "description": "Desarrollo de soluciones web para el grupo Intercorp con aplicaciones React, servicios Node.js y bases de datos MySQL, en un entorno GCP.",
+    "image": "/projects/ERP1.jpg",
+    "stack": [
+      "React",
+      "Node.js",
+      "MySQL",
+      "Oracle",
+      "GCP",
+      "CI/CD",
+      "Docker"
+    ],
+    "links": {},
+    "highlights": [
+      "Desarrollo de interfaces empresariales.",
+      "Integración de servicios backend y APIs REST."
+    ],
+    "role": "Desarrollo Full Stack",
+    "sector": "Retail"
+  },
+  {
+    "slug": "sanna-scheduling",
+    "title": "Agendamiento de citas SANNA",
+    "shortDescription": "Interfaz para reservar citas médicas en SANNA.",
+    "description": "Sistema de agendamiento médico desarrollado desde cero con Next.js, React y Styled Components para organizar el proceso de reserva mediante formularios de varios pasos.",
+    "image": "/projects/sanna.jpg",
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Styled Components",
+      "Context API",
+      "Unit Testing"
+    ],
+    "links": {
+      "live": "https://web-sanna.vercel.app/"
     },
-    {
-        slug: "erp-spsa",
-        title: "ERP – Supermercados Peruanos",
-        shortDescription: "Internal management system for SPSA.",
-        description: "Project developed for the Intercorp Group as a Full Stack Developer. Built with React, Node.js, MySQL, and GCP.",
-        image: "/projects/ERP1.jpg",
-        stack: ["React", "Node.js", "MySQL", "Oracle", "GCP", "CI/CD", "Docker"],
-        links: {},
-        highlights: ["Led database design", "Implemented real-time inventory tracking"],
-        role: "Full Stack Developer",
+    "highlights": [
+      "Trabajo en accesibilidad de interfaces.",
+      "Gestión del estado de formularios de varios pasos."
+    ],
+    "role": "Desarrollo frontend",
+    "sector": "Salud"
+  },
+  {
+    "slug": "cumpa-peru",
+    "title": "Cumpa Perú",
+    "shortDescription": "Plataforma de comercio electrónico para Cumpa Perú.",
+    "description": "Tienda desarrollada en Shopify con WordPress y Elementor, integraciones de Google Analytics y MercadoPago.",
+    "image": "/projects/cumpa.jpg",
+    "stack": [
+      "Shopify",
+      "WordPress",
+      "Elementor",
+      "Google Analytics",
+      "MercadoPago"
+    ],
+    "links": {
+      "live": "https://cumpaperu.com/"
     },
-    {
-        slug: "sanna-scheduling",
-        title: "SANNA Scheduling",
-        shortDescription: "Appointment scheduling interface for SANNA healthcare.",
-        description: "A fast, intuitive medical appointment booking system built from scratch using Next.js, React, and Styled Components.",
-        image: "/projects/sanna.jpg",
-        stack: ["Next.js", "React", "TypeScript", "Styled Components", "Context API", "Unit Testing"],
-        links: {
-            live: "https://web-sanna.vercel.app/",
-        },
-        highlights: ["Accessibility compliance", "State management for multi-step forms"],
-        role: "Front-End Engineer",
+    "highlights": [
+      "Integración de MercadoPago.",
+      "Conexión entre Shopify y WordPress."
+    ],
+    "role": "Liderazgo de desarrollo",
+    "sector": "Comercio electrónico"
+  },
+  {
+    "slug": "bubba-bags",
+    "title": "Bubba Bags",
+    "shortDescription": "Comercio electrónico de Bubba Bags en Perú.",
+    "description": "Tienda desarrollada con WooCommerce, WordPress y Elementor, con mantenimiento y actualización de funcionalidades.",
+    "image": "/projects/bubba.jpg",
+    "stack": [
+      "WooCommerce",
+      "WordPress",
+      "Elementor",
+      "PHP",
+      "MySQL"
+    ],
+    "links": {
+      "live": "https://bubbabags.com.pe/"
     },
-    {
-        slug: "cumpa-peru",
-        title: "Cumpa Peru",
-        shortDescription: "E-commerce platform for Cumpa Peru.",
-        description: "E-commerce developed in Shopify integrated with WordPress and Elementor, including Google Analytics and MercadoPago integrations.",
-        image: "/projects/cumpa.jpg",
-        stack: ["Shopify", "WordPress", "Elementor", "Google Analytics", "MercadoPago"],
-        links: {
-            live: "https://cumpaperu.com/",
-        },
-        highlights: ["Integrated MercadoPago", "Custom Shopify-WordPress sync"],
-        role: "Lead Developer",
+    "highlights": [
+      "Mantenimiento de funcionalidades de compra.",
+      "Optimización para dispositivos móviles."
+    ],
+    "role": "Mantenimiento de la plataforma",
+    "sector": "Comercio electrónico"
+  },
+  {
+    "slug": "valhalla",
+    "title": "Valhalla",
+    "shortDescription": "Aplicación para monitorear la contaminación del aire.",
+    "description": "Aplicación desarrollada desde cero con React y Styled Components. Visualización de datos con Chart.js y MUI, integración de APIs backend y despliegue en AWS S3.",
+    "image": "/projects/valhalla.jpg",
+    "stack": [
+      "React",
+      "AWS S3",
+      "Python (Backend)",
+      "Node.js",
+      "Chart.js",
+      "MUI",
+      "PostgreSQL"
+    ],
+    "links": {},
+    "highlights": [
+      "Visualización de datos en tiempo real.",
+      "Despliegue en AWS."
+    ],
+    "role": "Desarrollo frontend",
+    "sector": "Monitoreo ambiental"
+  },
+  {
+    "slug": "rick-and-morty-wiki",
+    "title": "Rick and Morty Wiki",
+    "shortDescription": "Explorador de personajes de Rick and Morty.",
+    "description": "Aplicación personal con filtros por nombre y estado de personajes, desarrollada con React, Redux, Express, Node.js, PostgreSQL y CSS.",
+    "image": "/projects/rickandmorty.jpg",
+    "stack": [
+      "React",
+      "Redux",
+      "Express",
+      "Node.js",
+      "PostgreSQL",
+      "CSS3"
+    ],
+    "links": {
+      "live": "https://rick-and-morty-iota-cyan.vercel.app/",
+      "github": "https://github.com/ysacc/rick-and-morty"
     },
-    {
-        slug: "bubba-bags",
-        title: "Bubba Bags",
-        shortDescription: "Official Bubba Bags e-commerce (Peru).",
-        description: "E-commerce built in WooCommerce with WordPress and Elementor, including scheduled maintenance and feature updates.",
-        image: "/projects/bubba.jpg",
-        stack: ["WooCommerce", "WordPress", "Elementor", "PHP", "MySQL"],
-        links: {
-            live: "https://bubbabags.com.pe/",
-        },
-        highlights: ["Increased checkout conversion by 15%", "Mobile optimization"],
-        role: "Maintenance Lead",
+    "highlights": [
+      "Filtrado de personajes.",
+      "Gestión del estado con Redux."
+    ],
+    "role": "Proyecto personal",
+    "sector": "Proyecto personal"
+  },
+  {
+    "slug": "redflix",
+    "title": "RedFlix",
+    "shortDescription": "Catálogo de películas inspirado en una plataforma de streaming.",
+    "description": "Proyecto de práctica desarrollado desde cero con React, HTML y CSS para explorar interfaces de catálogos audiovisuales.",
+    "image": "/projects/RedFlix.jpg",
+    "stack": [
+      "React",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Firebase"
+    ],
+    "links": {
+      "live": "https://redflix-two.vercel.app/",
+      "github": "https://github.com/ysacc/RedFlix"
     },
-    {
-        slug: "valhalla",
-        title: "Valhalla",
-        shortDescription: "Air pollution monitoring application.",
-        description: "Air pollution monitoring and control application. Built from scratch with React and Styled Components, using Chart.js and MUI libraries. Integrated with backend APIs via Postman and deployed on AWS S3.",
-        image: "/projects/valhalla.jpg",
-        stack: ["React", "AWS S3", "Python (Backend)", "Node.js", "Chart.js", "MUI", "PostgreSQL"],
-        links: {},
-        highlights: ["Real-time data visualization", "AWS deployment"],
-        role: "Front-End Developer",
+    "highlights": [
+      "Interfaz adaptable.",
+      "Listado dinámico de películas."
+    ],
+    "role": "Proyecto personal",
+    "sector": "Proyecto personal"
+  },
+  {
+    "slug": "web-model",
+    "title": "Web-Model",
+    "shortDescription": "Página de práctica de diseño y desarrollo de interfaces.",
+    "description": "Página personal desarrollada con React, HTML y CSS como práctica de interfaces modernas.",
+    "image": "/projects/WebModel.jpg",
+    "stack": [
+      "React",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Framer Motion"
+    ],
+    "links": {
+      "live": "https://web-model.vercel.app/",
+      "github": "https://github.com/ysacc/WebModel"
     },
-    {
-        slug: "rick-and-morty-wiki",
-        title: "Rick and Morty Wiki",
-        shortDescription: "A character wiki for Rick and Morty fans.",
-        description: "A wiki app for one of my favorite shows, Rick and Morty. Includes character filtering by name or status. Built from scratch with React, Redux, Express, Node, PostgreSQL, and CSS.",
-        image: "/projects/rickandmorty.jpg",
-        stack: ["React", "Redux", "Express", "Node.js", "PostgreSQL", "CSS3"],
-        links: {
-            live: "https://rick-and-morty-iota-cyan.vercel.app/",
-            github: "https://github.com/ysacc/rick-and-morty",
-        },
-        highlights: ["Character filtering", "Redux state management"],
-        role: "Self-Project",
-    },
-    {
-        slug: "redflix",
-        title: "RedFlix",
-        shortDescription: "Netflix clone with movie catalog.",
-        description: "A replica of a popular streaming platform. Built from scratch with React, HTML, and CSS.",
-        image: "/projects/RedFlix.jpg",
-        stack: ["React", "JavaScript", "HTML5", "CSS3", "Firebase"],
-        links: {
-            live: "https://redflix-two.vercel.app/",
-            github: "https://github.com/ysacc/RedFlix",
-        },
-        highlights: ["Responsive UI", "Dynamic movie listing"],
-        role: "Self-Project",
-    },
-    {
-        slug: "web-model",
-        title: "Web-Model",
-        shortDescription: "Practice landing page for modern UI.",
-        description: "A personal web page created for practice. Built from scratch with React, HTML, and CSS.",
-        image: "/projects/WebModel.jpg",
-        stack: ["React", "JavaScript", "HTML5", "CSS3", "Framer Motion"],
-        links: {
-            live: "https://web-model.vercel.app/",
-            github: "https://github.com/ysacc/WebModel",
-        },
-        highlights: ["Practice with CSS animations", "Mobile-first design"],
-        role: "Self-Project",
-    },
+    "highlights": [
+      "Práctica de animaciones CSS.",
+      "Diseño con prioridad en dispositivos móviles."
+    ],
+    "role": "Proyecto personal",
+    "sector": "Proyecto personal"
+  }
 ];

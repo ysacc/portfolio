@@ -17,17 +17,11 @@ export const config = {
 export function proxy(req: NextRequest) {
     const xForwardedHost = req.headers.get('x-forwarded-host');
     const hostHeader = req.headers.get('host');
-    const host = xForwardedHost || hostHeader || '';
-
-    console.log('[Proxy] Request Path:', req.nextUrl.pathname);
-    console.log('[Proxy] Detected Host:', host);
-    console.log('[Proxy] X-Forwarded-Host:', xForwardedHost);
-    console.log('[Proxy] Host Header:', hostHeader);
-
-    // Solo protegemos si es el subdominio de colegio o localhost (para pruebas si quieres)
-    const isColegio = host.startsWith('colegio.') || host.includes('colegio-');
-
-    console.log('[Proxy] Is Colegio:', isColegio);
+    // Un forwarded host manipulado no debe desactivar la protección del host real.
+    const isColegio = [hostHeader, xForwardedHost].some(value => {
+        const host = value?.toLowerCase() ?? '';
+        return host.startsWith('colegio.') || host.includes('colegio-');
+    });
 
     if (!isColegio) {
         return NextResponse.next();
@@ -35,14 +29,19 @@ export function proxy(req: NextRequest) {
 
     const authHeader = req.headers.get('authorization');
 
-    const BASIC_USER = process.env.BASIC_USER || 'admin';
-    const BASIC_PASS = process.env.BASIC_PASS || 'colegio-dev-12345';
+    const BASIC_USER = process.env.BASIC_USER;
+    const BASIC_PASS = process.env.BASIC_PASS;
+    if (!BASIC_USER || !BASIC_PASS) {
+        return new NextResponse('Servicio no configurado', { status: 503 });
+    }
 
     if (authHeader?.startsWith('Basic ')) {
         try {
             const base64 = authHeader.slice('Basic '.length);
             const decoded = atob(base64);
-            const [user, pass] = decoded.split(':');
+            const separator = decoded.indexOf(':');
+            const user = decoded.slice(0, separator);
+            const pass = decoded.slice(separator + 1);
 
             if (user === BASIC_USER && pass === BASIC_PASS) {
                 return NextResponse.next();

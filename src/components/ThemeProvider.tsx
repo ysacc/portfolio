@@ -12,14 +12,15 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setTheme] = useState<Theme>("light");
+    const [theme, setTheme] = useState<Theme>("dark");
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") as Theme | null;
-        if (savedTheme) {
+        let savedTheme: string | null = null;
+        try { savedTheme = localStorage.getItem("theme"); } catch { /* El tema sigue funcionando sin almacenamiento. */ }
+        if (savedTheme === "dark" || savedTheme === "light") {
             setTheme(savedTheme);
             document.documentElement.classList.toggle("dark", savedTheme === "dark");
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        } else {
             setTheme("dark");
             document.documentElement.classList.add("dark");
         }
@@ -28,7 +29,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const toggleTheme = () => {
         const nextTheme = theme === "light" ? "dark" : "light";
         setTheme(nextTheme);
-        localStorage.setItem("theme", nextTheme);
+        try { localStorage.setItem("theme", nextTheme); } catch { /* Preferencia solo para esta sesión. */ }
         document.documentElement.classList.toggle("dark", nextTheme === "dark");
     };
 

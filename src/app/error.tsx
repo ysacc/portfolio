@@ -16,12 +16,12 @@ export default function Error({
 
     return (
         <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center">
-            <h2 className="text-3xl font-bold">Something went wrong!</h2>
+            <h2 className="text-3xl font-bold">No pudimos cargar la página</h2>
             <p className="text-gray-600 dark:text-gray-400">
-                An error occurred while rendering this page.
+                Ocurrió un error al mostrar esta página.
             </p>
             <Button onClick={() => reset()} variant="primary">
-                Try again
+                Volver a intentar
             </Button>
         </div>
     );

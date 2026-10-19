@@ -6,38 +6,36 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { siteConfig } from "@/data/site";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
-import { CommandPalette } from "@/components/CommandPalette";
+import { CommandPaletteLauncher } from "@/components/CommandPaletteLauncher";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
     title: {
-        default: siteConfig.name,
+        default: "Ysacc Roncal | Desarrollador Frontend Senior, Full Stack e IA",
         template: `%s | ${siteConfig.name}`,
     },
-    description: siteConfig.headline,
+    description: "Portafolio de Ysacc Roncal, desarrollador Frontend Senior especializado en React, Next.js y TypeScript, con experiencia Full Stack, AWS e integración de inteligencia artificial en proyectos empresariales.",
     keywords: siteConfig.keywords,
     metadataBase: new URL(siteConfig.links.domain),
     openGraph: {
-        title: siteConfig.name,
-        description: siteConfig.headline,
+        title: `${siteConfig.name} | ${siteConfig.headline}`,
+        description: "Portafolio de Ysacc Roncal, desarrollador Frontend Senior especializado en React, Next.js y TypeScript, con experiencia Full Stack, AWS e integración de inteligencia artificial en proyectos empresariales.",
         url: siteConfig.links.domain,
         siteName: siteConfig.name,
-        locale: "en_US",
+        locale: "es_PE",
         type: "website",
         images: [
             {
                 url: siteConfig.ogImage,
-                width: 1200,
-                height: 630,
                 alt: siteConfig.name,
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: siteConfig.name,
-        description: siteConfig.headline,
+        title: `${siteConfig.name} | ${siteConfig.headline}`,
+        description: "Portafolio de Ysacc Roncal, desarrollador Frontend Senior especializado en React, Next.js y TypeScript, con experiencia Full Stack, AWS e integración de inteligencia artificial en proyectos empresariales.",
         images: [siteConfig.ogImage],
         creator: "@ysacc_roncal",
     },
@@ -49,8 +47,8 @@ export const metadata: Metadata = {
         canonical: "./",
     },
     icons: {
-        icon: siteConfig.ogImage,
-        shortcut: siteConfig.ogImage,
+        icon: "/favicon.svg",
+        shortcut: "/favicon.svg",
         apple: siteConfig.ogImage,
     },
 };
@@ -65,7 +63,7 @@ export default function RootLayout({
         "@type": "Person",
         name: siteConfig.name,
         jobTitle: siteConfig.headline,
-        description: siteConfig.subheadline,
+        description: "Portafolio de Ysacc Roncal, desarrollador Frontend Senior especializado en React, Next.js y TypeScript, con experiencia Full Stack, AWS e integración de inteligencia artificial en proyectos empresariales.",
         url: siteConfig.links.domain,
         sameAs: [
             siteConfig.links.linkedin,
@@ -80,26 +78,27 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html className="dark" lang="es" suppressHydrationWarning>
             <head>
+                <script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.classList.toggle('dark',localStorage.getItem('theme')!=='light')}catch{}" }} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
             </head>
-            <body className={`${inter.variable} font-sans antialiased selection:bg-yellow-100 selection:text-yellow-900 dark:selection:bg-yellow-900 dark:selection:text-yellow-100`}>
+            <body className={`${inter.variable} font-sans antialiased selection:bg-cyan-100 selection:text-cyan-900 dark:selection:bg-cyan-900 dark:selection:text-cyan-100`}>
                 <a
                     href="#main-content"
-                    className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-yellow-500 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2"
+                    className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-fg focus:outline-none focus:ring-2 focus:ring-accent-strong focus:ring-offset-2"
                 >
-                    Skip to content
+                    Saltar al contenido
                 </a>
                 <ThemeProvider>
                     <BackgroundEffects />
-                    <CommandPalette />
-                    <div className="relative flex min-h-screen flex-col">
+                    <CommandPaletteLauncher />
+                    <div id="site-shell" className="relative flex min-h-screen flex-col">
                         <Navbar />
-                        <main id="main-content" className="flex-1">
+                        <main id="main-content" tabIndex={-1} className="flex-1">
                             {children}
                         </main>
                         <Footer />

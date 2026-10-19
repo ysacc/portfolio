@@ -524,6 +524,10 @@ export function FocusDashboard({ activeSection = "home" }: Props) {
     );
   }
 
+  if (!mounted) {
+    return <div className="section-container py-32" role="status">Cargando panel...</div>;
+  }
+
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(250,204,21,0.16),_transparent_35%)] pb-16 pt-24 text-gray-900 dark:text-gray-100">
       <div className="section-container flex gap-6">

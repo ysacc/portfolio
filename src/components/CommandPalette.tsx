@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
     ArrowUpRight,
     Briefcase,
@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { siteConfig } from "@/data/site";
+import { navigation } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 interface Command {
@@ -34,13 +35,15 @@ interface Command {
  * ⌘K / Ctrl+K command palette for navigation, theme and external links.
  * Mounted globally from the root layout.
  */
-export function CommandPalette() {
-    const [open, setOpen] = useState(false);
+export function CommandPalette({ initiallyOpen = false }: { initiallyOpen?: boolean }) {
+    const [open, setOpen] = useState(initiallyOpen);
     const [query, setQuery] = useState("");
     const [active, setActive] = useState(0);
     const router = useRouter();
     const { theme, toggleTheme } = useTheme();
+    const reduceMotion = useReducedMotion();
     const inputRef = useRef<HTMLInputElement>(null);
+    const dialogRef = useRef<HTMLDivElement>(null);
 
     const close = useCallback(() => {
         setOpen(false);
@@ -58,14 +61,11 @@ export function CommandPalette() {
 
     const commands = useMemo<Command[]>(
         () => [
-            { id: "home", label: "Home", hint: "Landing page", icon: Home, run: () => go("/") },
-            { id: "projects", label: "Projects", hint: "Work archive", icon: Briefcase, keywords: "work portfolio", run: () => go("/projects") },
-            { id: "resume", label: "Resume", hint: "Experience & CV", icon: FileText, keywords: "cv experience", run: () => go("/resume") },
-            { id: "contact", label: "Contact", hint: "Get in touch", icon: Mail, keywords: "email message", run: () => go("/contact") },
-            { id: "theme", label: `Switch to ${theme === "dark" ? "light" : "dark"} theme`, hint: "Appearance", icon: theme === "dark" ? Sun : Moon, keywords: "dark light mode", run: () => { toggleTheme(); close(); } },
-            { id: "github", label: "GitHub", hint: siteConfig.links.github, icon: Github, external: true, keywords: "code source", run: () => { window.open(siteConfig.links.github, "_blank"); close(); } },
-            { id: "linkedin", label: "LinkedIn", hint: "Professional profile", icon: Linkedin, external: true, keywords: "connect", run: () => { window.open(siteConfig.links.linkedin, "_blank"); close(); } },
-            { id: "email", label: "Send email", hint: siteConfig.email, icon: Mail, external: true, run: () => { window.location.href = `mailto:${siteConfig.email}`; close(); } },
+            ...navigation.map(item => ({ id: item.href, label: item.name, hint: item.description, icon: item.href === "/" ? Home : item.href === "/proyectos" ? Briefcase : item.href === "/contacto" ? Mail : FileText, run: () => go(item.href) })),
+            { id: "theme", label: `Activar tema ${theme === "dark" ? "claro" : "oscuro"}`, hint: "Apariencia", icon: theme === "dark" ? Sun : Moon, keywords: "dark light mode", run: () => { toggleTheme(); close(); } },
+            { id: "github", label: "GitHub", hint: siteConfig.links.github, icon: Github, external: true, keywords: "code source", run: () => { window.open(siteConfig.links.github, "_blank", "noopener,noreferrer"); close(); } },
+            { id: "linkedin", label: "LinkedIn", hint: "Perfil profesional", icon: Linkedin, external: true, keywords: "connect", run: () => { window.open(siteConfig.links.linkedin, "_blank", "noopener,noreferrer"); close(); } },
+            { id: "email", label: "Enviar correo", hint: siteConfig.email, icon: Mail, external: true, run: () => { window.location.href = `mailto:${siteConfig.email}`; close(); } },
         ],
         [go, theme, toggleTheme, close]
     );
@@ -83,19 +83,30 @@ export function CommandPalette() {
         const onKey = (event: KeyboardEvent) => {
             if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
                 event.preventDefault();
-                setOpen((prev) => !prev);
+                if (open) close();
+                else setOpen(true);
             }
-            if (event.key === "Escape") setOpen(false);
+            if (event.key === "Escape") close();
         };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
-    }, []);
+    }, [open, close]);
 
     useEffect(() => {
         if (open) {
             setActive(0);
-            const id = window.setTimeout(() => inputRef.current?.focus(), 20);
-            return () => window.clearTimeout(id);
+            const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+            const overflow = document.body.style.overflow;
+            const shell = document.getElementById("site-shell");
+            const wasInert = shell?.inert ?? false;
+            document.body.style.overflow = "hidden";
+            if (shell) shell.inert = true;
+            inputRef.current?.focus();
+            return () => {
+                document.body.style.overflow = overflow;
+                if (shell) shell.inert = wasInert;
+                previous?.focus({ preventScroll: true });
+            };
         }
     }, [open]);
 
@@ -104,6 +115,16 @@ export function CommandPalette() {
     }, [query]);
 
     const onListKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === "Tab") {
+            const controls = dialogRef.current?.querySelectorAll<HTMLElement>('input, button, a[href], [tabindex="0"]');
+            if (!controls?.length) return;
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+            return;
+        }
+        if (event.target !== inputRef.current) return;
         if (event.key === "ArrowDown") {
             event.preventDefault();
             setActive((prev) => (prev + 1) % Math.max(filtered.length, 1));
@@ -121,9 +142,9 @@ export function CommandPalette() {
             {open && (
                 <motion.div
                     className="fixed inset-0 z-[100] flex items-start justify-center px-4 pt-[15vh]"
-                    initial={{ opacity: 0 }}
+                    initial={reduceMotion ? false : { opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={reduceMotion ? undefined : { opacity: 0 }}
                 >
                     <div
                         className="absolute inset-0 bg-gray-950/40 backdrop-blur-sm"
@@ -131,13 +152,14 @@ export function CommandPalette() {
                         aria-hidden
                     />
                     <motion.div
+                        ref={dialogRef}
                         role="dialog"
                         aria-modal="true"
                         aria-label="Paleta de comandos"
-                        initial={{ opacity: 0, scale: 0.97, y: -8 }}
+                        initial={reduceMotion ? false : { opacity: 0, scale: 0.97, y: -8 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.97, y: -8 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        exit={reduceMotion ? undefined : { opacity: 0, scale: 0.97, y: -8 }}
+                        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 400, damping: 30 }}
                         onKeyDown={onListKeyDown}
                         className="glass relative w-full max-w-xl overflow-hidden rounded-card"
                     >
@@ -145,9 +167,10 @@ export function CommandPalette() {
                             <Search className="size-4 shrink-0 text-muted" />
                             <input
                                 ref={inputRef}
+                                aria-label="Buscar páginas y acciones"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
-                                placeholder="Search pages, actions…"
+                                placeholder="Buscar páginas y acciones…"
                                 className="w-full bg-transparent py-4 text-sm outline-none placeholder:text-muted"
                             />
                             <kbd className="hidden rounded-md border border-hairline/15 px-1.5 py-0.5 text-[10px] font-medium text-muted sm:block">
@@ -156,7 +179,7 @@ export function CommandPalette() {
                         </div>
                         <ul className="max-h-[320px] overflow-y-auto p-2">
                             {filtered.length === 0 && (
-                                <li className="px-3 py-8 text-center text-sm text-muted">No results</li>
+                                <li className="px-3 py-8 text-center text-sm text-muted">Sin resultados</li>
                             )}
                             {filtered.map((command, index) => {
                                 const Icon = command.icon;
@@ -196,11 +219,11 @@ export function CommandPalette() {
                             <span className="flex items-center gap-1.5">
                                 <kbd className="rounded border border-hairline/15 px-1.5 py-0.5">↑</kbd>
                                 <kbd className="rounded border border-hairline/15 px-1.5 py-0.5">↓</kbd>
-                                navigate
+                                navegar
                             </span>
                             <span className="flex items-center gap-1.5">
                                 <kbd className="rounded border border-hairline/15 px-1.5 py-0.5">↵</kbd>
-                                select
+                                seleccionar
                             </span>
                         </div>
                     </motion.div>

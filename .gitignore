@@ -45,3 +45,12 @@ next-env.d.ts
 !.vscode/settings.json
 !.vscode/tasks.json
 .history/
+
+/.npm-cache/
+
+/.pdf-tools/
+/.next-qa/
+/.qa-tools/
+/playwright-report/
+/test-results/
+/qa-artifacts/
