@@ -9,23 +9,22 @@ export function Hero() {
       <div className="hero-copy">
         <p className="eyebrow">Ysacc Roncal / Lima, Perú</p>
         <h1>
-          Desarrollador Frontend Senior
-          <span className="block text-gradient">
-            Full Stack e integración de IA.
+          Senior Full Stack Developer
+          <span className="mt-4 block text-xl leading-snug tracking-normal text-gradient md:text-2xl">
+            Software Architecture | Technical Leadership
           </span>
         </h1>
         <p className="hero-description">
-          Más de siete años construyendo soluciones empresariales con React,
-          Next.js y TypeScript. Combino arquitectura frontend, desarrollo Full
-          Stack e IA aplicada para transformar necesidades complejas en
-          productos mantenibles.
+          Diseño y desarrollo soluciones digitales escalables, combinando
+          arquitectura de software, ingeniería frontend y backend, tecnologías
+          cloud y liderazgo técnico.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/proyectos"
             className="inline-flex items-center rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-accent-fg transition-colors hover:bg-accent-strong"
           >
-            Ver proyectos
+            Explorar proyectos
           </Link>
           <Button as="a" href={siteConfig.links.resume} variant="outline">
             Descargar CV
@@ -37,11 +36,15 @@ export function Hero() {
             Contactarme
           </Link>
         </div>
+        <div className="mt-5 flex flex-wrap gap-5 text-sm font-medium">
+          <a href={siteConfig.links.linkedin} className="underline underline-offset-4">LinkedIn</a>
+          <a href={siteConfig.links.github} className="underline underline-offset-4">GitHub</a>
+        </div>
       </div>
       <div className="hero-portrait">
         <Image
           src="/me.png"
-          alt="Ysacc Roncal, desarrollador Frontend Senior en Lima"
+          alt="Ysacc Roncal, desarrollador Full Stack Senior en Lima"
           fill
           priority
           sizes="(max-width: 767px) 90vw, 360px"
