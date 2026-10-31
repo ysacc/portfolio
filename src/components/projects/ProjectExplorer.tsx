@@ -60,10 +60,18 @@ export function ProjectExplorer({ projects }: { projects: readonly Project[] }) 
             <p className="sr-only" role="status">{filteredProjects.length} proyectos encontrados</p>
             <h2 className="sr-only">Listado de proyectos</h2>
                 {filteredProjects.length > 0 ? (
-                    <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                        {filteredProjects.map((project) => (
-                            <ProjectCard key={project.slug} {...project} />
-                        ))}
+                    <div className="space-y-12">
+                        {[
+                            { title: "Experiencia empresarial", personal: false },
+                            { title: "Proyectos propios", personal: true },
+                        ].map(group => {
+                            const items = filteredProjects.filter(project => (project.role === "Proyecto personal") === group.personal);
+                            if (!items.length) return null;
+                            return <section key={group.title} aria-label={group.title}>
+                                <h2 className="mb-6 text-2xl font-semibold">{group.title}</h2>
+                                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">{items.map(project => <ProjectCard key={project.slug} {...project} />)}</div>
+                            </section>;
+                        })}
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center py-20 text-center">

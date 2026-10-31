@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
+import { EngineeringCases } from "@/components/EngineeringCases";
 import { Section } from "@/components/Section";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactCta } from "@/components/InteriorPage";
@@ -14,6 +15,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Section id="ingenieria" title="Ingeniería en acción" className="py-12 md:py-16">
+        <p className="mb-8 max-w-3xl leading-relaxed text-muted">Tres lecturas técnicas de mi experiencia: problemas, decisiones y límites. Diagramas ilustrativos y alcance documentado en cada caso.</p>
+        <EngineeringCases />
+      </Section>
       <Section title="Frontend como especialidad. Visión integral del producto." className="py-12 md:py-16">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {expertise.map((item, index) => (
